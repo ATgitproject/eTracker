@@ -1,0 +1,47 @@
+// _mixins.scss
+@use 'sass:list';
+@use 'variables' as v;
+
+@mixin card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: v.$radius-md;
+  box-shadow: var(--color-shadow);
+}
+
+@mixin flex($direction: row, $align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin btn-reset {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+@mixin icon-badge($size: 44px) {
+  width: $size;
+  height: $size;
+  border-radius: v.$radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@mixin transition($props...) {
+  @if list.length($props) == 0 {
+    transition: all 0.18s ease;
+  } @else {
+    $out: ();
+    @each $p in $props {
+      $out: list.append($out, #{$p} 0.18s ease, comma);
+    }
+    transition: $out;
+  }
+}

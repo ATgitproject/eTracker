@@ -1,0 +1,13 @@
+{
+  "_comment": "Keyword -> visual mapping for the recent transactions list. First matching keyword (case-insensitive substring of the transaction name) wins. 'default' is used when nothing matches.",
+  "rules": [
+    { "keyword": "starbucks", "initial": "S", "bg": "#0B3B2E", "fg": "#FFFFFF" },
+    { "keyword": "uber", "initial": "U", "bg": "#000000", "fg": "#FFFFFF" },
+    { "keyword": "salary", "initial": "\ud83c\udfe6", "bg": "#12B76A", "fg": "#FFFFFF" },
+    { "keyword": "amazon", "initial": "a", "bg": "#000000", "fg": "#FF9900" },
+    { "keyword": "netflix", "initial": "N", "bg": "#E50914", "fg": "#FFFFFF" },
+    { "keyword": "swiggy", "initial": "S", "bg": "#FC8019", "fg": "#FFFFFF" },
+    { "keyword": "zomato", "initial": "Z", "bg": "#E23744", "fg": "#FFFFFF" }
+  ],
+  "default": { "bg": "#EEF0FF", "fg": "#4F5BD5" }
+}

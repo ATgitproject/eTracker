@@ -1,0 +1,8 @@
+{
+  "title": "Create your account",
+  "fields": [
+    { "name": "name", "label": "Full Name", "type": "text", "placeholder": "Jane Doe", "required": true },
+    { "name": "email", "label": "Email Address", "type": "email", "placeholder": "you@example.com", "required": true },
+    { "name": "mobileNumber", "label": "Mobile Number", "type": "tel", "placeholder": "+91 98765 43210", "required": true }
+  ]
+}

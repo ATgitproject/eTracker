@@ -1,0 +1,24 @@
+{
+  "brand": {
+    "name": "FinTrack",
+    "icon": "trending-up"
+  },
+  "sidebarItems": [
+    { "id": "dashboard", "label": "Dashboard", "icon": "home", "path": "/" },
+    { "id": "accounts", "label": "Accounts", "icon": "wallet", "path": "/accounts" },
+    { "id": "transactions", "label": "Transactions", "icon": "list", "path": "/transactions" },
+    { "id": "investments", "label": "Investments", "icon": "bar-chart", "path": "/investments" },
+    { "id": "reports", "label": "Reports", "icon": "pie-chart", "path": "/reports" },
+    { "id": "settings", "label": "Settings", "icon": "settings", "path": "/settings" }
+  ],
+  "sidebarFooterItems": [
+    { "id": "help", "label": "Help & Support", "icon": "help-circle", "path": "/help" }
+  ],
+  "navbar": {
+    "greeting": "Good morning!",
+    "subtitle": "Here's what's happening with your finances today.",
+    "showImportButton": true,
+    "importButtonLabel": "Import Statement",
+    "showThemeToggle": true
+  }
+}

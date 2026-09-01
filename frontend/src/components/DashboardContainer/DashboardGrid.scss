@@ -1,0 +1,24 @@
+@use '../../styles/variables' as v;
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: v.$space-5;
+  margin-top: v.$space-6;
+
+  @include v.laptop {
+    grid-template-columns: repeat(6, 1fr);
+
+    > * {
+      grid-column: span 6 !important;
+    }
+  }
+
+  @include v.mobile {
+    grid-template-columns: 1fr;
+
+    > * {
+      grid-column: span 1 !important;
+    }
+  }
+}

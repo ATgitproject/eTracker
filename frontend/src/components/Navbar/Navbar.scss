@@ -1,0 +1,73 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.navbar {
+  @include m.flex(row, flex-start, space-between);
+  padding: v.$space-8 v.$space-8 v.$space-6;
+  gap: v.$space-4;
+  flex-wrap: wrap;
+
+  @include v.tablet {
+    padding: v.$space-5 v.$space-4 v.$space-3;
+  }
+
+  &__greeting {
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: v.$space-2;
+    }
+
+    p {
+      margin-top: 4px;
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+    }
+  }
+
+  &__wave {
+    display: inline-block;
+    animation: wave 1.6s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  &__actions {
+    @include m.flex(row, center, flex-end, v.$space-4);
+  }
+
+  &__import-btn {
+    @include m.btn-reset;
+    @include m.flex(row, center, center, v.$space-2);
+    background: var(--color-primary);
+    color: #fff;
+    padding: 10px v.$space-4;
+    border-radius: v.$radius-sm;
+    font-size: 0.88rem;
+    font-weight: 600;
+    @include m.transition(transform, box-shadow);
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(79, 91, 213, 0.3);
+    }
+  }
+
+  &__avatar {
+    @include m.btn-reset;
+    @include m.icon-badge(38px);
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(16deg); }
+  40% { transform: rotate(-8deg); }
+  60% { transform: rotate(12deg); }
+}

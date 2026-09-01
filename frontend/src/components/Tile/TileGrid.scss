@@ -1,0 +1,14 @@
+@use '../../styles/variables' as v;
+
+.tile-grid {
+  display: grid;
+  // Never more columns than tiles exist, and each tile keeps a
+  // sensible minimum width - so 4 tiles stretch evenly across
+  // desktop, and it reflows down to a single column on mobile.
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: v.$space-5;
+
+  @include v.mobile {
+    grid-template-columns: 1fr;
+  }
+}

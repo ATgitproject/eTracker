@@ -1,0 +1,78 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.sidebar {
+  width: v.$sidebar-width;
+  flex-shrink: 0;
+  background: var(--color-sidebar);
+  border-right: 1px solid var(--color-border);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: v.$space-6 v.$space-4;
+
+  @include v.laptop {
+    position: fixed;
+    left: 0;
+    z-index: 40;
+    transform: translateX(-100%);
+    @include m.transition(transform);
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__brand {
+    @include m.flex(row, center, flex-start, v.$space-3);
+    padding: 0 v.$space-2 v.$space-6;
+  }
+
+  &__brand-icon {
+    @include m.icon-badge(36px);
+    border-radius: v.$radius-sm;
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  &__brand-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-1;
+    flex: 1;
+  }
+
+  &__footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: v.$space-3;
+  }
+
+  &__link {
+    @include m.flex(row, center, flex-start, v.$space-3);
+    padding: 11px v.$space-3;
+    border-radius: v.$radius-sm;
+    color: var(--color-text-secondary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    @include m.transition(background-color, color);
+
+    &:hover {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+    }
+
+    &--active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "totalBalance",
+    "label": "Total Balance",
+    "metricKey": "totalBalance",
+    "changeKey": "totalBalanceChange",
+    "icon": "landmark",
+    "iconTone": "primary",
+    "format": "currency"
+  },
+  {
+    "id": "totalIncome",
+    "label": "Total Income",
+    "metricKey": "totalIncome",
+    "changeKey": "totalIncomeChange",
+    "icon": "trending-up",
+    "iconTone": "success",
+    "format": "currency"
+  },
+  {
+    "id": "totalExpenses",
+    "label": "Total Expenses",
+    "metricKey": "totalExpenses",
+    "changeKey": "totalExpensesChange",
+    "icon": "shopping-bag",
+    "iconTone": "danger",
+    "format": "currency"
+  },
+  {
+    "id": "savingsThisMonth",
+    "label": "Savings This Month",
+    "metricKey": "savingsThisMonth",
+    "changeKey": "savingsThisMonthChange",
+    "icon": "piggy-bank",
+    "iconTone": "info",
+    "format": "currency"
+  }
+]

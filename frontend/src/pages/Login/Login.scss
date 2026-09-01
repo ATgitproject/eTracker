@@ -1,0 +1,100 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: v.$space-2;
+  }
+
+  &__subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: v.$space-6;
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: v.$space-2;
+  }
+
+  &__input-wrap {
+    @include m.flex(row, center, flex-start, v.$space-2);
+    border: 1px solid var(--color-border);
+    border-radius: v.$radius-sm;
+    padding: 0 v.$space-3;
+    margin-bottom: v.$space-5;
+    color: var(--color-text-muted);
+    @include m.transition(border-color);
+
+    &:focus-within {
+      border-color: var(--color-primary);
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      padding: 13px 0;
+      font-size: 0.92rem;
+      color: var(--color-text-primary);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .otp-input {
+    margin-bottom: v.$space-5;
+  }
+
+  &__error {
+    color: var(--color-danger);
+    font-size: 0.85rem;
+    margin-bottom: v.$space-4;
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: v.$space-5;
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+
+    a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+
+  &__back {
+    @include m.btn-reset;
+    @include m.flex(row, center, flex-start, 6px);
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: v.$space-4;
+    align-self: flex-start;
+  }
+
+  &__resend {
+    @include m.btn-reset;
+    margin-top: v.$space-4;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    align-self: center;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

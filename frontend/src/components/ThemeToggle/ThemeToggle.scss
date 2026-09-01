@@ -1,0 +1,48 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.theme-toggle {
+  @include m.btn-reset;
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: v.$radius-full;
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-border);
+  padding: 2px;
+  @include m.transition(background-color);
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    display: flex;
+
+    &--sun { left: 6px; color: var(--color-warning); }
+    &--moon { right: 6px; }
+  }
+
+  &__knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    @include m.transition(transform);
+  }
+
+  &--dark {
+    background: var(--color-primary);
+
+    .theme-toggle__knob {
+      transform: translateX(24px);
+    }
+    .theme-toggle__icon--moon {
+      color: #fff;
+    }
+  }
+}
