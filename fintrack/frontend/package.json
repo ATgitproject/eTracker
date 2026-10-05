@@ -34,8 +34,9 @@
   },
   "scripts": {
     "dev": "next dev -p 3030",
+    "dev:debug": "next dev --inspect=9230 -p 3031",
     "build": "next build",
-    "start": "npm run build && next start -p 3030"
+    "start": "set NODE_OPTIONS=--inspect && next start -p 3030"
   },
   "eslintConfig": {
     "extends": [
