@@ -1,0 +1,288 @@
+.table-component {
+  width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #e8ecf4 !important;
+  border-radius: 16px !important;
+
+  background: #ffffff !important;
+
+  box-shadow: 0 4px 18px rgba(45, 55, 90, 0.035) !important;
+}
+
+/* --------------------------------
+   Header
+-------------------------------- */
+
+.table-component__header {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+}
+
+.table-component__title {
+  color: #10184a !important;
+
+  font-size: 18px !important;
+  line-height: 24px !important;
+
+  font-weight: 700 !important;
+}
+
+.table-component__action {
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+
+  color: #5b2ff3;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 0.15s ease;
+}
+
+.table-component__action:hover {
+  color: #4020c7;
+}
+
+/* --------------------------------
+   Table
+-------------------------------- */
+
+.table-component__table {
+  width: 100%;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  table-layout: fixed;
+}
+
+/* --------------------------------
+   Head
+-------------------------------- */
+
+.table-component__head-cell {
+  height: 38px;
+
+  padding: 0 12px !important;
+
+  border: 0 !important;
+
+  background: #f6f8fc;
+
+  color: #53638a !important;
+
+  font-size: 12px !important;
+  line-height: 16px !important;
+
+  font-weight: 500 !important;
+}
+
+.table-component__head-cell:first-child {
+  padding-left: 20px !important;
+}
+
+.table-component__head-cell:last-child {
+  padding-right: 20px !important;
+}
+
+/* --------------------------------
+   Body
+-------------------------------- */
+
+.table-component__body-cell {
+  height: 48px;
+
+  padding: 6px 12px !important;
+
+  border-bottom: 1px solid #edf0f5 !important;
+
+  color: #10184a;
+
+  font-size: 12px !important;
+
+  box-sizing: border-box;
+}
+
+.table-component__body-cell:first-child {
+  padding-left: 20px !important;
+}
+
+.table-component__body-cell:last-child {
+  padding-right: 20px !important;
+}
+
+.table-component__row:last-child .table-component__body-cell {
+  border-bottom: 0 !important;
+}
+
+/* --------------------------------
+   Description
+-------------------------------- */
+
+.table-component__description {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.table-component__transaction-icon {
+  width: 36px !important;
+  height: 36px !important;
+
+  flex-shrink: 0;
+
+  border-radius: 10px !important;
+
+  background: #eef8f2;
+
+  color: #16b364;
+}
+
+.table-component__transaction-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.table-component__description-text {
+  overflow: hidden;
+
+  color: #111a45 !important;
+
+  font-size: 13px !important;
+  line-height: 18px !important;
+
+  font-weight: 500 !important;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------
+   Category
+-------------------------------- */
+
+.table-component__category {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 26px;
+
+  padding: 0 10px;
+
+  border-radius: 5px;
+
+  box-sizing: border-box;
+
+  font-size: 11px;
+  line-height: 16px;
+
+  font-weight: 500;
+}
+
+/* --------------------------------
+   Date
+-------------------------------- */
+
+.table-component__body-cell--date {
+  color: #59698f;
+}
+
+.table-component__cell-text {
+  color: #53638a !important;
+
+  font-size: 12px !important;
+  line-height: 18px !important;
+}
+
+/* --------------------------------
+   Amount
+-------------------------------- */
+
+.table-component__body-cell--amount {
+  text-align: right;
+}
+
+.table-component__head-cell--amount {
+  text-align: right;
+}
+
+.table-component__amount {
+  font-size: 13px !important;
+  line-height: 18px !important;
+
+  font-weight: 600 !important;
+
+  text-align: right;
+}
+
+.table-component__amount--income {
+  color: #16b364 !important;
+}
+
+.table-component__amount--expense {
+  color: #111a45 !important;
+}
+
+/* --------------------------------
+   Responsive
+-------------------------------- */
+
+@media (max-width: 1000px) {
+  .table-component__head-cell,
+  .table-component__body-cell {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .table-component__head-cell:first-child,
+  .table-component__body-cell:first-child {
+    padding-left: 14px !important;
+  }
+
+  .table-component__head-cell:last-child,
+  .table-component__body-cell:last-child {
+    padding-right: 14px !important;
+  }
+
+  .table-component__description {
+    gap: 8px;
+  }
+
+  .table-component__transaction-icon {
+    width: 44px !important;
+    height: 44px !important;
+
+    border-radius: 12px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: none !important;
+
+    .MuiSvgIcon-root {
+      font-size: 22px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.app-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  &__label {
+    font-size: 15px;
+    line-height: 1;
+
+    color: #4f5d7d;
+
+    cursor: pointer;
+    user-select: none;
+  }
+}

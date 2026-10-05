@@ -1,0 +1,202 @@
+.tiles-component {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 114px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e8ebf3 !important;
+  border-radius: 16px !important;
+
+  background: #ffffff !important;
+
+  box-shadow: 0 3px 12px rgba(45, 55, 90, 0.035) !important;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 20px rgba(45, 55, 90, 0.07) !important;
+  }
+
+  // --------------------------------
+  // Icon
+  // --------------------------------
+
+  &__icon {
+    width: 62px;
+    height: 62px;
+
+    min-width: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    svg {
+      width: 31px;
+      height: 31px;
+    }
+
+    // Balance
+    &--balance {
+      background: #ddf7eb;
+      color: #08a96c;
+    }
+
+    // Expenses
+    &--expenses {
+      background: #f2d9ff;
+      color: #9b3fe8;
+    }
+
+    // Income
+    &--income {
+      background: #dceeff;
+      color: #147ee8;
+    }
+
+    // Budget
+    &--budget {
+      background: #ffead1;
+      color: #ff8a00;
+    }
+  }
+
+  // --------------------------------
+  // Content
+  // --------------------------------
+
+  &__content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+  }
+
+  // --------------------------------
+  // Title
+  // --------------------------------
+
+  &__title {
+    margin: 0 !important;
+
+    color: #52618a !important;
+
+    font-size: 12px !important;
+    line-height: 18px !important;
+
+    font-weight: 500 !important;
+  }
+
+  // --------------------------------
+  // Value
+  // --------------------------------
+
+  &__value {
+    margin-top: 3px !important;
+
+    color: #10184a !important;
+
+    font-size: 22px !important;
+    line-height: 28px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: -0.3px;
+  }
+
+  // --------------------------------
+  // Trend
+  // --------------------------------
+
+  &__trend-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 4px;
+  }
+
+  &__trend {
+    margin: 0 !important;
+
+    font-size: 11px !important;
+    line-height: 16px !important;
+
+    font-weight: 600 !important;
+
+    &--positive {
+      color: #00a86b !important;
+    }
+
+    &--negative {
+      color: #ef4444 !important;
+    }
+  }
+
+  &__subtitle {
+    margin: 0 !important;
+
+    color: #73809e !important;
+
+    font-size: 11px !important;
+    line-height: 16px !important;
+
+    font-weight: 400 !important;
+  }
+
+  // --------------------------------
+  // Budget Progress
+  // --------------------------------
+
+  &__progress {
+    width: 100%;
+
+    margin-top: 7px;
+  }
+
+  &__progress .MuiLinearProgress-root {
+    height: 8px;
+
+    border-radius: 5px;
+
+    background-color: #e9edf5;
+  }
+
+  &__progress .MuiLinearProgress-bar {
+    border-radius: 5px;
+
+    background-color: #ff8a00;
+  }
+
+  &__progress-label {
+    margin-top: 3px !important;
+
+    color: #6f7d9e !important;
+
+    font-size: 10px !important;
+    line-height: 14px !important;
+  }
+}

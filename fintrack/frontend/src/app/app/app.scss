@@ -1,0 +1,31 @@
+.app-layout {
+  --current-sidebar-width: var(--sidebar-width);
+
+  width: 100%;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+}
+
+.app-layout--collapsed {
+  --current-sidebar-width: var(--sidebar-collapsed-width);
+}
+
+.app-layout__content {
+  margin-left: var(--current-sidebar-width);
+
+  width: calc(100% - var(--current-sidebar-width));
+
+  min-width: 0;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding: 24px 28px;
+
+  overflow-x: hidden;
+
+  transition:
+    margin-left 0.2s ease,
+    width 0.2s ease;
+}

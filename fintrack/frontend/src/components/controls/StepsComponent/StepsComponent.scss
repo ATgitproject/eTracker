@@ -1,0 +1,13 @@
+.steps-component {
+  width: 100%;
+  margin-bottom: 32px;
+
+  .MuiStepLabel-label {
+    font-size: 12px;
+  }
+
+  .MuiStepIcon-root.Mui-active,
+  .MuiStepIcon-root.Mui-completed {
+    color: #6239f5;
+  }
+}

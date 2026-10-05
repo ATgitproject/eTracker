@@ -1,0 +1,38 @@
+{
+  "title": "Transactions",
+  "actionLabel": "Add Transaction",
+
+  "fetchtableObj": {
+    "objName": "transactions",
+    "recordCount": 10,
+    "sortOrder": "DESC"
+  },
+
+  "header": [
+    {
+      "id": "description",
+      "key": "description",
+      "label": "Description"
+    },
+    {
+      "id": "category",
+      "key": "category",
+      "label": "Category"
+    },
+    {
+      "id": "date",
+      "key": "date",
+      "label": "Date"
+    },
+    {
+      "id": "amount",
+      "key": "amount",
+      "label": "Amount"
+    },
+    {
+      "id": "payment_method",
+      "key": "payment_method",
+      "label": "Payment Method"
+    }
+  ]
+}

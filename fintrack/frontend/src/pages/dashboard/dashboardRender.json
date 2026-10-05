@@ -1,0 +1,379 @@
+{
+  "id": "dashboard",
+  "type": "page",
+  "components": [
+    {
+      "id": "summary-container",
+      "type": "layoutContainer",
+      "width": 12,
+      "props": {
+        "gap": 12,
+        "children": [
+          {
+            "id": "total-income",
+            "type": "tilesComponent",
+            "width": 3,
+            "props": {
+              "title": "Total Income",
+              "value": "$4,200.00",
+              "icon": "income",
+              "trend": "positive",
+              "trendLabel": "10.2%",
+              "subtitle": "from Apr"
+            }
+          },
+          {
+            "id": "total-expenses",
+            "type": "tilesComponent",
+            "width": 3,
+            "props": {
+              "title": "Total Expenses",
+              "value": "$2,350.45",
+              "icon": "expenses",
+              "trend": "positive",
+              "trendLabel": "8.5%",
+              "subtitle": "from Apr"
+            }
+          },
+          {
+            "id": "remaining-balance",
+            "type": "tilesComponent",
+            "width": 3,
+            "props": {
+              "title": "Remaining Balance",
+              "value": "$1,849.55",
+              "icon": "balance",
+              "trend": "neutral",
+              "trendLabel": "43.9%",
+              "subtitle": "of income"
+            }
+          },
+          {
+            "id": "total-savings",
+            "type": "tilesComponent",
+            "width": 3,
+            "props": {
+              "title": "Total Savings",
+              "value": "$1,849.55",
+              "icon": "savings",
+              "trend": "positive",
+              "trendLabel": "12.1%",
+              "subtitle": "from Apr"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "analytics-container",
+      "type": "layoutContainer",
+      "width": 12,
+      "props": {
+        "gap": 12,
+        "children": [
+          {
+            "id": "spending-trend",
+            "type": "lineChartComponent",
+            "width": 8,
+            "props": {
+              "title": "Spending Trend",
+              "filterLabel": "This Month",
+              "xAxisKey": "date",
+              "dataKey": "amount",
+              "height": 300,
+              "showArea": true,
+              "showPoints": true,
+              "data": [
+                {
+                  "date": "May 1",
+                  "amount": 300
+                },
+                {
+                  "date": "May 5",
+                  "amount": 900
+                },
+                {
+                  "date": "May 7",
+                  "amount": 900
+                },
+                {
+                  "date": "May 10",
+                  "amount": 1600
+                },
+                {
+                  "date": "May 12",
+                  "amount": 1450
+                },
+                {
+                  "date": "May 16",
+                  "amount": 2150
+                },
+                {
+                  "date": "May 19",
+                  "amount": 1950
+                },
+                {
+                  "date": "May 22",
+                  "amount": 2300
+                },
+                {
+                  "date": "May 25",
+                  "amount": 2150
+                },
+                {
+                  "date": "May 28",
+                  "amount": 2650
+                },
+                {
+                  "date": "May 31",
+                  "amount": 2800
+                }
+              ]
+            }
+          },
+          {
+            "id": "monthly-transactions",
+            "type": "tableComponent",
+            "width": 4,
+            "props": {
+              "title": "Monthly Transactions",
+              "fetchtableObj": {
+                "objName": "transactions",
+                "sortOrder": "DESC",
+                "recordCount": 5
+              },
+              "actionLabel": "View All",
+              "header": [
+                {
+                  "id": "description",
+                  "key": "description",
+                  "label": "Description"
+                },
+                {
+                  "id": "category",
+                  "key": "category",
+                  "label": "Category"
+                },
+                {
+                  "id": "date",
+                  "key": "date",
+                  "label": "Date"
+                },
+                {
+                  "id": "amount",
+                  "key": "amount",
+                  "label": "Amount"
+                }
+              ],
+              "data": [
+                {
+                  "id": "monthly-1",
+                  "icon": "shopping-cart",
+                  "description": "Grocery Store",
+                  "category": "Food",
+                  "categoryColor": "#16B364",
+                  "date": "May 30, 2024 · 10:30 AM",
+                  "amount": "-$67.45",
+                  "type": "expense"
+                },
+                {
+                  "id": "monthly-2",
+                  "icon": "transport",
+                  "description": "Uber Ride",
+                  "category": "Transport",
+                  "categoryColor": "#2979FF",
+                  "date": "May 29, 2024 · 08:15 PM",
+                  "amount": "-$18.90",
+                  "type": "expense"
+                },
+                {
+                  "id": "monthly-3",
+                  "icon": "netflix",
+                  "description": "Netflix Subscription",
+                  "category": "Entertainment",
+                  "categoryColor": "#FF6B00",
+                  "date": "May 28, 2024 · 09:00 AM",
+                  "amount": "-$15.49",
+                  "type": "expense"
+                },
+                {
+                  "id": "monthly-4",
+                  "icon": "salary",
+                  "description": "Salary",
+                  "category": "Income",
+                  "categoryColor": "#16B364",
+                  "date": "May 27, 2024 · 09:00 AM",
+                  "amount": "+$4,200.00",
+                  "type": "income"
+                },
+                {
+                  "id": "monthly-5",
+                  "icon": "utilities",
+                  "description": "Electricity Bill",
+                  "category": "Utilities",
+                  "categoryColor": "#FFB800",
+                  "date": "May 26, 2024 · 11:20 AM",
+                  "amount": "-$120.75",
+                  "type": "expense"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "bottom-container",
+      "type": "layoutContainer",
+      "width": 12,
+      "props": {
+        "gap": 12,
+        "children": [
+          {
+            "id": "recent-transactions",
+            "type": "tableComponent",
+            "width": 8,
+            "props": {
+              "title": "Recent Transactions",
+              "actionLabel": "View All",
+              "header": [
+                {
+                  "id": "description",
+                  "key": "description",
+                  "label": "Description"
+                },
+                {
+                  "id": "category",
+                  "key": "category",
+                  "label": "Category"
+                },
+                {
+                  "id": "date",
+                  "key": "date",
+                  "label": "Date"
+                },
+                {
+                  "id": "amount",
+                  "key": "amount",
+                  "label": "Amount"
+                }
+              ],
+              "data": [
+                {
+                  "id": "recent-1",
+                  "icon": "shopping-cart",
+                  "description": "Grocery Store",
+                  "category": "Food",
+                  "categoryColor": "#16B364",
+                  "date": "May 30, 2024 · 10:30 AM",
+                  "amount": "-$67.45",
+                  "type": "expense"
+                },
+                {
+                  "id": "recent-2",
+                  "icon": "transport",
+                  "description": "Uber Ride",
+                  "category": "Transport",
+                  "categoryColor": "#2979FF",
+                  "date": "May 29, 2024 · 08:15 PM",
+                  "amount": "-$18.90",
+                  "type": "expense"
+                },
+                {
+                  "id": "recent-3",
+                  "icon": "netflix",
+                  "description": "Netflix Subscription",
+                  "category": "Entertainment",
+                  "categoryColor": "#FF6B00",
+                  "date": "May 28, 2024 · 09:00 AM",
+                  "amount": "-$15.49",
+                  "type": "expense"
+                },
+                {
+                  "id": "recent-4",
+                  "icon": "salary",
+                  "description": "Salary",
+                  "category": "Income",
+                  "categoryColor": "#16B364",
+                  "date": "May 27, 2024 · 09:00 AM",
+                  "amount": "+$4,200.00",
+                  "type": "income"
+                },
+                {
+                  "id": "recent-5",
+                  "icon": "utilities",
+                  "description": "Electricity Bill",
+                  "category": "Utilities",
+                  "categoryColor": "#FFB800",
+                  "date": "May 26, 2024 · 11:20 AM",
+                  "amount": "-$120.75",
+                  "type": "expense"
+                }
+              ]
+            }
+          },
+          {
+            "id": "upcoming-bills",
+            "type": "tableComponent",
+            "width": 4,
+            "props": {
+              "title": "Upcoming Bills",
+              "actionLabel": "View All",
+              "header": [
+                {
+                  "id": "description",
+                  "key": "description",
+                  "label": "Bill"
+                },
+                {
+                  "id": "date",
+                  "key": "date",
+                  "label": "Due Date"
+                },
+                {
+                  "id": "amount",
+                  "key": "amount",
+                  "label": "Amount"
+                }
+              ],
+              "data": [
+                {
+                  "id": "bill-1",
+                  "icon": "netflix",
+                  "description": "Netflix",
+                  "date": "Jun 1, 2024",
+                  "amount": "$15.49",
+                  "type": "expense"
+                },
+                {
+                  "id": "bill-2",
+                  "icon": "utilities",
+                  "description": "Electricity Bill",
+                  "date": "Jun 3, 2024",
+                  "amount": "$120.75",
+                  "type": "expense"
+                },
+                {
+                  "id": "bill-3",
+                  "icon": "spotify",
+                  "description": "Spotify",
+                  "date": "Jun 5, 2024",
+                  "amount": "$9.99",
+                  "type": "expense"
+                },
+                {
+                  "id": "bill-4",
+                  "icon": "internet",
+                  "description": "Internet",
+                  "date": "Jun 10, 2024",
+                  "amount": "$49.00",
+                  "type": "expense"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

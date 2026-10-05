@@ -1,0 +1,28 @@
+.layout-container {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+
+  box-sizing: border-box;
+
+  /*
+     * LayoutContainer's gap comes from the JSON.
+     * Default is 12px.
+     */
+  gap: 12px;
+
+  align-items: start;
+}
+
+.layout-container > .page-renderer__item {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}

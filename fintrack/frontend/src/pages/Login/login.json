@@ -1,0 +1,164 @@
+{
+  "page": {
+    "id": "login",
+    "type": "auth"
+  },
+  "components": [
+    {
+      "type": "login-shell",
+      "id": "login-shell",
+      "props": {
+        "children": [
+          {
+            "type": "login-brand-section",
+            "id": "brand-section",
+            "props": {
+              "children": [
+                {
+                  "type": "header",
+                  "id": "header",
+                  "props": {
+                    "title": "Expenses",
+                    "subtitle": "Tracker"
+                  }
+                },
+                {
+                  "type": "marketing-content",
+                  "id": "marketing-content",
+                  "props": {
+                    "title": "Smarter Money Management",
+                    "description": "Track your expenses, set budgets, and achieve your financial goals — all in one place."
+                  }
+                },
+                {
+                  "type": "feature-list",
+                  "id": "feature-list",
+                  "props": {
+                    "items": [
+                      {
+                        "icon": "chart",
+                        "title": "Track Expenses",
+                        "description": "Monitor your spending in real-time"
+                      },
+                      {
+                        "icon": "target",
+                        "title": "Set Budgets",
+                        "description": "Stay on track with personalized budgets"
+                      },
+                      {
+                        "icon": "pie",
+                        "title": "Gain Insights",
+                        "description": "Visualize your financial habits with detailed reports"
+                      },
+                      {
+                        "icon": "trophy",
+                        "title": "Achieve Goals",
+                        "description": "Build better habits for a brighter future"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "tagline",
+                  "id": "tagline",
+                  "props": {
+                    "text": "A Better\nFinancial You"
+                  }
+                },
+                {
+                  "type": "dashboard-preview",
+                  "id": "dashboard-preview"
+                }
+              ]
+            }
+          },
+          {
+            "type": "login-card",
+            "id": "login-card",
+            "props": {
+              "children": [
+                {
+                  "type": "auth-heading",
+                  "id": "auth-heading",
+                  "props": {
+                    "title": "Welcome Back!",
+                    "description": "Log in to your Expenses Tracker account to continue your financial journey."
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "id": "email",
+                  "props": {
+                    "label": "Email address",
+                    "placeholder": "Enter your email",
+                    "type": "email",
+                    "required": true,
+                    "icon": "mail"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "id": "password",
+                  "props": {
+                    "label": "Password",
+                    "placeholder": "Enter your password",
+                    "type": "password",
+                    "required": true,
+                    "icon": "lock",
+                    "showPasswordToggle": true
+                  }
+                },
+                {
+                  "type": "forgot-password",
+                  "id": "forgot-password",
+                  "props": {
+                    "text": "Forgot your password?"
+                  }
+                },
+                {
+                  "type": "button",
+                  "id": "login-button",
+                  "props": {
+                    "label": "Log In",
+                    "variant": "primary"
+                  }
+                },
+                {
+                  "type": "divider",
+                  "id": "divider",
+                  "props": {
+                    "text": "or"
+                  }
+                },
+                {
+                  "type": "social-button",
+                  "id": "google-login",
+                  "props": {
+                    "provider": "google",
+                    "label": "Continue with Google"
+                  }
+                },
+                {
+                  "type": "social-button",
+                  "id": "microsoft-login",
+                  "props": {
+                    "provider": "microsoft",
+                    "label": "Continue with Microsoft"
+                  }
+                },
+                {
+                  "type": "signup-prompt",
+                  "id": "signup-prompt",
+                  "props": {
+                    "text": "Don't have an account?",
+                    "action": "Sign up"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,35 +1,19 @@
-/**
- * db.js
- * ------------------------------------------------------------------
- * Creates and exports a single shared PostgreSQL connection pool
- * (using the `pg` library). Every model imports `query()` from here
- * instead of opening its own connection - this keeps connection
- * handling centralised and lets us log every query in one place
- * during development.
- * ------------------------------------------------------------------
- */
-const { Pool } = require('pg');
-require('dotenv').config();
+const { Pool } = require("pg");
 
 const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'fintrack',
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-pool.on('error', (err) => {
-  // Unexpected error on an idle client - log and let the process
-  // manager restart the service rather than crash silently.
-  console.error('Unexpected PostgreSQL error', err);
+pool.on("connect", () => {
+  console.log("PostgreSQL client connected");
 });
 
-/**
- * query(text, params)
- * Thin wrapper around pool.query so every call site can be swapped
- * out (e.g. to add query timing/logging) in one place.
- */
-const query = (text, params) => pool.query(text, params);
+pool.on("error", (error) => {
+  console.error("PostgreSQL pool error:", error);
+});
 
-module.exports = { pool, query };
+module.exports = pool;

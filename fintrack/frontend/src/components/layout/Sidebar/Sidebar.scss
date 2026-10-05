@@ -1,0 +1,344 @@
+:root {
+  --sidebar-width: 228px;
+  --sidebar-collapsed-width: 68px;
+}
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: var(--sidebar-width);
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  background: #f8faff;
+  border-right: 1px solid #e5e9f3;
+
+  z-index: 100;
+
+  transition: width 0.2s ease;
+}
+
+/* --------------------------------
+   Collapsed Sidebar
+-------------------------------- */
+
+.sidebar--collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+/* --------------------------------
+   Brand
+-------------------------------- */
+
+.sidebar__brand {
+  position: relative;
+
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 26px;
+
+  box-sizing: border-box;
+}
+
+.sidebar__brand-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #6239f5;
+}
+
+.sidebar__brand-name {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 15px;
+
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+
+  color: #0d1749;
+
+  white-space: nowrap;
+}
+
+.sidebar__brand-name span:last-child {
+  color: #6239f5;
+}
+
+/* --------------------------------
+   Toggle Button
+-------------------------------- */
+
+.sidebar__toggle {
+  position: absolute;
+
+  top: 50%;
+  right: -16px;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  transform: translateY(-50%);
+
+  border: 1px solid #e1e4ef;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #596a9a;
+
+  cursor: pointer;
+
+  z-index: 110;
+
+  box-shadow: 0 2px 8px rgba(45, 52, 90, 0.08);
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.sidebar__toggle:hover {
+  background: #f0edff;
+  color: #6239f5;
+
+  box-shadow: 0 3px 10px rgba(45, 52, 90, 0.12);
+}
+
+/* --------------------------------
+   Navigation
+-------------------------------- */
+
+.sidebar__navigation {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 11px 14px 0;
+}
+
+.sidebar__item {
+  width: 100%;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #0b1749;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sidebar__item:hover {
+  background: #f0edff;
+  color: #6239f5;
+}
+
+.sidebar__item--active {
+  background: #e9e2ff;
+  color: #4d22ed;
+}
+
+.sidebar__item-icon {
+  width: 29px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  flex-shrink: 0;
+
+  color: #5b6b9c;
+}
+
+.sidebar__item--active .sidebar__item-icon {
+  color: #5930f2;
+}
+
+.sidebar__item-label {
+  margin-left: 3px;
+
+  font-size: 14px;
+  line-height: 1;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.sidebar__item--active .sidebar__item-label {
+  font-weight: 600;
+}
+
+/* --------------------------------
+   Collapsed Navigation
+-------------------------------- */
+
+.sidebar--collapsed {
+  .sidebar__brand {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .sidebar__brand-name {
+    display: none;
+  }
+
+  .sidebar__navigation {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .sidebar__item {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .sidebar__item-icon {
+    width: auto;
+
+    justify-content: center;
+  }
+
+  .sidebar__item-label {
+    display: none;
+  }
+}
+
+/* --------------------------------
+   User Profile
+-------------------------------- */
+
+.sidebar__user {
+  min-height: 73px;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: auto;
+
+  padding: 0 22px;
+
+  border-top: 1px solid #e5e9f3;
+
+  box-sizing: border-box;
+}
+
+.sidebar__user-avatar {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e5dcff;
+  color: #5832e9;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sidebar__user-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 12px;
+}
+
+.sidebar__user-name {
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 600;
+
+  color: #0d1749;
+}
+
+.sidebar__user-email {
+  max-width: 115px;
+
+  margin-top: 1px;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: 10px;
+  line-height: 15px;
+
+  color: #60709f;
+}
+
+.sidebar__user-arrow {
+  margin-left: auto;
+
+  flex-shrink: 0;
+
+  color: #596a9a;
+}
+
+/* --------------------------------
+   Collapsed User
+-------------------------------- */
+
+.sidebar--collapsed {
+  .sidebar__user {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .sidebar__user-info,
+  .sidebar__user-arrow {
+    display: none;
+  }
+}
