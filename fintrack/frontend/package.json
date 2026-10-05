@@ -33,9 +33,8 @@
     "tailwind-merge": "^3.7.0"
   },
   "scripts": {
-    "dev": "next dev -p 3030",
     "build": "next build",
-    "start": "npm run build && next start -p 3030"
+    "start": "npm run build && cross-env NODE_OPTIONS=--inspect next start -p 3030"
   },
   "eslintConfig": {
     "extends": [
