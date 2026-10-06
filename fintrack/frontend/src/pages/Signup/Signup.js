@@ -141,11 +141,11 @@ const Signup = () => {
       });
 
       if (data.accessToken) {
-        localStorage.setItem("accessToken", data.accessToken);
+        setCookie("accessToken", data.accessToken);
       }
 
       if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
+        setCookie("userData", JSON.stringify(data.user));
       }
 
       goNext();

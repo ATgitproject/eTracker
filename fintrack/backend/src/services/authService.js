@@ -42,7 +42,7 @@ const signup = async ({ name, email, mobileNumber, password }) => {
   return {
     accessToken: generateAccessToken(user),
     refreshToken: generateRefreshToken(user),
-    user: sanitizeUser(user),
+    userData: { ...sanitizeUser(user), token: generateAccessToken(user) },
   };
 };
 
