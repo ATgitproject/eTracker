@@ -12,6 +12,7 @@ const signup = async (req, res) => {
     }
 
     const result = await authService.signup({
+      req,
       name,
       email,
       mobileNumber,
@@ -44,6 +45,7 @@ const login = async (req, res) => {
     }
 
     const result = await authService.login({
+      req,
       email,
       password,
     });

@@ -13,6 +13,7 @@ import { saveData } from "../../services/dataService";
 import { signupUser } from "../../services/authService";
 
 import "./Signup.scss";
+import { setCookie } from "../../utils/genericUtils";
 
 const signupSteps = [
   {
@@ -134,18 +135,18 @@ const Signup = () => {
     try {
       setLoading(true);
 
-      const data = await signupUser({
+      const result = await signupUser({
         name: formData.fullName.trim(),
         email: formData.email.trim(),
         password: formData.password,
       });
 
-      if (data.accessToken) {
-        setCookie("accessToken", data.accessToken);
+      if (result?.data?.accessToken) {
+        setCookie("accessToken", result.data.accessToken);
       }
 
-      if (data.user) {
-        setCookie("userData", JSON.stringify(data.user));
+      if (result?.data?.userData) {
+        setCookie("userData", JSON.stringify(result.data.userData));
       }
 
       goNext();

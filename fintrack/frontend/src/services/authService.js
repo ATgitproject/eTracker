@@ -3,6 +3,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const loginUser = async ({ email, password }) => {
   const response = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -26,6 +27,7 @@ export const signupUser = async ({ name, email, password }) => {
     `${process.env.NEXT_PUBLIC_API_URL}/auth/signup`,
     {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

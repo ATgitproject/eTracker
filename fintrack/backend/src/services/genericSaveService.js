@@ -1,7 +1,7 @@
 const objectRegistry = require("../config/objectRegistry");
 const genericSaveRepository = require("../repository/genericSaveRepository");
 
-const saveData = async ({ objName, id, fields }) => {
+const saveData = async ({ req, objName, id, fields }) => {
   const objectConfig = objectRegistry[objName];
 
   if (!objectConfig) {
@@ -34,6 +34,7 @@ const saveData = async ({ objName, id, fields }) => {
   // UPDATE
   if (id) {
     return genericSaveRepository.update({
+      req,
       table,
       id,
       fields,
@@ -43,6 +44,7 @@ const saveData = async ({ objName, id, fields }) => {
 
   // INSERT
   return genericSaveRepository.insert({
+    req,
     table,
     fields,
     createdField,

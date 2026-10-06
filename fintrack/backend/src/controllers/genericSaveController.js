@@ -19,6 +19,7 @@ const saveData = async (req, res) => {
     }
 
     const data = await genericSaveService.saveData({
+      req,
       objName,
       fields,
       id,

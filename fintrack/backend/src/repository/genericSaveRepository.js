@@ -1,9 +1,12 @@
 const pool = require("../config/db");
 
-const insert = async ({ table, fields, createdField, modifiedField }) => {
+const insert = async ({ req, table, fields, createdField, modifiedField }) => {
   const fieldNames = Object.keys(fields);
-
+  const user_id = JSON.parse(req?.cookies?.userData)?.id;
   const values = Object.values(fields);
+
+  fieldNames.push("user_id");
+  values.push(user_id);
 
   const placeholders = fieldNames.map((_, index) => `$${index + 1}`);
 
@@ -28,7 +31,7 @@ const insert = async ({ table, fields, createdField, modifiedField }) => {
   return result.rows[0];
 };
 
-const update = async ({ table, id, fields, modifiedField }) => {
+const update = async ({ req, table, id, fields, modifiedField }) => {
   const fieldNames = Object.keys(fields);
 
   const values = Object.values(fields);

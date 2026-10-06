@@ -12,6 +12,7 @@ const getGenericData = async (req, res) => {
     }
 
     const data = await genericDataService.getData({
+      req,
       objName,
       filterCondition,
       sortOrder,

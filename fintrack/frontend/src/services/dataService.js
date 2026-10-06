@@ -5,12 +5,11 @@ export const saveData = async ({ objName, fields }) => {
 
   const response = await fetch(`${API_URL}/api/save`, {
     method: "POST",
-
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     },
-
     body: JSON.stringify({
       objName,
       fields,
@@ -36,6 +35,7 @@ export const getData = async ({
 
   const response = await fetch(`${API_URL}/api/get`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
