@@ -1,9 +1,5 @@
 "use client";
-
-import React from "react";
-
 import componentRegistry from "../../config/componentRegistry";
-
 import "./pageRenderer.scss";
 
 const PageRenderer = ({ page }) => {
