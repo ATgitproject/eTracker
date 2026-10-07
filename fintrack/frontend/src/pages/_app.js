@@ -1,5 +1,5 @@
 import ReduxProvider from "../redux/reduxProvider";
-import "../styless/master.scss";
+import "../styles/master.scss";
 
 export default function PagesApp({ Component, pageProps }) {
   return (
