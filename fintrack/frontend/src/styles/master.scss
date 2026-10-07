@@ -35,3 +35,66 @@ html {
 body {
   min-height: 100vh;
 }
+
+//Page Title and Description
+
+.page-renderer {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.page-renderer__header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.page-renderer__title {
+  margin: 0;
+  color: #10184a;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+}
+
+.page-renderer__description {
+  margin: 6px 0 0;
+  color: #68738f;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.page-renderer__content {
+  width: 100%;
+  min-width: 0;
+  padding: 10;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+  background: #fff;
+}
+
+.page-renderer__item {
+  grid-column: span var(--component-width);
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .page-renderer__title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .page-renderer__content {
+    grid-template-columns: 1fr;
+  }
+
+  .page-renderer__item {
+    grid-column: span 1;
+  }
+}

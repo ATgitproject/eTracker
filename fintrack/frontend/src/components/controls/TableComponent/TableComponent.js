@@ -4,8 +4,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { CustomPagination, tableStyles, buildColumns } from "./TableUtils";
 import useTableData from "./useTableData";
 
-const TableComponent = ({ config }) => {
-  const { COLUMNS = [], ENTITYNAME } = config || {};
+const TableComponent = (props) => {
+  const { COLUMNS = [], ENTITYNAME } = props || {};
 
   const columns = buildColumns(COLUMNS);
   const { rows } = useTableData({

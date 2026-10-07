@@ -1,12 +1,13 @@
-import React from "react";
+"use client";
 import transactionConfig from "./transactionsRenderer.json";
-import TableComponent from "../../components/controls/TableComponent/TableComponent";
+import PageRenderer from "../../components/pageRenderer/pageRenderer";
+import { Box } from "@mui/material";
 
 const TransactionRender = () => {
   return (
-    <div className="transaction-render">
-      <TableComponent config={transactionConfig} />
-    </div>
+    <Box>
+      <PageRenderer page={transactionConfig} />
+    </Box>
   );
 };
 

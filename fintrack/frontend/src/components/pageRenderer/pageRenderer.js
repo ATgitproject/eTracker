@@ -1,13 +1,13 @@
 "use client";
+
 import componentRegistry from "../../config/componentRegistry";
-import "./pageRenderer.scss";
 
 const PageRenderer = ({ page }) => {
   if (!page) {
     return null;
   }
 
-  const components = page.components || [];
+  const { title, description, components = [] } = page;
 
   const renderComponent = (component) => {
     const Component = componentRegistry[component.type];
@@ -36,7 +36,23 @@ const PageRenderer = ({ page }) => {
     );
   };
 
-  return <div className="page-renderer">{components.map(renderComponent)}</div>;
+  return (
+    <div className="page-renderer">
+      {(title || description) && (
+        <div className="page-renderer__header">
+          {title && <h1 className="page-renderer__title">{title}</h1>}
+
+          {description && (
+            <p className="page-renderer__description">{description}</p>
+          )}
+        </div>
+      )}
+
+      <div className="page-renderer__content">
+        {components.map(renderComponent)}
+      </div>
+    </div>
+  );
 };
 
 export default PageRenderer;

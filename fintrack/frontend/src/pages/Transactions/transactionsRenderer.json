@@ -1,36 +1,47 @@
 {
-  "PAGETITLE": "Add Transaction",
-  "ENTITYNAME": "transactions",
-  "COLUMNS": [
+  "title": "Transactions",
+  "description": "View and manage all your transactions in one place.",
+  "components": [
     {
-      "COL_ID": "description",
-      "ENTITYFIELD_NAME": "description",
-      "COL_NAME": "Description",
-      "ORDER": 1
-    },
-    {
-      "COL_ID": "category",
-      "ENTITYFIELD_NAME": "category",
-      "COL_NAME": "Category",
-      "ORDER": 2
-    },
-    {
-      "COL_ID": "date",
-      "ENTITYFIELD_NAME": "date",
-      "COL_NAME": "Date",
-      "ORDER": 3
-    },
-    {
-      "COL_ID": "amount",
-      "ENTITYFIELD_NAME": "amount",
-      "COL_NAME": "Amount",
-      "ORDER": 4
-    },
-    {
-      "COL_ID": "payment_method",
-      "ENTITYFIELD_NAME": "payment_method",
-      "COL_NAME": "Payment Method",
-      "ORDER": 5
+      "id": "transaction-table",
+      "type": "tableComponent",
+      "width": 12,
+      "props": {
+        "PAGETITLE": "Add Transaction",
+        "ENTITYNAME": "transactions",
+        "COLUMNS": [
+          {
+            "COL_ID": "description",
+            "ENTITYFIELD_NAME": "description",
+            "COL_NAME": "Description",
+            "ORDER": 1
+          },
+          {
+            "COL_ID": "category",
+            "ENTITYFIELD_NAME": "category",
+            "COL_NAME": "Category",
+            "ORDER": 2
+          },
+          {
+            "COL_ID": "date",
+            "ENTITYFIELD_NAME": "date",
+            "COL_NAME": "Date",
+            "ORDER": 3
+          },
+          {
+            "COL_ID": "amount",
+            "ENTITYFIELD_NAME": "amount",
+            "COL_NAME": "Amount",
+            "ORDER": 4
+          },
+          {
+            "COL_ID": "payment_method",
+            "ENTITYFIELD_NAME": "payment_method",
+            "COL_NAME": "Payment Method",
+            "ORDER": 5
+          }
+        ]
+      }
     }
   ]
 }
