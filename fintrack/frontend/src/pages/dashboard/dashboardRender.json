@@ -158,8 +158,7 @@
               "title": "Monthly Transactions",
               "fetchtableObj": {
                 "objName": "transactions",
-                "sortOrder": "DESC",
-                "recordCount": 5
+                "sortOrder": "DESC"
               },
               "actionLabel": "View All",
               "header": [

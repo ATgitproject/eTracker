@@ -14,7 +14,9 @@ const buildQuery = ({ table, filterCondition, sortOrder, recordCount }) => {
     if (!field) {
       throw new Error("Filter field is required");
     }
-
+    if (!value && value !== 0) {
+      throw new Error("Filter value is required");
+    }
     if (!OPERATORS[operator]) {
       throw new Error(`Invalid filter operator: ${operator}`);
     }
@@ -44,15 +46,11 @@ const buildQuery = ({ table, filterCondition, sortOrder, recordCount }) => {
     }
   }
 
-  const order = sortOrder?.toUpperCase() || "ASC";
-
-  if (!["ASC", "DESC"].includes(order)) {
-    throw new Error("sortOrder must be ASC or DESC");
+  if (sortOrder && ["ASC", "DESC"].includes(sortOrder?.toUpperCase())) {
+    query += ` ORDER BY id ${sortOrder?.toUpperCase()}`;
   }
 
-  // query += ` ORDER BY id ${order}`;
-
-  if (recordCount !== undefined && recordCount !== null) {
+  if (recordCount) {
     const count = Number(recordCount);
 
     if (!Number.isInteger(count) || count <= 0) {

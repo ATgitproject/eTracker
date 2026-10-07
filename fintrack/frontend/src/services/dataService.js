@@ -28,8 +28,8 @@ export const saveData = async ({ objName, fields }) => {
 export const getData = async ({
   objName,
   filterCondition,
-  sortOrder = "ASC",
-  recordCount = 5,
+  sortOrder,
+  recordCount,
 }) => {
   const accessToken = localStorage.getItem("accessToken");
 
