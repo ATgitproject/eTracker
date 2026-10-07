@@ -83,20 +83,18 @@ const PageController = ({ page }) => {
     <>
       <PageRenderer page={page} showPageComponent={showPageComponent} />
 
-      {panel &&
-        panel.panelType !==
-          "fields"(
-            <PagePanelController
-              component={panel.component}
-              props={panel.props}
-              panelType={panel.panelType}
-              width={panel.width}
-              action={panel.action}
-              title={panel.title}
-              onClose={onClose}
-              onSave={onSave}
-            />,
-          )}
+      {panel && panel.panelType !== "fields" && (
+        <PagePanelController
+          component={panel.component}
+          props={panel.props}
+          panelType={panel.panelType}
+          width={panel.width}
+          action={panel.action}
+          title={panel.title}
+          onClose={onClose}
+          onSave={onSave}
+        />
+      )}
     </>
   );
 };
