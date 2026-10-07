@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "id": "transaction-form",
+      "type": "layoutContainer",
+      "width": 12,
+      "props": {
+        "children": [
+          {
+            "id": "description",
+            "type": "textfield",
+            "width": 12,
+            "props": {
+              "label": "Description",
+              "name": "description",
+              "placeholder": "Enter description",
+              "validation": {
+                "required": true,
+                "minLength": 3,
+                "maxLength": 100
+              }
+            }
+          },
+          {
+            "id": "category",
+            "type": "textfield",
+            "width": 12,
+            "props": {
+              "label": "Category",
+              "name": "category",
+              "placeholder": "Enter category",
+              "validation": {
+                "required": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

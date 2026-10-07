@@ -1,14 +1,10 @@
 "use client";
-import transactionConfig from "./transactionsRenderer.json";
-import PageRenderer from "../../components/pageRenderer/pageRenderer";
-import { Box } from "@mui/material";
 
-const TransactionRender = () => {
-  return (
-    <Box>
-      <PageRenderer page={transactionConfig} />
-    </Box>
-  );
+import transactionConfig from "./transactionsRenderer.json";
+import PageController from "../../components/pageController/PageController";
+
+const TransactionRenderer = () => {
+  return <PageController page={transactionConfig} />;
 };
 
-export default TransactionRender;
+export default TransactionRenderer;

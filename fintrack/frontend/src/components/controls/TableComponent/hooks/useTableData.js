@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { getData } from "../../../services/dataService";
-import { formatRows } from "./TableUtils";
+import { formatRows } from "../utils/TableUtils";
+import { getData } from "@/services/dataService";
 
 const useTableData = ({ entityName, columns }) => {
   const [rows, setRows] = useState([]);

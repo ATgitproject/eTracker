@@ -1,51 +1,98 @@
 "use client";
 
-import componentRegistry from "../../config/componentRegistry";
+import { useState } from "react";
+import { Box, Button } from "@mui/material";
 
-const PageRenderer = ({ page }) => {
+import componentRegistry from "../../config/componentRegistry";
+import { TOOLBAR_ICONS } from "../controls/TableComponent/utils/TableUtils";
+
+const PageRenderer = ({ page, showPageComponent }) => {
+  const { title, description, components = [] } = page;
+  const [pageToolbars, setPageToolbars] = useState([]);
+
   if (!page) {
     return null;
   }
 
-  const { title, description, components = [] } = page;
-
   const renderComponent = (component) => {
-    const Component = componentRegistry[component.type];
+    if (!component) {
+      return null;
+    }
 
-    if (!Component) {
-      console.warn(`Unknown component type: ${component.type}`);
+    const Component = componentRegistry?.[component.type];
+
+    if (typeof Component !== "function") {
+      console.error(`Component not found in registry: ${component.type}`);
+
       return null;
     }
 
     const props = component.props || {};
 
-    const children = props.children
+    const children = Array.isArray(props.children)
       ? props.children.map(renderComponent)
       : undefined;
 
     return (
       <div
-        key={component.id}
+        key={component.id || component.type}
         className="page-renderer__item"
         style={{
           "--component-width": component.width || 12,
         }}
       >
-        <Component {...props}>{children}</Component>
+        <Component
+          {...props}
+          showPageComponent={showPageComponent}
+          onPageToolbarChange={setPageToolbars}
+        >
+          {children}
+        </Component>
       </div>
+    );
+  };
+
+  const renderPageToolbar = (toolbar) => {
+    const Icon = TOOLBAR_ICONS[toolbar.TOOLBAR_ACTION];
+
+    return (
+      <Button
+        key={toolbar.TOOLBAR_ID}
+        variant="contained"
+        startIcon={Icon ? <Icon /> : null}
+        onClick={() =>
+          showPageComponent?.({
+            componentPath: toolbar.COMPONENT_PATH,
+            panelType: toolbar.PANEL_TYPE || "dialog",
+            width: toolbar.WIDTH || "md",
+            toolbar,
+            selectedRows: [],
+          })
+        }
+      >
+        {toolbar.TOOLBAR_NAME}
+      </Button>
     );
   };
 
   return (
     <div className="page-renderer">
-      {(title || description) && (
-        <div className="page-renderer__header">
-          {title && <h1 className="page-renderer__title">{title}</h1>}
+      {(title || description || pageToolbars.length > 0) && (
+        <Box className="page-renderer__header">
+          <Box className="page-renderer__header-content">
+            {title && <h1 className="page-renderer__title">{title}</h1>}
 
-          {description && (
-            <p className="page-renderer__description">{description}</p>
+            {description && (
+              <p className="page-renderer__description">{description}</p>
+            )}
+          </Box>
+
+          {pageToolbars.length > 0 && (
+            <Box className="page-renderer__actions">
+              {pageToolbars.map(renderPageToolbar)}
+            </Box>
           )}
-        </div>
+        </Box>
       )}
 
       <div className="page-renderer__content">

@@ -7,6 +7,13 @@ import {
   gridPageSelector,
   gridPageCountSelector,
 } from "@mui/x-data-grid";
+import {
+  Add,
+  EditOutlined,
+  VisibilityOutlined,
+  Delete,
+  Download,
+} from "@mui/icons-material";
 
 export const buildColumns = (columns = []) => {
   return [...columns]
@@ -140,6 +147,16 @@ export const CustomPagination = () => {
     </GridFooterContainer>
   );
 };
+
+export const TOOLBAR_ICONS = {
+  add: Add,
+  edit: EditOutlined,
+  view: VisibilityOutlined,
+  delete: Delete,
+  download: Download,
+};
+
+export const SELECTION_ACTIONS = ["edit", "view", "delete"];
 
 export const tableStyles = {
   border: "1px solid #e1e5eb",

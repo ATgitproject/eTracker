@@ -40,6 +40,32 @@
             "COL_NAME": "Payment Method",
             "ORDER": 5
           }
+        ],
+        "TOOLBARS": [
+          {
+            "TOOLBAR_ID": "transaction_add",
+            "ISBUTTON": true,
+            "TOOLBAR_NAME": "Add Transaction",
+            "TOOLBAR_ACTION": "add",
+            "ORDER": 1,
+            "COMPONENT_PATH": "Transactions/addTransaction/addTransactionsRenderer"
+          },
+          {
+            "TOOLBAR_ID": "transaction_edit",
+            "ISBUTTON": false,
+            "TOOLBAR_NAME": "Edit Transaction",
+            "TOOLBAR_ACTION": "edit",
+            "ORDER": 2,
+            "COMPONENT_PATH": ""
+          },
+          {
+            "TOOLBAR_ID": "transaction_view",
+            "ISBUTTON": false,
+            "TOOLBAR_NAME": "View Transaction",
+            "TOOLBAR_ACTION": "view",
+            "ORDER": 3,
+            "COMPONENT_PATH": ""
+          }
         ]
       }
     }

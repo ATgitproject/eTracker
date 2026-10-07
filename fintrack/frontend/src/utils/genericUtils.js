@@ -40,3 +40,16 @@ export const deleteCookie = (name) => {
   if (typeof document === "undefined") return;
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
 };
+
+export const getPageAction = (toolbarAction) => {
+  switch (toolbarAction) {
+    case "add":
+      return "create";
+    case "edit":
+      return "get";
+    case "view":
+      return "view";
+    default:
+      return toolbarAction;
+  }
+};
