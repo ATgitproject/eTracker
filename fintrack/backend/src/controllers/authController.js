@@ -64,7 +64,34 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  try {
+    const userId = req.user?.id || req.body?.userId;
+
+    await authService.logout(userId);
+    res.clearCookie("session", {
+      path: "/",
+    });
+    res.clearCookie("authToken", {
+      path: "/",
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Logout successful",
+    });
+  } catch (error) {
+    console.error("LOGOUT ERROR:", error);
+
+    return res.status(400).json({
+      success: false,
+      message: error.message || "Logout failed",
+    });
+  }
+};
+
 module.exports = {
   signup,
   login,
+  logout,
 };

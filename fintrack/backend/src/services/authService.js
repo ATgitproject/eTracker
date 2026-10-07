@@ -66,6 +66,14 @@ const login = async ({ email, password }) => {
   };
 };
 
+const logout = async (userId) => {
+  try {
+    return true;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const getUserById = async (id) => {
   const user = await userRepository.findById(id);
 
@@ -79,5 +87,6 @@ const getUserById = async (id) => {
 module.exports = {
   signup,
   login,
+  logout,
   getUserById,
 };

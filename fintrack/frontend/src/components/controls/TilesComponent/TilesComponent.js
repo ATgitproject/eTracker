@@ -5,7 +5,7 @@ import {
   AccountBalanceWalletOutlined,
   ArrowDownwardOutlined,
   ArrowUpwardOutlined,
-  TrackChangesOutlined,
+  PaidOutlined,
 } from "@mui/icons-material";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
@@ -16,10 +16,10 @@ import { getData } from "../../../services/dataService";
 import { getCookie } from "../../../utils/genericUtils";
 
 const icons = {
-  "balance-icon": AccountBalanceWalletOutlined,
-  "expenses-icon": ArrowDownwardOutlined,
   "income-icon": ArrowUpwardOutlined,
-  "savings-icon": TrackChangesOutlined,
+  "expenses-icon": ArrowDownwardOutlined,
+  "balance-icon": AccountBalanceWalletOutlined,
+  "savings-icon": PaidOutlined,
 };
 
 const TilesComponent = (props) => {

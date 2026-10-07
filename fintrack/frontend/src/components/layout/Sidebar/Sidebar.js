@@ -20,6 +20,8 @@ import {
 import navigation from "../../../config/navigation";
 
 import "./Sidebar.scss";
+import { getCookie } from "../../../utils/genericUtils";
+import { useSelector } from "react-redux";
 
 const iconMap = {
   dashboard: LayoutDashboard,
@@ -36,6 +38,9 @@ const iconMap = {
 const Sidebar = ({ collapsed = false, onToggle }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const { session } = useSelector((state) => state.userSessionDataReducer);
+  const sessionCookie = JSON.parse(getCookie("session") || "{}");
+  const userData = session?.userData || sessionCookie?.userData;
 
   return (
     <aside className={`sidebar ${collapsed ? "sidebar--collapsed" : ""}`}>
@@ -94,18 +99,51 @@ const Sidebar = ({ collapsed = false, onToggle }) => {
         })}
       </nav>
 
-      {/* User */}
-      <div className="sidebar__user">
-        <div className="sidebar__user-avatar">JD</div>
+      <details className="sidebar__user-details">
+        <summary className="sidebar__user">
+          <div className="sidebar__user-avatar">JD</div>
 
-        <div className="sidebar__user-info">
-          <span className="sidebar__user-name">John Doe</span>
+          <div className="sidebar__user-info">
+            <span className="sidebar__user-name">{userData?.name}</span>
 
-          <span className="sidebar__user-email">john.doe@example.com</span>
+            <span className="sidebar__user-email">{userData?.email}</span>
+          </div>
+
+          <ChevronRight className="sidebar__user-arrow" size={18} />
+        </summary>
+
+        <div className="sidebar__user-menu">
+          <div className="sidebar__user-detail">
+            <span>Username</span>
+            <strong>{userData?.name}</strong>
+          </div>
+
+          <div className="sidebar__user-detail">
+            <span>Email</span>
+            <strong>{userData?.email}</strong>
+          </div>
+
+          <div className="sidebar__user-detail">
+            <span>Date of Birth</span>
+            <strong>{userData?.dob}</strong>
+          </div>
+
+          <div className="sidebar__user-detail">
+            <span>Mobile</span>
+            <strong>{userData?.mobile}</strong>
+          </div>
+
+          <button
+            type="button"
+            className="sidebar__signout"
+            onClick={() => {
+              router.push("/logout");
+            }}
+          >
+            Logout
+          </button>
         </div>
-
-        <ChevronRight className="sidebar__user-arrow" size={18} />
-      </div>
+      </details>
     </aside>
   );
 };
