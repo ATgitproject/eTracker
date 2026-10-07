@@ -3,18 +3,19 @@
 import { useState } from "react";
 import { Eye, Mail, Lock } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import { setCookie } from "../../utils/genericUtils";
 import TextField from "../../components/controls/TextField/TextField";
 import Button from "../../components/controls/Button/Button";
 import Checkbox from "../../components/controls/Checkbox/Checkbox";
-
+import { useDispatch } from "react-redux";
 import { loginUser } from "../../services/authService";
 
 import "./Login.scss";
+import { setUserSessionData } from "../../redux/slices/userSessionDataSlice";
 
 const Login = () => {
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -50,33 +51,23 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const data = await loginUser({
+      const result = await loginUser({
         email: formData.email,
         password: formData.password,
       });
 
-      /*
-       * Expected backend response:
-       *
-       * {
-       *   accessToken: "...",
-       *   refreshToken: "...",
-       *   user: {
-       *     id: "...",
-       *     name: "...",
-       *     email: "..."
-       *   }
-       * }
-       */
-
-      if (data.accessToken) {
-        localStorage.setItem("accessToken", data.accessToken);
+      if (result?.data?.accessToken) {
+        setCookie("accessToken", result.data.accessToken);
       }
 
-      if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
+      if (result?.data?.userData) {
+        dispatch(
+          setUserSessionData({
+            userData: JSON.stringify(result.data.userData),
+          }),
+        );
+        setCookie("userData", JSON.stringify(result.data.userData));
       }
-
       router.push("/app/dashboard");
     } catch (err) {
       setError(err.message || "Unable to login.");

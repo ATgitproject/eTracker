@@ -3,22 +3,15 @@ const { buildQuery } = require("../utils/queryBuilder");
 const genericDataRepository = require("../repository/genericDataRepository");
 
 const getData = async ({
+  req,
   objName,
   filterCondition,
   sortOrder,
   recordCount,
 }) => {
-  const objectConfig = objectRegistry[objName];
-
-  if (!objectConfig) {
-    throw new Error(`Invalid objName: ${objName}`);
-  }
-
-  const { table, allowedFields } = objectConfig;
-
+  const user_id = JSON.parse(req?.cookies?.userData)?.id;
   const { query, values } = buildQuery({
-    table,
-    allowedFields,
+    table: objName,
     filterCondition,
     sortOrder,
     recordCount,

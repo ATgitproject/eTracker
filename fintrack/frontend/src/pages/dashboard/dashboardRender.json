@@ -1,6 +1,8 @@
 {
   "id": "dashboard",
   "type": "page",
+  "title": "Dashboard",
+  "description": "Dashboard page for financial overview",
   "components": [
     {
       "id": "summary-container",
@@ -10,55 +12,72 @@
         "gap": 12,
         "children": [
           {
-            "id": "total-income",
+            "id": "dashboard-tiles",
             "type": "tilesComponent",
-            "width": 3,
             "props": {
-              "title": "Total Income",
-              "value": "$4,200.00",
-              "icon": "income",
-              "trend": "positive",
-              "trendLabel": "10.2%",
-              "subtitle": "from Apr"
-            }
-          },
-          {
-            "id": "total-expenses",
-            "type": "tilesComponent",
-            "width": 3,
-            "props": {
-              "title": "Total Expenses",
-              "value": "$2,350.45",
-              "icon": "expenses",
-              "trend": "positive",
-              "trendLabel": "8.5%",
-              "subtitle": "from Apr"
-            }
-          },
-          {
-            "id": "remaining-balance",
-            "type": "tilesComponent",
-            "width": 3,
-            "props": {
-              "title": "Remaining Balance",
-              "value": "$1,849.55",
-              "icon": "balance",
-              "trend": "neutral",
-              "trendLabel": "43.9%",
-              "subtitle": "of income"
-            }
-          },
-          {
-            "id": "total-savings",
-            "type": "tilesComponent",
-            "width": 3,
-            "props": {
-              "title": "Total Savings",
-              "value": "$1,849.55",
-              "icon": "savings",
-              "trend": "positive",
-              "trendLabel": "12.1%",
-              "subtitle": "from Apr"
+              "entity_name": "v_transaction_summary",
+              "tiles": [
+                {
+                  "key": 1,
+                  "control_id": "total-income",
+                  "tiles_name": "Total Income",
+                  "entityfield_name": "total_income",
+                  "icon": {
+                    "icon_name": "income-icon",
+                    "icon_color": "#2E7D32",
+                    "background_color": "#9bf39f"
+                  },
+                  "trend": {
+                    "trend_label_field_name": "total_income_trend",
+                    "trend_percentage_field_name": "total_income_percentage"
+                  }
+                },
+                {
+                  "key": 2,
+                  "control_id": "total-expenses",
+                  "tiles_name": "Total Expenses",
+                  "entityfield_name": "total_expenses",
+                  "icon": {
+                    "icon_name": "expenses-icon",
+                    "icon_color": "#6A1B9A",
+                    "background_color": "#d8b9dd"
+                  },
+                  "trend": {
+                    "trend_label_field_name": "total_expenses_trend",
+                    "trend_percentage_field_name": "total_expenses_percentage"
+                  }
+                },
+                {
+                  "key": 3,
+                  "control_id": "remaining_balance",
+                  "tiles_name": "Remaining Balance",
+                  "entityfield_name": "remaining_balance",
+                  "icon": {
+                    "icon_name": "balance-icon",
+                    "icon_color": "#2E7D32",
+                    "background_color": "#9bf39f"
+                  },
+                  "trend": {
+                    "trend_label_field_name": "remaining_balance_trend",
+                    "trend_percentage_field_name": "remaining_balance_percentage"
+                  }
+                },
+                {
+                  "key": 4,
+                  "control_id": "total-savings",
+                  "tiles_name": "Total Savings",
+                  "entityfield_name": "total_saving",
+                  "icon": {
+                    "icon_name": "savings-icon",
+                    "icon_color": "#6A1B9A",
+                    "background_color": "#d8b9dd"
+                  },
+                  "trend": {
+                    "trend_label_field_name": "total_saving_trend",
+                    "trend_percentage_field_name": "total_saving_percentage"
+                  }
+                }
+              ]
             }
           }
         ]

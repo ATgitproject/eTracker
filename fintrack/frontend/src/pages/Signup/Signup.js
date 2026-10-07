@@ -11,9 +11,10 @@ import StepsComponent from "../../components/controls/StepsComponent/StepsCompon
 import { saveData } from "../../services/dataService";
 
 import { signupUser } from "../../services/authService";
-
+import { useDispatch } from "react-redux";
 import "./Signup.scss";
 import { setCookie } from "../../utils/genericUtils";
+import { setUserSessionData } from "../../redux/slices/userSessionDataSlice";
 
 const signupSteps = [
   {
@@ -36,7 +37,7 @@ const signupSteps = [
 
 const Signup = () => {
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const [currentStep, setCurrentStep] = useState(1);
 
   const [formData, setFormData] = useState({
@@ -146,6 +147,11 @@ const Signup = () => {
       }
 
       if (result?.data?.userData) {
+        dispatch(
+          setUserSessionData({
+            userData: JSON.stringify(result.data.userData),
+          }),
+        );
         setCookie("userData", JSON.stringify(result.data.userData));
       }
 

@@ -4,9 +4,7 @@ const initialState = {
   session: {},
 };
 const setUserData = (state, action) => {
-  const data = state;
-  data.session = action.payload;
-  state = { ...state, ...data };
+  state.session = action.payload?.userData || {};
 };
 
 export const userSessionDataSlice = createSlice({
@@ -18,4 +16,5 @@ export const userSessionDataSlice = createSlice({
 });
 
 export const { setUserSessionData } = userSessionDataSlice.actions;
+
 export default userSessionDataSlice.reducer;

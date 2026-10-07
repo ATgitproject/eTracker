@@ -1,7 +1,7 @@
 import ThemeRegistry from "./ThemeRegistry";
-
 import "../styles/master.scss";
 import ToastProvider from "../components/toast/ToastProvider";
+import ReduxProvider from "../redux/reduxProvider";
 
 export const metadata = {
   title: "Expenses Tracker",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeRegistry>
-          {children}
+          <ReduxProvider>{children}</ReduxProvider>
           <ToastProvider />
         </ThemeRegistry>
       </body>

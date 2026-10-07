@@ -1,12 +1,6 @@
 const OPERATORS = require("./operators");
 
-const buildQuery = ({
-  table,
-  allowedFields,
-  filterCondition,
-  sortOrder,
-  recordCount,
-}) => {
+const buildQuery = ({ table, filterCondition, sortOrder, recordCount }) => {
   const values = [];
 
   let query = `
@@ -19,10 +13,6 @@ const buildQuery = ({
 
     if (!field) {
       throw new Error("Filter field is required");
-    }
-
-    if (!allowedFields.includes(field)) {
-      throw new Error(`Invalid filter field: ${field}`);
     }
 
     if (!OPERATORS[operator]) {
@@ -60,7 +50,7 @@ const buildQuery = ({
     throw new Error("sortOrder must be ASC or DESC");
   }
 
-  query += ` ORDER BY id ${order}`;
+  // query += ` ORDER BY id ${order}`;
 
   if (recordCount !== undefined && recordCount !== null) {
     const count = Number(recordCount);
