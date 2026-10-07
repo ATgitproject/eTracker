@@ -27,6 +27,7 @@ const TilesComponent = (props) => {
   const [tileData, setTileData] = useState(null);
   const lastMonth = dayjs()?.subtract(1, "month")?.format("MMMM");
   const { session } = useSelector((state) => state.userSessionDataReducer);
+  const sessionCookie = JSON.parse(getCookie("session") || "{}");
 
   const fetchData = async () => {
     try {
@@ -35,7 +36,7 @@ const TilesComponent = (props) => {
         filterCondition: {
           field: "user_id",
           operator: "equal",
-          value: session?.userData?.id,
+          value: session?.userData?.id || sessionCookie?.userData?.id,
         },
       });
       const tileData = results?.data?.[0];
