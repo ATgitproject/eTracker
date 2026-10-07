@@ -2,7 +2,7 @@ const pool = require("../config/db");
 
 const insert = async ({ req, table, fields, createdField, modifiedField }) => {
   const fieldNames = Object.keys(fields);
-  const user_id = JSON.parse(req?.cookies?.userData)?.id;
+  const user_id = JSON.parse(req?.cookies?.session)?.userData?.id;
   const values = Object.values(fields);
 
   fieldNames.push("user_id");

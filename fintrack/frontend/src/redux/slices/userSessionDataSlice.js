@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   session: {},
 };
-const setUserData = (state, action) => {
-  state.session = action.payload?.userData || {};
+const setSessionData = (state, action) => {
+  state.session = action.payload?.session || {};
 };
 
 export const userSessionDataSlice = createSlice({
   name: "session",
   initialState,
   reducers: {
-    setUserSessionData: setUserData,
+    setUserSessionData: setSessionData,
   },
 });
 

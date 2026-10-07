@@ -9,7 +9,6 @@ const getData = async ({
   sortOrder,
   recordCount,
 }) => {
-  const user_id = JSON.parse(req?.cookies?.userData)?.id;
   const { query, values } = buildQuery({
     table: objName,
     filterCondition,

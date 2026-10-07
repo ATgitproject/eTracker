@@ -26,7 +26,7 @@ const TilesComponent = (props) => {
   const { title, fieldid, entity_name, tiles } = props;
   const [tileData, setTileData] = useState(null);
   const lastMonth = dayjs()?.subtract(1, "month")?.format("MMMM");
-  const userData = useSelector((state) => state.userSessionData?.session);
+  const { session } = useSelector((state) => state.userSessionDataReducer);
 
   const fetchData = async () => {
     try {
@@ -35,7 +35,7 @@ const TilesComponent = (props) => {
         filterCondition: {
           field: "user_id",
           operator: "equal",
-          value: userData?.id,
+          value: session?.userData?.id,
         },
       });
       const tileData = results?.data?.[0];
@@ -73,15 +73,20 @@ const TilesComponent = (props) => {
   };
 
   return (
-    <Grid
-      container
+    <Box
       key={fieldid}
       sx={{
-        width: "100%",
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "1fr",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(auto-fit, minmax(240px, 1fr))",
+        },
         gap: 2,
-        flexWrap: "wrap",
-        m: "6px",
+        width: "100%",
+        minWidth: 0,
+        boxSizing: "border-box",
+        p: "6px",
       }}
     >
       {tiles?.map((tile) => {
@@ -91,77 +96,84 @@ const TilesComponent = (props) => {
         const percentage = tileData?.[tile?.trend?.trend_percentage_field_name];
 
         return (
-          <Grid item xs={12} sm={6} md={3} key={tile?.key}>
-            <Card
-              sx={{
-                height: "100%",
-                borderRadius: 2,
-                boxShadow: 1,
-                flex: "1 1 0",
-              }}
-            >
-              <CardContent>
-                <Stack direction="row" spacing={2} alignItems="center">
-                  <Box
+          <Card
+            key={tile?.key}
+            sx={{
+              height: "100%",
+              minWidth: 0,
+              borderRadius: 2,
+              boxShadow: 1,
+            }}
+          >
+            <CardContent>
+              <Stack
+                sx={{ flexDirection: "row", alignItems: "center", gap: 2 }}
+              >
+                <Box
+                  sx={{
+                    width: 64,
+                    height: 64,
+                    borderRadius: "50%",
+                    backgroundColor: tile?.icon?.background_color || "#E3F2FD",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  {IconComponent && (
+                    <IconComponent
+                      sx={{
+                        fontSize: 32,
+                        color: tile?.icon?.icon_color || "#1976D2",
+                      }}
+                    />
+                  )}
+                </Box>
+
+                <Box sx={{ minWidth: 0 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "text.secondary", mb: 0.5 }}
+                  >
+                    {tile?.tiles_name}
+                  </Typography>
+
+                  <Typography variant="h5" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    {formatAmount(tileValue)}
+                  </Typography>
+
+                  <Stack
                     sx={{
-                      width: 64,
-                      height: 64,
-                      borderRadius: "50%",
-                      backgroundColor:
-                        tile?.icon?.background_color || "#E3F2FD",
-                      display: "flex",
+                      flexDirection: "row",
                       alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
+                      flexWrap: "wrap",
+                      gap: 0.5,
+                      color: getTrendColor(trend),
                     }}
                   >
-                    {IconComponent && (
-                      <IconComponent
-                        sx={{
-                          fontSize: 32,
-                          color: tile?.icon?.icon_color || "#1976D2",
-                        }}
-                      />
-                    )}
-                  </Box>
+                    {getTrendIcon(trend)}
 
-                  <Box>
-                    <Typography variant="body2" color="text.secondary" mb={0.5}>
-                      {tile?.tiles_name}
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                      {Math.abs(percentage || 0)}%
                     </Typography>
 
-                    <Typography variant="h5" fontWeight={600} mb={0.5}>
-                      {formatAmount(tileValue)}
-                    </Typography>
-
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      spacing={0.5}
-                      sx={{
-                        color: getTrendColor(trend),
-                      }}
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary" }}
                     >
-                      {getTrendIcon(trend)}
-
-                      <Typography variant="body2" fontWeight={600}>
-                        {Math.abs(percentage || 0)}%
-                      </Typography>
-
-                      <Typography variant="body2" color="text.secondary">
-                        {trend === "No Change"
-                          ? "No change"
-                          : `from ${lastMonth}`}
-                      </Typography>
-                    </Stack>
-                  </Box>
-                </Stack>
-              </CardContent>
-            </Card>
-          </Grid>
+                      {trend === "No Change"
+                        ? "No change"
+                        : `from ${lastMonth}`}
+                    </Typography>
+                  </Stack>
+                </Box>
+              </Stack>
+            </CardContent>
+          </Card>
         );
       })}
-    </Grid>
+    </Box>
   );
 };
 

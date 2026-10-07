@@ -60,13 +60,13 @@ const Login = () => {
         setCookie("accessToken", result.data.accessToken);
       }
 
-      if (result?.data?.userData) {
+      if (result?.data?.session) {
         dispatch(
           setUserSessionData({
-            userData: JSON.stringify(result.data.userData),
+            session: result.data.session,
           }),
         );
-        setCookie("userData", JSON.stringify(result.data.userData));
+        setCookie("session", JSON.stringify(result.data.session));
       }
       router.push("/app/dashboard");
     } catch (err) {
