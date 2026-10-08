@@ -1,72 +1,55 @@
 {
+  "entity_name": "transactions",
   "components": [
     {
-      "id": "transaction-form",
-      "type": "layoutContainer",
+      "field_type": "textfield",
+      "field_id": "description",
+      "entitiy_field_name": "description",
       "width": 12,
-      "props": {
-        "children": [
-          {
-            "id": "description",
-            "type": "textfield",
-            "width": 12,
-            "props": {
-              "label": "Description",
-              "name": "description",
-              "placeholder": "Enter description",
-              "validation": {
-                "required": true,
-                "minLength": 3,
-                "maxLength": 100
-              }
-            }
-          },
-          {
-            "id": "category",
-            "type": "textfield",
-            "width": 12,
-            "props": {
-              "label": "Category",
-              "name": "category",
-              "placeholder": "Enter category",
-              "validation": {
-                "required": true
-              }
-            }
-          },
-          {
-            "type": "toggleComponent",
-            "id": "mark_recurring",
-            "props": {
-              "label": "Mark as recurring",
-              "icon": "sync",
-              "checked": false,
-              "name": "isRecurring"
-            }
-          },
-          {
-            "type": "segmentButtonComponent",
-            "id": "transaction_type",
-            "props": {
-              "value": "expense",
-              "options": [
-                {
-                  "label": "Expense",
-                  "value": "expense"
-                },
-                {
-                  "label": "Income",
-                  "value": "income"
-                },
-                {
-                  "label": "Transfer",
-                  "value": "transfer"
-                }
-              ]
-            }
-          }
-        ]
-      }
+      "label": "Description",
+      "name": "description",
+      "placeholder": "Enter description",
+      "required": true
+    },
+    {
+      "field_type": "textfield",
+      "field_id": "category",
+      "entitiy_field_name": "category",
+      "width": 12,
+      "label": "Category",
+      "name": "category",
+      "placeholder": "Enter category",
+      "required": true
+    },
+    {
+      "field_type": "toggleComponent",
+      "field_id": "mark_recurring",
+      "entitiy_field_name": "mark_recurring",
+      "label": "Mark as recurring",
+      "icon": "sync",
+      "checked": false,
+      "name": "isRecurring",
+      "required": true
+    },
+    {
+      "field_type": "segmentButtonComponent",
+      "field_id": "transaction_type",
+      "entitiy_field_name": "transaction_type",
+      "value": "expense",
+      "options": [
+        {
+          "label": "Expense",
+          "value": "expense"
+        },
+        {
+          "label": "Income",
+          "value": "income"
+        },
+        {
+          "label": "Transfer",
+          "value": "transfer"
+        }
+      ]
     }
   ]
 }

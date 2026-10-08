@@ -63,7 +63,7 @@ const ToggleComponent = ({
         // checked={checked}
         disabled={disabled}
         onChange={(event) => {
-          //   onChange?.(event.target.checked, event);
+          onChange?.(event?.target?.checked || event);
         }}
         sx={{
           width: 38,

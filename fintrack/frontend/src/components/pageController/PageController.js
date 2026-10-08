@@ -1,21 +1,28 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import PagePanelController from "./PagePanelController";
 import dynamicComponentImport from "../dynamicRenderController/dynamicComponentImport";
 import PageRenderer from "../pageRenderer/pageRenderer";
 import { getPageAction } from "../../utils/genericUtils";
+import { setUpdateFormData } from "@/redux/slices/formDataSlice";
+import { useDispatch } from "react-redux";
 
 const PageController = ({ page }) => {
+  const dispatch = useDispatch();
   const [panel, setPanel] = useState(null);
+  const formMethods = useForm({ mode: "all" });
 
-  const onClose = useCallback(() => {
+  const onClose = useCallback((entity_name) => {
+    dispatch(setUpdateFormData({}));
+    useForm.reset({});
     setPanel(null);
   }, []);
 
-  const onSave = useCallback(async (saveData = {}) => {
-    console.log("PageController onSave:", saveData);
-
+  const onSave = useCallback((entity_name) => {
+    dispatch(setUpdateFormData({}));
+    useForm.reset({});
     setPanel(null);
   }, []);
 
@@ -74,6 +81,7 @@ const PageController = ({ page }) => {
             row,
             source,
             action,
+            useForm: formMethods,
             onClose,
             onSave,
           },
@@ -82,12 +90,16 @@ const PageController = ({ page }) => {
         console.error("showPageComponent failed:", componentPath, error);
       }
     },
-    [onClose, onSave],
+    [formMethods, onClose, onSave],
   );
 
   return (
-    <>
-      <PageRenderer page={page} showPageComponent={showPageComponent} />
+    <FormProvider {...formMethods}>
+      <PageRenderer
+        page={page}
+        showPageComponent={showPageComponent}
+        useForm={formMethods}
+      />
 
       {panel && panel.panelType !== "fields" && (
         <PagePanelController
@@ -99,9 +111,10 @@ const PageController = ({ page }) => {
           title={panel.title}
           onClose={onClose}
           onSave={onSave}
+          useForm={formMethods}
         />
       )}
-    </>
+    </FormProvider>
   );
 };
 

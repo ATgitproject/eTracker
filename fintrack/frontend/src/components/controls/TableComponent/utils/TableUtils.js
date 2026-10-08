@@ -17,10 +17,7 @@ import {
 
 export const buildColumns = (columns = []) => {
   return [...columns]
-    .sort(
-      (a, b) =>
-        (a.order ?? a.ORDER ?? 0) - (b.order ?? b.ORDER ?? 0),
-    )
+    .sort((a, b) => (a.order ?? a.ORDER ?? 0) - (b.order ?? b.ORDER ?? 0))
     .map((column) => {
       const fieldName = column.col_name ?? column.COL_NAME ?? "";
 
@@ -41,8 +38,7 @@ export const formatRows = (records = [], columns = []) => {
 
     columns.forEach((column) => {
       const fieldName = column.col_name ?? column.COL_NAME ?? "";
-      const entityFieldName =
-        column.entityfield_name ?? column.ENTITYFIELD_NAME ?? "";
+      const entityFieldName = column.entity_field_name ?? "";
 
       row[fieldName] = record?.[entityFieldName] ?? "";
     });

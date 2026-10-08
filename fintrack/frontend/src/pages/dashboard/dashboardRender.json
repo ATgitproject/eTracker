@@ -5,393 +5,270 @@
   "description": "Dashboard page for financial overview",
   "components": [
     {
-      "id": "summary-container",
-      "type": "layoutContainer",
+      "field_id": "summary-container",
+      "field_type": "layoutContainer",
       "width": 12,
-      "props": {
-        "gap": 12,
-        "children": [
-          {
-            "id": "dashboard-tiles",
-            "type": "tilesComponent",
-            "props": {
-              "entity_name": "v_transaction_summary",
-              "tiles": [
-                {
-                  "key": 1,
-                  "control_id": "total-income",
-                  "tiles_name": "Total Income",
-                  "entityfield_name": "total_income",
-                  "icon": {
-                    "icon_name": "income-icon",
-                    "icon_color": "#2E7D32",
-                    "background_color": "#9bf39f"
-                  },
-                  "trend": {
-                    "trend_label_field_name": "total_income_trend",
-                    "trend_percentage_field_name": "total_income_percentage"
-                  }
-                },
-                {
-                  "key": 2,
-                  "control_id": "total-expenses",
-                  "tiles_name": "Total Expenses",
-                  "entityfield_name": "total_expenses",
-                  "icon": {
-                    "icon_name": "expenses-icon",
-                    "icon_color": "#6A1B9A",
-                    "background_color": "#d8b9dd"
-                  },
-                  "trend": {
-                    "trend_label_field_name": "total_expenses_trend",
-                    "trend_percentage_field_name": "total_expenses_percentage"
-                  }
-                },
-                {
-                  "key": 3,
-                  "control_id": "remaining_balance",
-                  "tiles_name": "Remaining Balance",
-                  "entityfield_name": "remaining_balance",
-                  "icon": {
-                    "icon_name": "balance-icon",
-                    "icon_color": "#2E7D32",
-                    "background_color": "#9bf39f"
-                  },
-                  "trend": {
-                    "trend_label_field_name": "remaining_balance_trend",
-                    "trend_percentage_field_name": "remaining_balance_percentage"
-                  }
-                },
-                {
-                  "key": 4,
-                  "control_id": "total-savings",
-                  "tiles_name": "Total Savings",
-                  "entityfield_name": "total_saving",
-                  "icon": {
-                    "icon_name": "savings-icon",
-                    "icon_color": "#6A1B9A",
-                    "background_color": "#d8b9dd"
-                  },
-                  "trend": {
-                    "trend_label_field_name": "total_saving_trend",
-                    "trend_percentage_field_name": "total_saving_percentage"
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "analytics-container",
-      "type": "layoutContainer",
-      "width": 12,
-      "props": {
-        "gap": 12,
-        "children": [
-          {
-            "id": "spending-trend",
-            "type": "lineChartComponent",
-            "width": 8,
-            "props": {
-              "title": "Spending Trend",
-              "filterLabel": "This Month",
-              "xAxisKey": "date",
-              "dataKey": "amount",
-              "height": 300,
-              "showArea": true,
-              "showPoints": true,
-              "data": [
-                {
-                  "date": "May 1",
-                  "amount": 300
-                },
-                {
-                  "date": "May 5",
-                  "amount": 900
-                },
-                {
-                  "date": "May 7",
-                  "amount": 900
-                },
-                {
-                  "date": "May 10",
-                  "amount": 1600
-                },
-                {
-                  "date": "May 12",
-                  "amount": 1450
-                },
-                {
-                  "date": "May 16",
-                  "amount": 2150
-                },
-                {
-                  "date": "May 19",
-                  "amount": 1950
-                },
-                {
-                  "date": "May 22",
-                  "amount": 2300
-                },
-                {
-                  "date": "May 25",
-                  "amount": 2150
-                },
-                {
-                  "date": "May 28",
-                  "amount": 2650
-                },
-                {
-                  "date": "May 31",
-                  "amount": 2800
-                }
-              ]
-            }
-          },
-          {
-            "id": "monthly-transactions",
-            "type": "tableComponent",
-            "width": 4,
-            "props": {
-              "title": "Monthly Transactions",
-              "fetchtableObj": {
-                "objName": "transactions",
-                "sortOrder": "DESC"
+      "children": [
+        {
+          "field_id": "dashboard-tiles",
+          "field_type": "tilesComponent",
+          "entity_name": "v_transaction_summary",
+          "tiles": [
+            {
+              "key": 1,
+              "control_id": "total-income",
+              "tiles_name": "Total Income",
+              "entity_field_name": "total_income",
+              "icon": {
+                "icon_name": "income-icon",
+                "icon_color": "#2E7D32",
+                "background_color": "#9bf39f"
               },
-              "actionLabel": "View All",
-              "header": [
-                {
-                  "id": "description",
-                  "key": "description",
-                  "label": "Description"
-                },
-                {
-                  "id": "category",
-                  "key": "category",
-                  "label": "Category"
-                },
-                {
-                  "id": "date",
-                  "key": "date",
-                  "label": "Date"
-                },
-                {
-                  "id": "amount",
-                  "key": "amount",
-                  "label": "Amount"
-                }
-              ],
-              "data": [
-                {
-                  "id": "monthly-1",
-                  "icon": "shopping-cart",
-                  "description": "Grocery Store",
-                  "category": "Food",
-                  "categoryColor": "#16B364",
-                  "date": "May 30, 2024 · 10:30 AM",
-                  "amount": "-$67.45",
-                  "type": "expense"
-                },
-                {
-                  "id": "monthly-2",
-                  "icon": "transport",
-                  "description": "Uber Ride",
-                  "category": "Transport",
-                  "categoryColor": "#2979FF",
-                  "date": "May 29, 2024 · 08:15 PM",
-                  "amount": "-$18.90",
-                  "type": "expense"
-                },
-                {
-                  "id": "monthly-3",
-                  "icon": "netflix",
-                  "description": "Netflix Subscription",
-                  "category": "Entertainment",
-                  "categoryColor": "#FF6B00",
-                  "date": "May 28, 2024 · 09:00 AM",
-                  "amount": "-$15.49",
-                  "type": "expense"
-                },
-                {
-                  "id": "monthly-4",
-                  "icon": "salary",
-                  "description": "Salary",
-                  "category": "Income",
-                  "categoryColor": "#16B364",
-                  "date": "May 27, 2024 · 09:00 AM",
-                  "amount": "+$4,200.00",
-                  "type": "income"
-                },
-                {
-                  "id": "monthly-5",
-                  "icon": "utilities",
-                  "description": "Electricity Bill",
-                  "category": "Utilities",
-                  "categoryColor": "#FFB800",
-                  "date": "May 26, 2024 · 11:20 AM",
-                  "amount": "-$120.75",
-                  "type": "expense"
-                }
-              ]
+              "trend": {
+                "trend_label_field_name": "total_income_trend",
+                "trend_percentage_field_name": "total_income_percentage"
+              }
+            },
+            {
+              "key": 2,
+              "control_id": "total-expenses",
+              "tiles_name": "Total Expenses",
+              "entity_field_name": "total_expenses",
+              "icon": {
+                "icon_name": "expenses-icon",
+                "icon_color": "#6A1B9A",
+                "background_color": "#d8b9dd"
+              },
+              "trend": {
+                "trend_label_field_name": "total_expenses_trend",
+                "trend_percentage_field_name": "total_expenses_percentage"
+              }
+            },
+            {
+              "key": 3,
+              "control_id": "remaining_balance",
+              "tiles_name": "Remaining Balance",
+              "entity_field_name": "remaining_balance",
+              "icon": {
+                "icon_name": "balance-icon",
+                "icon_color": "#2E7D32",
+                "background_color": "#9bf39f"
+              },
+              "trend": {
+                "trend_label_field_name": "remaining_balance_trend",
+                "trend_percentage_field_name": "remaining_balance_percentage"
+              }
+            },
+            {
+              "key": 4,
+              "control_id": "total-savings",
+              "tiles_name": "Total Savings",
+              "entity_field_name": "total_saving",
+              "icon": {
+                "icon_name": "savings-icon",
+                "icon_color": "#6A1B9A",
+                "background_color": "#d8b9dd"
+              },
+              "trend": {
+                "trend_label_field_name": "total_saving_trend",
+                "trend_percentage_field_name": "total_saving_percentage"
+              }
             }
-          }
-        ]
-      }
+          ]
+        }
+      ]
     },
     {
-      "id": "bottom-container",
-      "type": "layoutContainer",
+      "field_id": "analytics-container",
+      "field_type": "layoutContainer",
       "width": 12,
-      "props": {
-        "gap": 12,
-        "children": [
-          {
-            "id": "recent-transactions",
-            "type": "tableComponent",
-            "width": 8,
-            "props": {
-              "title": "Recent Transactions",
-              "actionLabel": "View All",
-              "header": [
-                {
-                  "id": "description",
-                  "key": "description",
-                  "label": "Description"
-                },
-                {
-                  "id": "category",
-                  "key": "category",
-                  "label": "Category"
-                },
-                {
-                  "id": "date",
-                  "key": "date",
-                  "label": "Date"
-                },
-                {
-                  "id": "amount",
-                  "key": "amount",
-                  "label": "Amount"
-                }
-              ],
-              "data": [
-                {
-                  "id": "recent-1",
-                  "icon": "shopping-cart",
-                  "description": "Grocery Store",
-                  "category": "Food",
-                  "categoryColor": "#16B364",
-                  "date": "May 30, 2024 · 10:30 AM",
-                  "amount": "-$67.45",
-                  "type": "expense"
-                },
-                {
-                  "id": "recent-2",
-                  "icon": "transport",
-                  "description": "Uber Ride",
-                  "category": "Transport",
-                  "categoryColor": "#2979FF",
-                  "date": "May 29, 2024 · 08:15 PM",
-                  "amount": "-$18.90",
-                  "type": "expense"
-                },
-                {
-                  "id": "recent-3",
-                  "icon": "netflix",
-                  "description": "Netflix Subscription",
-                  "category": "Entertainment",
-                  "categoryColor": "#FF6B00",
-                  "date": "May 28, 2024 · 09:00 AM",
-                  "amount": "-$15.49",
-                  "type": "expense"
-                },
-                {
-                  "id": "recent-4",
-                  "icon": "salary",
-                  "description": "Salary",
-                  "category": "Income",
-                  "categoryColor": "#16B364",
-                  "date": "May 27, 2024 · 09:00 AM",
-                  "amount": "+$4,200.00",
-                  "type": "income"
-                },
-                {
-                  "id": "recent-5",
-                  "icon": "utilities",
-                  "description": "Electricity Bill",
-                  "category": "Utilities",
-                  "categoryColor": "#FFB800",
-                  "date": "May 26, 2024 · 11:20 AM",
-                  "amount": "-$120.75",
-                  "type": "expense"
-                }
-              ]
+      "children": [
+        {
+          "field_id": "spending-trend",
+          "field_type": "lineChartComponent",
+          "width": 8,
+          "title": "Spending Trend",
+          "filterLabel": "This Month",
+          "xAxisKey": "date",
+          "dataKey": "amount",
+          "height": 300,
+          "showArea": true,
+          "showPoints": true,
+          "data": [
+            {
+              "date": "May 1",
+              "amount": 300
+            },
+            {
+              "date": "May 5",
+              "amount": 900
+            },
+            {
+              "date": "May 7",
+              "amount": 900
+            },
+            {
+              "date": "May 10",
+              "amount": 1600
+            },
+            {
+              "date": "May 12",
+              "amount": 1450
+            },
+            {
+              "date": "May 16",
+              "amount": 2150
+            },
+            {
+              "date": "May 19",
+              "amount": 1950
+            },
+            {
+              "date": "May 22",
+              "amount": 2300
+            },
+            {
+              "date": "May 25",
+              "amount": 2150
+            },
+            {
+              "date": "May 28",
+              "amount": 2650
+            },
+            {
+              "date": "May 31",
+              "amount": 2800
             }
-          },
-          {
-            "id": "upcoming-bills",
-            "type": "tableComponent",
-            "width": 4,
-            "props": {
-              "title": "Upcoming Bills",
-              "actionLabel": "View All",
-              "header": [
-                {
-                  "id": "description",
-                  "key": "description",
-                  "label": "Bill"
-                },
-                {
-                  "id": "date",
-                  "key": "date",
-                  "label": "Due Date"
-                },
-                {
-                  "id": "amount",
-                  "key": "amount",
-                  "label": "Amount"
-                }
-              ],
-              "data": [
-                {
-                  "id": "bill-1",
-                  "icon": "netflix",
-                  "description": "Netflix",
-                  "date": "Jun 1, 2024",
-                  "amount": "$15.49",
-                  "type": "expense"
-                },
-                {
-                  "id": "bill-2",
-                  "icon": "utilities",
-                  "description": "Electricity Bill",
-                  "date": "Jun 3, 2024",
-                  "amount": "$120.75",
-                  "type": "expense"
-                },
-                {
-                  "id": "bill-3",
-                  "icon": "spotify",
-                  "description": "Spotify",
-                  "date": "Jun 5, 2024",
-                  "amount": "$9.99",
-                  "type": "expense"
-                },
-                {
-                  "id": "bill-4",
-                  "icon": "internet",
-                  "description": "Internet",
-                  "date": "Jun 10, 2024",
-                  "amount": "$49.00",
-                  "type": "expense"
-                }
-              ]
+          ]
+        },
+        {
+          "field_id": "transaction-table",
+          "field_type": "tableComponent",
+          "entity_name": "transactions",
+          "pagetitle": "Add Transaction",
+          "entityname": "transactions",
+          "width": 4,
+          "columns": [
+            {
+              "col_id": "description",
+              "entity_field_name": "description",
+              "col_name": "Description",
+              "order": 1
+            },
+            {
+              "col_id": "category",
+              "entity_field_name": "category",
+              "col_name": "Category",
+              "order": 2
+            },
+            {
+              "col_id": "date",
+              "entity_field_name": "date",
+              "col_name": "Date",
+              "order": 3
+            },
+            {
+              "col_id": "amount",
+              "entity_field_name": "amount",
+              "col_name": "Amount",
+              "order": 4
+            },
+            {
+              "col_id": "payment_method",
+              "entity_field_name": "payment_method",
+              "col_name": "Payment Method",
+              "order": 5
             }
-          }
-        ]
-      }
+          ]
+        }
+      ]
+    },
+    {
+      "field_id": "bottom-container",
+      "field_type": "layoutContainer",
+      "width": 12,
+      "children": [
+        {
+          "field_id": "recent-transactions",
+          "field_type": "tableComponent",
+          "entity_name": "transactions",
+          "pagetitle": "Recent Transactions",
+          "entityname": "transactions",
+          "width": 6,
+          "columns": [
+            {
+              "col_id": "description",
+              "entity_field_name": "description",
+              "col_name": "Description",
+              "order": 1
+            },
+            {
+              "col_id": "category",
+              "entity_field_name": "category",
+              "col_name": "Category",
+              "order": 2
+            },
+            {
+              "col_id": "date",
+              "entity_field_name": "date",
+              "col_name": "Date",
+              "order": 3
+            },
+            {
+              "col_id": "amount",
+              "entity_field_name": "amount",
+              "col_name": "Amount",
+              "order": 4
+            },
+            {
+              "col_id": "payment_method",
+              "entity_field_name": "payment_method",
+              "col_name": "Payment Method",
+              "order": 5
+            }
+          ]
+        },
+        {
+          "field_id": "upcoming-bills",
+          "field_type": "tableComponent",
+          "entity_name": "transactions",
+          "pagetitle": "Upcoming Bills",
+          "entityname": "transactions",
+          "width": 6,
+          "columns": [
+            {
+              "col_id": "description",
+              "entity_field_name": "description",
+              "col_name": "Description",
+              "order": 1
+            },
+            {
+              "col_id": "category",
+              "entity_field_name": "category",
+              "col_name": "Category",
+              "order": 2
+            },
+            {
+              "col_id": "date",
+              "entity_field_name": "date",
+              "col_name": "Date",
+              "order": 3
+            },
+            {
+              "col_id": "amount",
+              "entity_field_name": "amount",
+              "col_name": "Amount",
+              "order": 4
+            },
+            {
+              "col_id": "payment_method",
+              "entity_field_name": "payment_method",
+              "col_name": "Payment Method",
+              "order": 5
+            }
+          ]
+        }
+      ]
     }
   ]
 }

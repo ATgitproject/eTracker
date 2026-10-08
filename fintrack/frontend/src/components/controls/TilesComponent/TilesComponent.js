@@ -92,7 +92,7 @@ const TilesComponent = (props) => {
     >
       {tiles?.map((tile) => {
         const IconComponent = icons[tile?.icon?.icon_name];
-        const tileValue = tileData?.[tile?.entityfield_name];
+        const tileValue = tileData?.[tile?.entity_field_name];
         const trend = tileData?.[tile?.trend?.trend_label_field_name];
         const percentage = tileData?.[tile?.trend?.trend_percentage_field_name];
 

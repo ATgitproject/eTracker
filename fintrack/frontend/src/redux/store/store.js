@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userSessionDataReducer from "../slices/userSessionDataSlice";
+import formDataSlice from "../slices/formDataSlice";
 import {
   persistStore,
   persistReducer,
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   userSessionDataReducer,
+  formDataSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

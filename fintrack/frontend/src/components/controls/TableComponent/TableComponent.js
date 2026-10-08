@@ -18,13 +18,13 @@ import useTableToolbars from "./hooks/useTableToolbars";
 
 const TableComponent = ({
   entityName: entityNameProp,
-  entityname,
+  entity_name,
   columns: columnsProp = [],
   toolbars: toolbarsProp = [],
   showPageComponent,
   onPageToolbarChange,
 }) => {
-  const entityName = entityNameProp ?? entityname;
+  const entityName = entityNameProp ?? entity_name;
   const columns = columnsProp.length ? columnsProp : [];
   const toolbars = toolbarsProp.length ? toolbarsProp : [];
 

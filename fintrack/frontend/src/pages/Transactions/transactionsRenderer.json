@@ -1,73 +1,74 @@
 {
+  "entity_name": "transactions",
   "title": "Transactions",
   "description": "View and manage all your transactions in one place.",
   "components": [
     {
-      "id": "transaction-table",
-      "type": "tableComponent",
-      "width": 12,
-      "props": {
-        "pagetitle": "Add Transaction",
-        "entityname": "transactions",
-        "columns": [
-          {
-            "col_id": "description",
-            "entityfield_name": "description",
-            "col_name": "Description",
-            "order": 1
-          },
-          {
-            "col_id": "category",
-            "entityfield_name": "category",
-            "col_name": "Category",
-            "order": 2
-          },
-          {
-            "col_id": "date",
-            "entityfield_name": "date",
-            "col_name": "Date",
-            "order": 3
-          },
-          {
-            "col_id": "amount",
-            "entityfield_name": "amount",
-            "col_name": "Amount",
-            "order": 4
-          },
-          {
-            "col_id": "payment_method",
-            "entityfield_name": "payment_method",
-            "col_name": "Payment Method",
-            "order": 5
-          }
-        ],
-        "toolbars": [
-          {
-            "toolbar_id": "transaction_add",
-            "isbutton": true,
-            "toolbar_name": "Add Transaction",
-            "toolbar_action": "add",
-            "order": 1,
-            "component_path": "Transactions/addTransaction/addTransactionsRenderer"
-          },
-          {
-            "toolbar_id": "transaction_edit",
-            "isbutton": false,
-            "toolbar_name": "Edit Transaction",
-            "toolbar_action": "edit",
-            "order": 2,
-            "component_path": ""
-          },
-          {
-            "toolbar_id": "transaction_view",
-            "isbutton": false,
-            "toolbar_name": "View Transaction",
-            "toolbar_action": "view",
-            "order": 3,
-            "component_path": ""
-          }
-        ]
-      }
+      "field_id": "transaction-table",
+      "field_type": "tableComponent",
+      "entity_name": "transactions",
+      "pagetitle": "Add Transaction",
+      "entityname": "transactions",
+      "columns": [
+        {
+          "col_id": "description",
+          "entity_field_name": "description",
+          "col_name": "Description",
+          "order": 1
+        },
+        {
+          "col_id": "category",
+          "entity_field_name": "category",
+          "col_name": "Category",
+          "order": 2
+        },
+        {
+          "col_id": "date",
+          "entity_field_name": "date",
+          "col_name": "Date",
+          "order": 3
+        },
+        {
+          "col_id": "amount",
+          "entity_field_name": "amount",
+          "col_name": "Amount",
+          "order": 4
+        },
+        {
+          "col_id": "payment_method",
+          "entity_field_name": "payment_method",
+          "col_name": "Payment Method",
+          "order": 5
+        }
+      ],
+      "toolbars": [
+        {
+          "toolbar_id": "transaction_add",
+          "isbutton": true,
+          "toolbar_name": "Add Transaction",
+          "toolbar_action": "add",
+          "entity_name": "transactions",
+          "order": 1,
+          "component_path": "Transactions/addTransaction/addTransactionsRenderer"
+        },
+        {
+          "toolbar_id": "transaction_edit",
+          "isbutton": false,
+          "toolbar_name": "Edit Transaction",
+          "toolbar_action": "edit",
+          "entity_name": "transactions",
+          "order": 2,
+          "component_path": "Transactions/addTransaction/addTransactionsRenderer"
+        },
+        {
+          "toolbar_id": "transaction_view",
+          "isbutton": false,
+          "toolbar_name": "View Transaction",
+          "toolbar_action": "view",
+          "order": 3,
+          "component_path": ""
+        }
+      ]
     }
   ]
 }

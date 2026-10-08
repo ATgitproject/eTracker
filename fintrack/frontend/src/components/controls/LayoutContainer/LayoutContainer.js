@@ -1,19 +1,14 @@
 "use client";
 
 import React from "react";
-
+import { Box, Grid } from "@mui/material";
 import "./LayoutContainer.scss";
 
-const LayoutContainer = ({ gap = 12, children }) => {
+const LayoutContainer = ({ children }) => {
   return (
-    <div
-      className="layout-container"
-      style={{
-        gap: `${gap}px`,
-      }}
-    >
+    <Grid container spacing={2} className="page-renderer__content">
       {children}
-    </div>
+    </Grid>
   );
 };
 

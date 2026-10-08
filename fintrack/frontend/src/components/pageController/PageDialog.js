@@ -1,9 +1,9 @@
 "use client";
 
-import { Drawer, Box, Typography, IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-
+import { Alert, Drawer, Box, Typography, IconButton } from "@mui/material";
 import ButtonComponent from "../controls/Button/ButtonComponent";
+import CloseIcon from "@mui/icons-material/Close";
+import useFormFields from "../shared/hooks/useFormFields";
 
 const DRAWER_WIDTHS = {
   xs: 360,
@@ -20,6 +20,10 @@ const PageDialog = ({
   action,
   title = "Details",
   onClose,
+  onSave,
+  useForm,
+  isSaving = false,
+  saveError = "",
   height = "96%",
   marginTop = "20px",
   marginRight = "20px",
@@ -28,6 +32,9 @@ const PageDialog = ({
   if (typeof Component !== "function") {
     return null;
   }
+  const { isSavable } = useFormFields({
+    useForm,
+  });
 
   const isSaveAction = action === "create" || action === "get";
 
@@ -100,7 +107,6 @@ const PageDialog = ({
         </IconButton>
       </Box>
 
-      {/* Content */}
       <Box
         sx={{
           flex: 1,
@@ -122,11 +128,9 @@ const PageDialog = ({
         <Component {...componentProps} />
       </Box>
 
-      {/* Footer */}
       <Box
         sx={{
           display: "flex",
-          justifyContent: "flex-end",
           gap: 1.5,
           px: 2.5,
           py: 2,
@@ -136,7 +140,6 @@ const PageDialog = ({
           backgroundColor: "#FFFFFF",
         }}
       >
-        {/* Cancel / Close */}
         <ButtonComponent
           key="dialog___closebtn"
           variant={isSaveAction ? "secondary" : "primary"}
@@ -146,7 +149,6 @@ const PageDialog = ({
           {isSaveAction ? "Cancel" : "Close"}
         </ButtonComponent>
 
-        {/* Save */}
         {isSaveAction && (
           <ButtonComponent
             key="dialog___savebtn"
@@ -154,8 +156,13 @@ const PageDialog = ({
             type="submit"
             fullWidth={false}
             onClick={onClose}
+            disabled={!isSavable || isSaving}
           >
-            {action === "create" ? "Add Transaction" : "Save Changes"}
+            {isSaving
+              ? "Saving..."
+              : action === "create"
+                ? "Add Transaction"
+                : "Save Changes"}
           </ButtonComponent>
         )}
       </Box>

@@ -7,12 +7,15 @@ import { Checkbox as MuiCheckbox, FormControlLabel } from "@mui/material";
 const Checkbox = ({
   id,
   label,
-  checked = false,
+  checked: checkedProp,
+  value,
   onChange,
   disabled = false,
   required = false,
   ...props
 }) => {
+  const checked = value === undefined ? Boolean(checkedProp) : Boolean(value);
+
   return (
     <FormControlLabel
       control={
