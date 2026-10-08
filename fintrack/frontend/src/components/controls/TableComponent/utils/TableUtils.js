@@ -17,13 +17,20 @@ import {
 
 export const buildColumns = (columns = []) => {
   return [...columns]
-    .sort((a, b) => a.ORDER - b.ORDER)
-    .map((column) => ({
-      field: column.COL_NAME,
-      headerName: column.COL_NAME,
-      flex: 1,
-      minWidth: 150,
-    }));
+    .sort(
+      (a, b) =>
+        (a.order ?? a.ORDER ?? 0) - (b.order ?? b.ORDER ?? 0),
+    )
+    .map((column) => {
+      const fieldName = column.col_name ?? column.COL_NAME ?? "";
+
+      return {
+        field: fieldName,
+        headerName: fieldName,
+        flex: 1,
+        minWidth: 150,
+      };
+    });
 };
 
 export const formatRows = (records = [], columns = []) => {
@@ -32,8 +39,12 @@ export const formatRows = (records = [], columns = []) => {
       id: record.id,
     };
 
-    columns.forEach(({ COL_NAME, ENTITYFIELD_NAME }) => {
-      row[COL_NAME] = record?.[ENTITYFIELD_NAME] ?? "";
+    columns.forEach((column) => {
+      const fieldName = column.col_name ?? column.COL_NAME ?? "";
+      const entityFieldName =
+        column.entityfield_name ?? column.ENTITYFIELD_NAME ?? "";
+
+      row[fieldName] = record?.[entityFieldName] ?? "";
     });
 
     return row;

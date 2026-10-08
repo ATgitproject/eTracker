@@ -7,10 +7,13 @@ const useTableActions = ({ showPageComponent, selectedRows = [] }) => {
       return;
     }
 
+    const panelType = toolbar.panel_type ?? toolbar.PANEL_TYPE ?? "dialog";
+    const width = toolbar.width ?? toolbar.WIDTH ?? "md";
+
     showPageComponent({
-      componentPath: toolbar.COMPONENT_PATH,
-      panelType: toolbar.PANEL_TYPE || "dialog",
-      width: toolbar.WIDTH || "md",
+      componentPath: toolbar.component_path ?? toolbar.COMPONENT_PATH,
+      panelType,
+      width,
       toolbar,
       selectedRows,
     });

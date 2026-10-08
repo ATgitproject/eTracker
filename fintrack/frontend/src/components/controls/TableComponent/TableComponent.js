@@ -17,22 +17,27 @@ import useTableActions from "./hooks/useTableActions";
 import useTableToolbars from "./hooks/useTableToolbars";
 
 const TableComponent = ({
-  ENTITYNAME,
-  COLUMNS = [],
-  TOOLBARS = [],
+  entityName: entityNameProp,
+  entityname,
+  columns: columnsProp = [],
+  toolbars: toolbarsProp = [],
   showPageComponent,
   onPageToolbarChange,
 }) => {
+  const entityName = entityNameProp ?? entityname;
+  const columns = columnsProp.length ? columnsProp : [];
+  const toolbars = toolbarsProp.length ? toolbarsProp : [];
+
   const { rowSelectionModel, setRowSelectionModel, selectedRows } =
     useTableSelection();
-  const columns = useMemo(() => buildColumns(COLUMNS), [COLUMNS]);
+  const formattedColumns = useMemo(() => buildColumns(columns), [columns]);
   const { rows = [] } = useTableData({
-    entityName: ENTITYNAME,
-    columns: COLUMNS,
+    entityName,
+    columns,
   });
 
   const { pageToolbars, gridToolbars, hasSelectionToolbar } = useTableToolbars(
-    TOOLBARS,
+    toolbars,
     selectedRows,
   );
 
@@ -46,16 +51,17 @@ const TableComponent = ({
   }, [pageToolbars, onPageToolbarChange]);
 
   const renderToolbar = (toolbar) => {
-    const Icon = TOOLBAR_ICONS[toolbar.TOOLBAR_ACTION];
+    const action = toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION;
+    const Icon = TOOLBAR_ICONS[action];
 
     return (
       <Button
-        key={toolbar.TOOLBAR_ID}
+        key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID}
         variant="contained"
         startIcon={Icon ? <Icon /> : null}
         onClick={() => handleToolbarClick(toolbar)}
       >
-        {toolbar.TOOLBAR_NAME}
+        {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
       </Button>
     );
   };
@@ -82,7 +88,7 @@ const TableComponent = ({
 
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={formattedColumns}
         checkboxSelection={hasSelectionToolbar}
         autoHeight
         disableRowSelectionOnClick

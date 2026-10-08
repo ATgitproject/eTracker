@@ -18,11 +18,12 @@ const PageToolbar = ({ toolbars = [], selectedRows = [], onToolbarAction }) => {
       }}
     >
       {toolbars.map((toolbar) => {
-        const Icon = TOOLBAR_ICONS[toolbar.TOOLBAR_ACTION];
+        const action = toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION;
+        const Icon = TOOLBAR_ICONS[action];
 
         return (
           <Button
-            key={toolbar.TOOLBAR_ID}
+            key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID}
             variant="contained"
             startIcon={Icon ? <Icon /> : null}
             onClick={() =>
@@ -32,7 +33,7 @@ const PageToolbar = ({ toolbars = [], selectedRows = [], onToolbarAction }) => {
               })
             }
           >
-            {toolbar.TOOLBAR_NAME}
+            {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
           </Button>
         );
       })}

@@ -44,7 +44,9 @@ const PageController = ({ page }) => {
           return;
         }
         const row = selectedRows?.[0] || null;
-        const action = getPageAction(toolbar?.TOOLBAR_ACTION);
+        const action = getPageAction(
+          toolbar?.toolbar_action ?? toolbar?.TOOLBAR_ACTION,
+        );
 
         const source = {
           action,
@@ -60,7 +62,11 @@ const PageController = ({ page }) => {
           panelType,
           width,
           action,
-          title: toolbar?.TOOLBAR_TITLE || toolbar?.TOOLBAR_NAME,
+          title:
+            toolbar?.toolbar_title ||
+            toolbar?.toolbar_name ||
+            toolbar?.TOOLBAR_TITLE ||
+            toolbar?.TOOLBAR_NAME,
           props: {
             ...props,
             toolbar,

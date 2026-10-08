@@ -7,64 +7,64 @@
       "type": "tableComponent",
       "width": 12,
       "props": {
-        "PAGETITLE": "Add Transaction",
-        "ENTITYNAME": "transactions",
-        "COLUMNS": [
+        "pagetitle": "Add Transaction",
+        "entityname": "transactions",
+        "columns": [
           {
-            "COL_ID": "description",
-            "ENTITYFIELD_NAME": "description",
-            "COL_NAME": "Description",
-            "ORDER": 1
+            "col_id": "description",
+            "entityfield_name": "description",
+            "col_name": "Description",
+            "order": 1
           },
           {
-            "COL_ID": "category",
-            "ENTITYFIELD_NAME": "category",
-            "COL_NAME": "Category",
-            "ORDER": 2
+            "col_id": "category",
+            "entityfield_name": "category",
+            "col_name": "Category",
+            "order": 2
           },
           {
-            "COL_ID": "date",
-            "ENTITYFIELD_NAME": "date",
-            "COL_NAME": "Date",
-            "ORDER": 3
+            "col_id": "date",
+            "entityfield_name": "date",
+            "col_name": "Date",
+            "order": 3
           },
           {
-            "COL_ID": "amount",
-            "ENTITYFIELD_NAME": "amount",
-            "COL_NAME": "Amount",
-            "ORDER": 4
+            "col_id": "amount",
+            "entityfield_name": "amount",
+            "col_name": "Amount",
+            "order": 4
           },
           {
-            "COL_ID": "payment_method",
-            "ENTITYFIELD_NAME": "payment_method",
-            "COL_NAME": "Payment Method",
-            "ORDER": 5
+            "col_id": "payment_method",
+            "entityfield_name": "payment_method",
+            "col_name": "Payment Method",
+            "order": 5
           }
         ],
-        "TOOLBARS": [
+        "toolbars": [
           {
-            "TOOLBAR_ID": "transaction_add",
-            "ISBUTTON": true,
-            "TOOLBAR_NAME": "Add Transaction",
-            "TOOLBAR_ACTION": "add",
-            "ORDER": 1,
-            "COMPONENT_PATH": "Transactions/addTransaction/addTransactionsRenderer"
+            "toolbar_id": "transaction_add",
+            "isbutton": true,
+            "toolbar_name": "Add Transaction",
+            "toolbar_action": "add",
+            "order": 1,
+            "component_path": "Transactions/addTransaction/addTransactionsRenderer"
           },
           {
-            "TOOLBAR_ID": "transaction_edit",
-            "ISBUTTON": false,
-            "TOOLBAR_NAME": "Edit Transaction",
-            "TOOLBAR_ACTION": "edit",
-            "ORDER": 2,
-            "COMPONENT_PATH": ""
+            "toolbar_id": "transaction_edit",
+            "isbutton": false,
+            "toolbar_name": "Edit Transaction",
+            "toolbar_action": "edit",
+            "order": 2,
+            "component_path": ""
           },
           {
-            "TOOLBAR_ID": "transaction_view",
-            "ISBUTTON": false,
-            "TOOLBAR_NAME": "View Transaction",
-            "TOOLBAR_ACTION": "view",
-            "ORDER": 3,
-            "COMPONENT_PATH": ""
+            "toolbar_id": "transaction_view",
+            "isbutton": false,
+            "toolbar_name": "View Transaction",
+            "toolbar_action": "view",
+            "order": 3,
+            "component_path": ""
           }
         ]
       }

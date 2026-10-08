@@ -53,24 +53,27 @@ const PageRenderer = ({ page, showPageComponent }) => {
   };
 
   const renderPageToolbar = (toolbar) => {
-    const Icon = TOOLBAR_ICONS[toolbar.TOOLBAR_ACTION];
+    const action = toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION;
+    const Icon = TOOLBAR_ICONS[action];
+    const panelType = toolbar.panel_type ?? toolbar.PANEL_TYPE ?? "dialog";
+    const width = toolbar.width ?? toolbar.WIDTH ?? "md";
 
     return (
       <Button
-        key={toolbar.TOOLBAR_ID}
+        key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID}
         variant="contained"
         startIcon={Icon ? <Icon /> : null}
         onClick={() =>
           showPageComponent?.({
-            componentPath: toolbar.COMPONENT_PATH,
-            panelType: toolbar.PANEL_TYPE || "dialog",
-            width: toolbar.WIDTH || "md",
+            componentPath: toolbar.component_path ?? toolbar.COMPONENT_PATH,
+            panelType,
+            width,
             toolbar,
             selectedRows: [],
           })
         }
       >
-        {toolbar.TOOLBAR_NAME}
+        {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
       </Button>
     );
   };
