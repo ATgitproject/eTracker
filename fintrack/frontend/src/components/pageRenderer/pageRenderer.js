@@ -143,22 +143,27 @@ const PageRenderer = ({
               });
             };
 
-            const inputValueProps =
-              field_type === "checkbox" || type === "checkbox"
-                ? { checked: Boolean(field.value) }
-                : { value: field.value ?? "" };
-
             return (
-              <Component
-                {...componentProps}
-                name={fieldName}
-                {...inputValueProps}
-                onChange={onChange}
-                onBlur={field.onBlur}
-                error={Boolean(fieldState.error)}
-                helperText={fieldState.error?.message}
-                field={field}
-              />
+              <Box>
+                <Component
+                  {...componentProps}
+                  name={fieldName}
+                  value={field.value || ""}
+                  onChange={onChange}
+                  onBlur={field.onBlur}
+                  field={field}
+                />
+                {Boolean(fieldState.error) ? (
+                  <div
+                    style={{ position: "relative" }}
+                    className="error-message-container"
+                  >
+                    <div className="error-message">
+                      {fieldState.error?.message || null}
+                    </div>
+                  </div>
+                ) : null}
+              </Box>
             );
           }}
         />

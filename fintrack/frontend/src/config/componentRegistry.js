@@ -10,6 +10,7 @@ import LineChartComponent from "@/components/controls/LineChartComponent/LineCha
 import ButtonComponent from "@/components/controls/Button/ButtonComponent";
 import ToggleComponent from "@/components/controls/toggle/toggleComponent";
 import SegmentButtonComponent from "@/components/controls/SegmentButtonComponent/SegmentButtonComponent";
+import DatePickerComponent from "@/components/controls/datePickerComponent";
 
 const componentRegistry = {
   textfield: TextField,
@@ -24,6 +25,7 @@ const componentRegistry = {
   barChartComponent: BarChartComponent,
   lineChartComponent: LineChartComponent,
   segmentButtonComponent: SegmentButtonComponent,
+  datePickerComponent: DatePickerComponent,
 };
 
 export default componentRegistry;

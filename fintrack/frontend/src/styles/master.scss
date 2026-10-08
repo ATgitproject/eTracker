@@ -197,3 +197,27 @@ body {
     }
   }
 }
+
+.asterisk::after {
+  position: absolute;
+  content: " *";
+  color: #a4262c;
+  padding-right: 12px;
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+.error-message-container {
+  top: 100%;
+  width: 100%;
+  margin: auto;
+  word-break: normal;
+  .error-message {
+    position: unset;
+    color: red;
+  }
+}
+
+.MuiPickersTextField-root {
+  width: 100% !important;
+}

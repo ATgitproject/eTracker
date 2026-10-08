@@ -14,7 +14,7 @@ const SegmentButtonComponent = ({
   return (
     <Segmented
       {...props}
-      //   value={value}
+      value={value}
       options={options}
       disabled={disabled}
       onChange={onChange}

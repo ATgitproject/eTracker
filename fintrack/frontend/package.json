@@ -10,6 +10,7 @@
     "@mui/material-nextjs": "^9.4.0",
     "@mui/x-charts": "9.15.0",
     "@mui/x-data-grid": "^9.15.0",
+    "@mui/x-date-pickers-pro": "^9.15.0",
     "@reduxjs/toolkit": "^2.13.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.1",

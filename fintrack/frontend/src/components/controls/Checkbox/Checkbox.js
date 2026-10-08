@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-
+import { InputLabel } from "@mui/material";
 import { Checkbox as MuiCheckbox, FormControlLabel } from "@mui/material";
 
 const Checkbox = ({
@@ -14,22 +14,23 @@ const Checkbox = ({
   required = false,
   ...props
 }) => {
-  const checked = value === undefined ? Boolean(checkedProp) : Boolean(value);
-
   return (
-    <FormControlLabel
-      control={
-        <MuiCheckbox
-          id={id}
-          checked={checked}
-          onChange={onChange}
-          disabled={disabled}
-          required={required}
-          {...props}
-        />
-      }
-      label={label}
-    />
+    <div>
+      <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
+      <FormControlLabel
+        control={
+          <MuiCheckbox
+            id={id}
+            checked={value}
+            onChange={onChange}
+            disabled={disabled}
+            required={required}
+            {...props}
+          />
+        }
+        label={label}
+      />
+    </div>
   );
 };
 
