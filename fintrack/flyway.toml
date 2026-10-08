@@ -1,0 +1,7 @@
+[flyway]
+locations = ["filesystem:./database/migration"]
+
+[environments.default]
+url = "jdbc:postgresql://localhost:5432/expensetrack"
+user = "postgres"
+password = "123"
