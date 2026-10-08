@@ -1,4 +1,3 @@
-const objectRegistry = require("../config/objectRegistry");
 const { buildQuery } = require("../utils/queryBuilder");
 const genericDataRepository = require("../repository/genericDataRepository");
 
