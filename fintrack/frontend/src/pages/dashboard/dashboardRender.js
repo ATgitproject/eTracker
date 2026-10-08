@@ -1,14 +1,12 @@
 "use client";
 
-import PageRenderer from "../../components/pageRenderer/pageRenderer";
+import PageController from "@/components/pageController/PageController";
 import dashboardConfig from "./dashboardRender.json";
-
-import "./dashboardRender.scss";
 
 const DashboardRenderer = () => {
   return (
     <div className="dashboard-renderer">
-      <PageRenderer page={dashboardConfig} />
+      <PageController page={dashboardConfig} />
     </div>
   );
 };

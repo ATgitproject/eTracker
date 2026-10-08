@@ -42,7 +42,7 @@ const TableComponent = ({
   });
 
   useEffect(() => {
-    onPageToolbarChange?.(pageToolbars);
+    pageToolbars?.length && onPageToolbarChange?.(pageToolbars);
   }, [pageToolbars, onPageToolbarChange]);
 
   const renderToolbar = (toolbar) => {
