@@ -16,13 +16,13 @@ const PageController = ({ page }) => {
 
   const onClose = useCallback((entity_name) => {
     dispatch(setUpdateFormData({}));
-    useForm.reset({});
+    formMethods?.reset({});
     setPanel(null);
   }, []);
 
   const onSave = useCallback((entity_name) => {
     dispatch(setUpdateFormData({}));
-    useForm.reset({});
+    formMethods?.reset({});
     setPanel(null);
   }, []);
 

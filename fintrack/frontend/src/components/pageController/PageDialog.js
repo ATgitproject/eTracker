@@ -153,7 +153,7 @@ const PageDialog = ({
           <ButtonComponent
             key="dialog___savebtn"
             variant="primary"
-            type="submit"
+            type="button"
             fullWidth={false}
             onClick={onClose}
             disabled={!isSavable || isSaving}
