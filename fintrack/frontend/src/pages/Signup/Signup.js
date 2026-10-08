@@ -5,7 +5,7 @@ import { Eye, Mail, Lock, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import TextField from "@/components/controls/TextField/TextField";
-import Button from "../../components/controls/Button/Button";
+import Button from "../../components/controls/Button/ButtonComponent";
 import Checkbox from "../../components/controls/Checkbox/Checkbox";
 import StepsComponent from "../../components/controls/StepsComponent/StepsComponent";
 import { saveData } from "../../services/dataService";

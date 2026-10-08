@@ -5,7 +5,7 @@ import { Eye, Mail, Lock } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { setCookie } from "../../utils/genericUtils";
 import TextField from "../../components/controls/TextField/TextField";
-import Button from "../../components/controls/Button/Button";
+import Button from "../../components/controls/Button/ButtonComponent";
 import Checkbox from "../../components/controls/Checkbox/Checkbox";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../services/authService";

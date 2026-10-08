@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
 import componentRegistry from "../../config/componentRegistry";
 import { TOOLBAR_ICONS } from "../controls/TableComponent/utils/TableUtils";
-
+import ButtonComponent from "../controls/Button/ButtonComponent";
 const PageRenderer = ({ page, showPageComponent }) => {
   const { title, description, components = [] } = page;
   const [pageToolbars, setPageToolbars] = useState([]);
@@ -55,13 +55,16 @@ const PageRenderer = ({ page, showPageComponent }) => {
   const renderPageToolbar = (toolbar) => {
     const action = toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION;
     const Icon = TOOLBAR_ICONS[action];
+
     const panelType = toolbar.panel_type ?? toolbar.PANEL_TYPE ?? "dialog";
+
     const width = toolbar.width ?? toolbar.WIDTH ?? "md";
 
     return (
-      <Button
+      <ButtonComponent
         key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID}
-        variant="contained"
+        variant="primary"
+        fullWidth={false}
         startIcon={Icon ? <Icon /> : null}
         onClick={() =>
           showPageComponent?.({
@@ -74,7 +77,7 @@ const PageRenderer = ({ page, showPageComponent }) => {
         }
       >
         {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
-      </Button>
+      </ButtonComponent>
     );
   };
 

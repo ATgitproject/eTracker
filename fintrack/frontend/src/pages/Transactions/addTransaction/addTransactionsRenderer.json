@@ -33,6 +33,16 @@
                 "required": true
               }
             }
+          },
+          {
+            "type": "toggleComponent",
+            "id": "mark_recurring",
+            "props": {
+              "label": "Mark as recurring",
+              "icon": "sync",
+              "checked": false,
+              "name": "isRecurring"
+            }
           }
         ]
       }

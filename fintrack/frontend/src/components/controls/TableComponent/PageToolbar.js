@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { TOOLBAR_ICONS } from "./utils/TableUtils";
+import ButtonComponent from "../Button/ButtonComponent";
 
 const PageToolbar = ({ toolbars = [], selectedRows = [], onToolbarAction }) => {
   if (!toolbars.length) {
@@ -22,9 +23,10 @@ const PageToolbar = ({ toolbars = [], selectedRows = [], onToolbarAction }) => {
         const Icon = TOOLBAR_ICONS[action];
 
         return (
-          <Button
-            key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID}
+          <ButtonComponent
+            key={toolbar.toolbar_id}
             variant="contained"
+            fullWidth={false}
             startIcon={Icon ? <Icon /> : null}
             onClick={() =>
               onToolbarAction?.({
@@ -33,8 +35,8 @@ const PageToolbar = ({ toolbars = [], selectedRows = [], onToolbarAction }) => {
               })
             }
           >
-            {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
-          </Button>
+            {toolbar.toolbar_name}
+          </ButtonComponent>
         );
       })}
     </Box>

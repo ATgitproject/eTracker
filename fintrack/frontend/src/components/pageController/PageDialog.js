@@ -1,8 +1,9 @@
 "use client";
 
-import { Drawer, Box, Typography, IconButton, Button } from "@mui/material";
-
+import { Drawer, Box, Typography, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+
+import ButtonComponent from "../controls/Button/ButtonComponent";
 
 const DRAWER_WIDTHS = {
   xs: 360,
@@ -65,6 +66,7 @@ const PageDialog = ({
         },
       }}
     >
+      {/* Header */}
       <Box
         sx={{
           minHeight: 64,
@@ -98,6 +100,7 @@ const PageDialog = ({
         </IconButton>
       </Box>
 
+      {/* Content */}
       <Box
         sx={{
           flex: 1,
@@ -105,6 +108,7 @@ const PageDialog = ({
           overflowY: "auto",
           px: 2.5,
           py: 2.5,
+
           "&::-webkit-scrollbar": {
             width: 6,
           },
@@ -122,6 +126,7 @@ const PageDialog = ({
       <Box
         sx={{
           display: "flex",
+          justifyContent: "flex-end",
           gap: 1.5,
           px: 2.5,
           py: 2,
@@ -131,35 +136,27 @@ const PageDialog = ({
           backgroundColor: "#FFFFFF",
         }}
       >
-        {" "}
-        <Button
-          variant={isSaveAction ? "outlined" : "contained"}
+        {/* Cancel / Close */}
+        <ButtonComponent
+          key="dialog___closebtn"
+          variant={isSaveAction ? "secondary" : "primary"}
+          fullWidth={false}
           onClick={onClose}
-          sx={{
-            flex: isSaveAction ? 0.4 : 1,
-            minHeight: 44,
-            borderRadius: "8px",
-            textTransform: "none",
-            fontWeight: 600,
-          }}
         >
           {isSaveAction ? "Cancel" : "Close"}
-        </Button>
+        </ButtonComponent>
+
+        {/* Save */}
         {isSaveAction && (
-          <Button
-            variant="contained"
+          <ButtonComponent
+            key="dialog___savebtn"
+            variant="primary"
             type="submit"
-            form="transaction-form"
-            sx={{
-              flex: 1,
-              minHeight: 44,
-              borderRadius: "8px",
-              textTransform: "none",
-              fontWeight: 600,
-            }}
+            fullWidth={false}
+            onClick={onClose}
           >
             {action === "create" ? "Add Transaction" : "Save Changes"}
-          </Button>
+          </ButtonComponent>
         )}
       </Box>
     </Drawer>

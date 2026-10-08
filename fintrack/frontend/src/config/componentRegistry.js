@@ -1,5 +1,4 @@
 import TextField from "../components/controls/TextField/TextField";
-import Button from "../components/controls/Button/Button";
 import Checkbox from "../components/controls/Checkbox/Checkbox";
 import StepsComponent from "../components/controls/StepsComponent/StepsComponent";
 import LayoutContainer from "../components/controls/LayoutContainer/LayoutContainer";
@@ -8,10 +7,13 @@ import TilesComponent from "../components/controls/TilesComponent/TilesComponent
 import PieChartComponent from "../components/controls/PieChartComponent/PieChartComponent";
 import BarChartComponent from "../components/controls/BarChartComponent/BarChartComponent";
 import LineChartComponent from "../components/controls/LineChartComponent/LineChartComponent";
+import ButtonComponent from "@/components/controls/Button/ButtonComponent";
+import ToggleComponent from "@/components/controls/toggle/toggleComponent";
 
 const componentRegistry = {
   textfield: TextField,
-  button: Button,
+  buttonComponent: ButtonComponent,
+  toggleComponent: ToggleComponent,
   checkbox: Checkbox,
   stepsComponent: StepsComponent,
   layoutContainer: LayoutContainer,
