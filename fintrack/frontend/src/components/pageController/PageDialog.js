@@ -56,21 +56,21 @@ const PageDialog = ({
             backdropFilter: "blur(3px)",
           },
         },
-      }}
-      PaperProps={{
-        sx: {
-          position: "fixed",
-          top: marginTop,
-          right: marginRight,
-          width: `${drawerWidth}px`,
-          maxWidth: "calc(100vw - 32px)",
-          height,
-          display: "flex",
-          flexDirection: "column",
-          borderRadius,
-          overflow: "hidden",
-          boxShadow: "0 12px 40px rgba(15, 23, 42, 0.22)",
-          margin: 0,
+        paper: {
+          sx: {
+            width: `${drawerWidth}px !important`,
+            maxWidth: "calc(100vw - 40px)",
+            height: height,
+            position: "fixed",
+            top: marginTop,
+            right: marginRight,
+            margin: 0,
+            borderRadius: borderRadius,
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            boxShadow: "0 12px 40px rgba(15, 23, 42, 0.22)",
+          },
         },
       }}
     >
