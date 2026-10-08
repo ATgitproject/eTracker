@@ -5,7 +5,7 @@
       "field_type": "segmentButtonComponent",
       "field_id": "transaction_type",
       "entitiy_field_name": "transaction_type",
-      "value": "expense",
+      "defaultValue": "expense",
       "options": [
         {
           "label": "Expense",
@@ -48,8 +48,7 @@
       "label": "Mark as recurring",
       "icon": "sync",
       "checked": false,
-      "name": "isRecurring",
-      "required": true
+      "name": "isRecurring"
     },
     {
       "field_type": "datePickerComponent",

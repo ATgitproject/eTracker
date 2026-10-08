@@ -148,12 +148,12 @@ const PageRenderer = ({
                 <Component
                   {...componentProps}
                   name={fieldName}
-                  value={field.value || ""}
+                  value={field?.value || ""}
                   onChange={onChange}
                   onBlur={field.onBlur}
                   field={field}
                 />
-                {Boolean(fieldState.error) ? (
+                {Boolean(fieldState.error) && field?.value === "" ? (
                   <div
                     style={{ position: "relative" }}
                     className="error-message-container"
