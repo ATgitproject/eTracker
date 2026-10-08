@@ -33,8 +33,18 @@
     },
     {
       "field_type": "textfield",
+      "field_id": "amount",
+      "entitiy_field_name": "amount",
+      "width": 12,
+      "label": "Amount",
+      "name": "amount",
+      "placeholder": "Enter Amount",
+      "required": true
+    },
+    {
+      "field_type": "textfield",
       "field_id": "category",
-      "entitiy_field_name": "category",
+      "entitiy_field_name": "category_id",
       "width": 12,
       "label": "Category",
       "name": "category",
@@ -42,9 +52,19 @@
       "required": true
     },
     {
+      "field_type": "textfield",
+      "field_id": "payment_method",
+      "entitiy_field_name": "payment_method",
+      "width": 12,
+      "label": "Payment Method",
+      "name": "payment_method",
+      "placeholder": "Enter Payment Method",
+      "required": true
+    },
+    {
       "field_type": "toggleComponent",
       "field_id": "mark_recurring",
-      "entitiy_field_name": "mark_recurring",
+      "entitiy_field_name": "is_recurring",
       "label": "Mark as recurring",
       "icon": "sync",
       "checked": false,

@@ -12,6 +12,14 @@ import { setUpdateFormData } from "@/redux/slices/formDataSlice";
 import { debounce } from "lodash";
 import getRules from "../shared/validation/formValidation";
 
+const FORM_FIELD_TYPES = new Set([
+  "textfield",
+  "checkbox",
+  "toggleComponent",
+  "segmentButtonComponent",
+  "datePickerComponent",
+]);
+
 const PageRenderer = ({
   page,
   showPageComponent,
@@ -55,7 +63,8 @@ const PageRenderer = ({
       return null;
     }
 
-    const Component = componentRegistry?.[component.field_type];
+    const componentType = component.field_type || component.type;
+    const Component = componentRegistry?.[componentType];
 
     if (!Component) {
       return null;
@@ -74,6 +83,10 @@ const PageRenderer = ({
     const fieldName = entitiy_field_name || field_id || id;
     const componentKey = field_id || id || entitiy_field_name;
     const rules = getRules(component);
+    const isFormField =
+      FORM_FIELD_TYPES.has(componentType) &&
+      typeof fieldName === "string" &&
+      fieldName.length > 0;
 
     const componentProps = {
       ...component,
@@ -101,72 +114,73 @@ const PageRenderer = ({
           lg: width || 12,
         }}
       >
-        <Controller
-          name={fieldName}
-          control={control}
-          rules={rules}
-          defaultValue={defaultValue ?? ""}
-          render={({ field, fieldState }) => {
-            const onChange = (event) => {
-              const newValue = event?.target
-                ? event.target.type === "checkbox"
-                  ? event.target.checked
-                  : event.target.value
-                : event;
-              field.onChange(newValue);
-              ["Textfieldcomponent", "TextareaComponent"].includes(field_type)
-                ? debouncedHandleStoredUpdateValue({
-                    entitiy_field_name,
-                    newValue,
-                  })
-                : handleStoredUpdateValue({
-                    entitiy_field_name,
-                    newValue,
-                  });
+        {isFormField ? (
+          <Controller
+            name={fieldName}
+            control={control}
+            rules={rules}
+            defaultValue={defaultValue ?? ""}
+            render={({ field, fieldState }) => {
+              const onChange = (event) => {
+                const newValue = event?.target
+                  ? event.target.type === "checkbox"
+                    ? event.target.checked
+                    : event.target.value
+                  : event;
+                field.onChange(newValue);
+                ["Textfieldcomponent", "TextareaComponent"].includes(field_type)
+                  ? debouncedHandleStoredUpdateValue({
+                      entitiy_field_name,
+                      newValue,
+                    })
+                  : handleStoredUpdateValue({
+                      entitiy_field_name,
+                      newValue,
+                    });
 
-              if (overWritesCallBack?.onChange) {
-                overWritesCallBack.onChange(field.onChange, getValues);
-              } else if (overWritesCallBack?.beforeOnChange) {
-                overWritesCallBack.beforeOnChange(
-                  event,
-                  field.onChange,
-                  overWritesCallBack?.beforeOnChangeHandler,
-                );
-              }
+                if (overWritesCallBack?.onChange) {
+                  overWritesCallBack.onChange(field.onChange, getValues);
+                } else if (overWritesCallBack?.beforeOnChange) {
+                  overWritesCallBack.beforeOnChange(
+                    event,
+                    field.onChange,
+                    overWritesCallBack?.beforeOnChangeHandler,
+                  );
+                }
 
-              sourceOnChange?.({
-                e: event,
-                controlType: field_type,
-                entitiy_field_name: fieldName,
-                entity_name,
-                useForm: formMethods,
-              });
-            };
+                sourceOnChange?.({
+                  e: event,
+                  controlType: field_type,
+                  entitiy_field_name: fieldName,
+                  entity_name,
+                  useForm: formMethods,
+                });
+              };
 
-            return (
-              <Box>
-                <Component
-                  {...componentProps}
-                  name={fieldName}
-                  value={field?.value || ""}
-                  onChange={onChange}
-                  onBlur={field.onBlur}
-                  field={field}
-                />
-                {Boolean(fieldState.error) && field?.value === "" ? (
-                  <div
-                    style={{ position: "relative" }}
-                    className="error-message-container"
-                  >
-                    <div className="error-message">
-                      {fieldState.error?.message || null}
+              return (
+                <Box>
+                  <Component
+                    {...componentProps}
+                    name={fieldName}
+                    value={field?.value ?? ""}
+                    onChange={onChange}
+                    onBlur={field.onBlur}
+                    field={field}
+                  />
+                  {fieldState.error && (
+                    <div className="error-message-container">
+                      <div className="error-message">
+                        {fieldState.error.message}
+                      </div>
                     </div>
-                  </div>
-                ) : null}
-              </Box>
-            );
-          }}
-        />
+                  )}
+                </Box>
+              );
+            }}
+          />
+        ) : (
+          <Component {...componentProps} />
+        )}
       </Grid>
     );
   };

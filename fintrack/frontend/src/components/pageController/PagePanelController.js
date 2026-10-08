@@ -12,6 +12,8 @@ const PagePanelController = ({
   onClose,
   onSave,
   useForm,
+  isSaving,
+  saveError,
 }) => {
   if (typeof component !== "function") {
     console.error("PagePanelController: invalid component", component);
@@ -30,6 +32,8 @@ const PagePanelController = ({
         onClose={onClose}
         onSave={onSave}
         useForm={useForm}
+        isSaving={isSaving}
+        saveError={saveError}
       />
     );
   }

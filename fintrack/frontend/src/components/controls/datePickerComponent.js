@@ -40,10 +40,11 @@ export default function DatePickerComponent(props) {
     <>
       <div>
         <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
-        <LocalizationProvider dateAdapter={AdapterDayjs} sc>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             name={name}
             id={id}
+            value={selectedDate}
             onChange={handleDateChange}
             disabled={disabled}
             className={className}

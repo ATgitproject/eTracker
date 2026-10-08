@@ -11,10 +11,8 @@ const setData = (state, action) => {
   let entity = action?.payload?.entity_name;
   const { operation, document } = action?.payload || {};
 
-  if (operation === "deleteObj") {
-    delete data.formData[entity];
-  } else if (operation === "insert") {
-    data.formData = { ...data.formData, ...document };
+  if (entity) {
+    data.formData[entity] = action?.payload?.[entity];
   } else {
     data.formData = action?.payload;
   }

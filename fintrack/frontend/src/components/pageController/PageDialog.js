@@ -35,6 +35,7 @@ const PageDialog = ({
   const { isSavable } = useFormFields({
     useForm,
   });
+  const submitForm = useForm?.handleSubmit(onSave) ?? onSave;
 
   const isSaveAction = action === "create" || action === "get";
 
@@ -127,6 +128,11 @@ const PageDialog = ({
       >
         <Component {...componentProps} />
       </Box>
+      {saveError && (
+        <Alert severity="error" sx={{ mx: 2.5, mb: 1 }}>
+          {saveError}
+        </Alert>
+      )}
 
       <Box
         sx={{
@@ -155,7 +161,7 @@ const PageDialog = ({
             variant="primary"
             type="button"
             fullWidth={false}
-            onClick={onClose}
+            onClick={submitForm}
             disabled={!isSavable || isSaving}
           >
             {isSaving

@@ -5,26 +5,62 @@ import { FormProvider, useForm } from "react-hook-form";
 import PagePanelController from "./PagePanelController";
 import dynamicComponentImport from "../dynamicRenderController/dynamicComponentImport";
 import PageRenderer from "../pageRenderer/pageRenderer";
+import useFormApi from "../shared/hooks/useFormApi";
 import { getPageAction } from "../../utils/genericUtils";
-import { setUpdateFormData } from "@/redux/slices/formDataSlice";
+import { setFormData, setUpdateFormData } from "@/redux/slices/formDataSlice";
 import { useDispatch } from "react-redux";
+import useFormHook from "../shared/hooks/useFormHook";
 
 const PageController = ({ page }) => {
   const dispatch = useDispatch();
   const [panel, setPanel] = useState(null);
   const formMethods = useForm({ mode: "all" });
+  const entityName = panel?.props?.toolbar?.entity_name || page?.entity_name;
+  const recordId = panel?.props?.row?.id ?? panel?.props?.row;
+  const { initData } = useFormHook();
+  const { getData, saveData, isLoading, error } = useFormApi({
+    entityName,
+    action: panel?.action,
+    recordId,
+    formMethods,
+  });
 
-  const onClose = useCallback((entity_name) => {
-    dispatch(setUpdateFormData({}));
+  const onClose = useCallback(() => {
+    dispatch(setUpdateFormData({ [entityName]: {} }));
+    dispatch(setFormData({ [entityName]: {} }));
     formMethods?.reset({});
     setPanel(null);
-  }, []);
+  }, [dispatch, formMethods]);
 
-  const onSave = useCallback((entity_name) => {
-    dispatch(setUpdateFormData({}));
-    formMethods?.reset({});
-    setPanel(null);
-  }, []);
+  const onSave = useCallback(
+    async (formValues = {}) => {
+      const response = await saveData(formValues);
+      dispatch(setUpdateFormData({ [entityName]: {} }));
+      dispatch(
+        setFormData({ operation: "deleteObj", entity_name: entityName }),
+      );
+      setPanel(null);
+    },
+    [saveData],
+  );
+
+  useEffect(() => {
+    if (panel?.action === "get" && recordId != null) {
+      getData(recordId)
+        .then((response) => {
+          if (response?.length) {
+            initData(response?.[0]);
+            dispatch(
+              setFormData({
+                entity_name: entityName,
+                [entityName]: response?.[0],
+              }),
+            );
+          }
+        })
+        .catch(() => {});
+    }
+  }, [getData, panel?.action, recordId]);
 
   const showPageComponent = useCallback(
     async ({
@@ -40,6 +76,8 @@ const PageController = ({ page }) => {
         return;
       }
       try {
+        dispatch(setUpdateFormData({}));
+        formMethods.reset({});
         const Component = await dynamicComponentImport(componentPath);
 
         if (typeof Component !== "function") {
@@ -90,7 +128,7 @@ const PageController = ({ page }) => {
         console.error("showPageComponent failed:", componentPath, error);
       }
     },
-    [formMethods, onClose, onSave],
+    [dispatch, formMethods, onClose, onSave],
   );
 
   return (
@@ -112,6 +150,8 @@ const PageController = ({ page }) => {
           onClose={onClose}
           onSave={onSave}
           useForm={formMethods}
+          isSaving={isLoading}
+          saveError={error}
         />
       )}
     </FormProvider>

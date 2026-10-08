@@ -1,6 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const saveData = async ({ objName, fields }) => {
+export const saveData = async ({ objName, fields, id }) => {
   const accessToken = localStorage.getItem("accessToken");
 
   const response = await fetch(`${API_URL}/api/save`, {
@@ -13,6 +13,7 @@ export const saveData = async ({ objName, fields }) => {
     body: JSON.stringify({
       objName,
       fields,
+      ...(id != null ? { id } : {}),
     }),
   });
 
