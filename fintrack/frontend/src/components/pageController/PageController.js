@@ -9,7 +9,6 @@ import useFormApi from "../shared/hooks/useFormApi";
 import { getPageAction } from "../../utils/genericUtils";
 import { setFormData, setUpdateFormData } from "@/redux/slices/formDataSlice";
 import { useDispatch } from "react-redux";
-import useFormHook from "../shared/hooks/useFormHook";
 
 const PageController = ({ page }) => {
   const dispatch = useDispatch();
@@ -17,7 +16,6 @@ const PageController = ({ page }) => {
   const formMethods = useForm({ mode: "all" });
   const entityName = panel?.props?.toolbar?.entity_name || page?.entity_name;
   const recordId = panel?.props?.row?.id ?? panel?.props?.row;
-  const { initData } = useFormHook();
   const { getData, saveData, isLoading, error } = useFormApi({
     entityName,
     action: panel?.action,
@@ -46,19 +44,7 @@ const PageController = ({ page }) => {
 
   useEffect(() => {
     if (panel?.action === "get" && recordId != null) {
-      getData(recordId)
-        .then((response) => {
-          if (response?.length) {
-            initData(response?.[0]);
-            dispatch(
-              setFormData({
-                entity_name: entityName,
-                [entityName]: response?.[0],
-              }),
-            );
-          }
-        })
-        .catch(() => {});
+      getData(recordId).catch(() => {});
     }
   }, [getData, panel?.action, recordId]);
 

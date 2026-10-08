@@ -14,6 +14,8 @@ const Checkbox = ({
   required = false,
   ...props
 }) => {
+  const checked = value === undefined ? Boolean(checkedProp) : Boolean(value);
+
   return (
     <div>
       <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
@@ -21,7 +23,7 @@ const Checkbox = ({
         control={
           <MuiCheckbox
             id={id}
-            checked={value}
+            checked={checked}
             onChange={onChange}
             disabled={disabled}
             required={required}

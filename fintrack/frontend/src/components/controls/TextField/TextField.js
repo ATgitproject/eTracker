@@ -28,6 +28,7 @@ const TextField = ({
       <MuiTextField
         id={id}
         name={name}
+        value={value}
         placeholder={placeholder}
         type={type}
         onChange={onChange}

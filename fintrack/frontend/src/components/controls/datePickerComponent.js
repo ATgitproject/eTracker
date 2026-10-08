@@ -30,6 +30,10 @@ export default function DatePickerComponent(props) {
   const [selectedDate, setSelectedDate] = useState(value ? dayjs(value) : null);
 
   useEffect(() => {
+    setSelectedDate(value ? dayjs(value) : null);
+  }, [value]);
+
+  useEffect(() => {
     let newDate = dayjs();
     if (setDefCurrrentDate) {
       handleDateChange(newDate);

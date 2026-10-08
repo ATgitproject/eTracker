@@ -36,12 +36,23 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
           filterCondition: { field: "id", operator: "equal", value: id },
           recordCount: 1,
         });
-        const records = response?.data;
+        const record = Array.isArray(response?.data)
+          ? response.data[0]
+          : response?.data;
 
-        if (!records) {
+        if (!record) {
           throw new Error("The requested record was not found.");
         }
-        return records;
+
+        formMethods?.reset(record);
+        dispatch(
+          setFormData({
+            entity_name: entityName,
+            [entityName]: record,
+          }),
+        );
+        dispatch(setUpdateFormData({}));
+        return record;
       } catch (requestError) {
         setError(requestError.message || "Unable to load the record.");
         throw requestError;
