@@ -11,40 +11,36 @@
       "entityname": "categories",
       "columns": [
         {
-          "col_id": "nmae",
-          "entity_field_name": "name",
-          "col_name": "Name",
+          "col_id": "icon",
+          "entity_field_name": "icon",
+          "col_name": "Icon",
           "order": 1
+        },
+        {
+          "col_id": "category_name",
+          "entity_field_name": "name",
+          "col_name": "Category Name",
+          "order": 2
         },
         {
           "col_id": "category_type",
           "entity_field_name": "category_type",
-          "col_name": "Category",
-          "order": 2
-        },
-        {
-          "col_id": "icon",
-          "entity_field_name": "icon",
+          "col_name": "Type",
           "order": 3
         },
-        {
-          "col_id": "amount",
-          "entity_field_name": "amount",
-          "col_name": "Amount",
-          "order": 4
-        },
+
         {
           "col_id": "color",
           "entity_field_name": "color",
           "col_name": "Color",
-          "order": 5
+          "order": 4
         }
       ],
       "toolbars": [
         {
           "toolbar_id": "categories_add",
           "isbutton": true,
-          "toolbar_name": "Add categories",
+          "toolbar_name": "Add Categories",
           "toolbar_action": "add",
           "entity_name": "categories",
           "order": 1,

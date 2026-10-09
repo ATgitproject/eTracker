@@ -11,14 +11,11 @@
       "required": true
     },
     {
-      "field_type": "dropdownComponent",
-      "field_id": "category_type",
+      "field_type": "segmentButtonComponent",
+      "field_id": "type",
+      "label": "Type",
       "entitiy_field_name": "category_type",
-      "width": 12,
-      "label": "Category",
-      "name": "category",
-      "placeholder": "Enter category",
-      "required": true,
+      "defaultValue": "Expense",
       "listname": "categories"
     }
   ]

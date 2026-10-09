@@ -1,6 +1,8 @@
 const componentMap = {
   "Transactions/addTransaction/addTransactionsRenderer": () =>
     import("../../pages/Transactions/addTransaction/addTransactionsRenderer"),
+  "categories/addCategories/addCategories": () =>
+    import("../../pages/categories/addCategories/addCategories"),
 };
 
 const dynamicComponentImport = async (componentPath) => {
