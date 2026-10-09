@@ -1,0 +1,25 @@
+{
+  "entity_name": "categories",
+  "components": [
+    {
+      "field_type": "textfield",
+      "field_id": "name",
+      "entitiy_field_name": "name",
+      "width": 12,
+      "label": "Name",
+      "placeholder": "Enter Name",
+      "required": true
+    },
+    {
+      "field_type": "dropdownComponent",
+      "field_id": "category_type",
+      "entitiy_field_name": "category_type",
+      "width": 12,
+      "label": "Category",
+      "name": "category",
+      "placeholder": "Enter category",
+      "required": true,
+      "listname": "categories"
+    }
+  ]
+}

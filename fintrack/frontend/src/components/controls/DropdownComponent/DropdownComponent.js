@@ -11,21 +11,19 @@ const DropdownComponent = ({
   value,
   options = [],
   isMultiple = false,
-  optionDisplayName,
-  optionValue,
+  optValue,
+  optCode,
   listname,
   placeholder = "",
   disabled = false,
-  readOnly = false,
-  error = false,
   onChange,
   name,
   fullWidth = true,
   icon,
   required = false,
 }) => {
-  const optdisplayName = optionDisplayName ? optionDisplayName : "value";
-  const optValue = optionValue ? optionValue : "field_id";
+  const optionCode = optCode ? optCode : "field_id";
+  const optionValue = optValue ? optValue : "value";
 
   const [listOptions, setListOptions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,8 +35,8 @@ const DropdownComponent = ({
       setLoading(true);
       const data = await getListData(listname);
       const mappedOptions = (data?.fields || []).map((item) => ({
-        value: item[optValue],
-        label: item[optdisplayName],
+        value: item[optionCode],
+        label: item[optionValue],
       }));
 
       setListOptions(mappedOptions);
@@ -52,7 +50,7 @@ const DropdownComponent = ({
 
   useEffect(() => {
     listname && fetchOptions();
-  }, [listname, optionDisplayName]);
+  }, [listname]);
 
   const dropdownOptions = listname ? listOptions : options;
 
@@ -89,15 +87,10 @@ const DropdownComponent = ({
 
         <Select
           value={value}
-          onChange={(event) => {
-            const selectedValue = event.target.value;
-            onChange?.(selectedValue);
-          }}
+          onChange={onChange}
           displayEmpty
           disabled={disabled || loading}
           name={name}
-          readOnly={readOnly}
-          error={error}
           IconComponent={KeyboardArrowDownIcon}
           fullWidth
           renderValue={(selected) => {
@@ -170,7 +163,7 @@ const DropdownComponent = ({
             },
           }}
         >
-          {dropdownOptions.map((option) => (
+          {dropdownOptions?.map((option) => (
             <MenuItem key={option.label} value={option.value}>
               {option.label}
             </MenuItem>

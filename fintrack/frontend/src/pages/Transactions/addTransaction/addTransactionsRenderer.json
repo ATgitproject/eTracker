@@ -42,24 +42,27 @@
       "required": true
     },
     {
-      "field_type": "textfield",
-      "field_id": "category",
+      "field_type": "dropdownComponent",
+      "field_id": "category_id",
       "entitiy_field_name": "category_id",
       "width": 12,
       "label": "Category",
-      "name": "category",
       "placeholder": "Enter category",
-      "required": true
+      "required": true,
+      "listname": "category",
+      "optCode": "",
+      "optValue": ""
     },
     {
-      "field_type": "textfield",
+      "field_type": "dropdownComponent",
       "field_id": "payment_method",
       "entitiy_field_name": "payment_method",
       "width": 12,
       "label": "Payment Method",
       "name": "payment_method",
       "placeholder": "Enter Payment Method",
-      "required": true
+      "required": true,
+      "listname": "payment_method"
     },
     {
       "field_type": "toggleComponent",

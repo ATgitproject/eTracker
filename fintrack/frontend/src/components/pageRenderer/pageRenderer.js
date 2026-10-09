@@ -18,6 +18,7 @@ const FORM_FIELD_TYPES = new Set([
   "toggleComponent",
   "segmentButtonComponent",
   "datePickerComponent",
+  "dropdownComponent",
 ]);
 
 const PageRenderer = ({

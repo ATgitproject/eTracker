@@ -1,0 +1,65 @@
+{
+  "entity_name": "categories",
+  "title": "Categories",
+  "description": "View and manage all your categories.",
+  "components": [
+    {
+      "field_id": "categories-table",
+      "field_type": "tableComponent",
+      "entity_name": "categories",
+      "pagetitle": "Add categories",
+      "entityname": "categories",
+      "columns": [
+        {
+          "col_id": "nmae",
+          "entity_field_name": "name",
+          "col_name": "Name",
+          "order": 1
+        },
+        {
+          "col_id": "category_type",
+          "entity_field_name": "category_type",
+          "col_name": "Category",
+          "order": 2
+        },
+        {
+          "col_id": "icon",
+          "entity_field_name": "icon",
+          "order": 3
+        },
+        {
+          "col_id": "amount",
+          "entity_field_name": "amount",
+          "col_name": "Amount",
+          "order": 4
+        },
+        {
+          "col_id": "color",
+          "entity_field_name": "color",
+          "col_name": "Color",
+          "order": 5
+        }
+      ],
+      "toolbars": [
+        {
+          "toolbar_id": "categories_add",
+          "isbutton": true,
+          "toolbar_name": "Add categories",
+          "toolbar_action": "add",
+          "entity_name": "categories",
+          "order": 1,
+          "component_path": "categories/addCategories/addCategories"
+        },
+        {
+          "toolbar_id": "categories_edit",
+          "isbutton": false,
+          "toolbar_name": "Edit categories",
+          "toolbar_action": "edit",
+          "entity_name": "categories",
+          "order": 2,
+          "component_path": "categories/addCategories/addCategories"
+        }
+      ]
+    }
+  ]
+}
