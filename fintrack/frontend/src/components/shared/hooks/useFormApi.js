@@ -11,13 +11,19 @@ import {
   setUpdateFormData,
 } from "../../../redux/slices/formDataSlice";
 
+const getRecordFromResponse = (response) => {
+  const data = response?.data;
+  return Array.isArray(data) ? (data[0] ?? null) : (data ?? null);
+};
+
 const useFormApi = ({ entityName, action, recordId, formMethods }) => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const updateFormData = useSelector(
     (state) => state.formDataSlice?.updateFormData?.[entityName] ?? {},
   );
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const isUpdate = ["get", "edit"].includes(String(action ?? "").toLowerCase());
 
   const getData = useCallback(
     async (id = recordId) => {
@@ -33,12 +39,15 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
       try {
         const response = await getApi({
           objName: entityName,
-          filterCondition: { field: "id", operator: "equal", value: id },
+          filterCondition: {
+            field: "id",
+            operator: "equal",
+            value: id,
+          },
           recordCount: 1,
         });
-        const record = Array.isArray(response?.data)
-          ? response.data[0]
-          : response?.data;
+
+        const record = getRecordFromResponse(response);
 
         if (!record) {
           throw new Error("The requested record was not found.");
@@ -51,7 +60,8 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
             [entityName]: record,
           }),
         );
-        dispatch(setUpdateFormData({}));
+
+        dispatch(setUpdateFormData({ [entityName]: {} }));
         return record;
       } catch (requestError) {
         setError(requestError.message || "Unable to load the record.");
@@ -70,16 +80,15 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
         return null;
       }
 
-      const isUpdate = action === "get" || action === "edit";
-      const fields = isUpdate ? updateFormData : values;
-
       if (isUpdate && recordId == null) {
         setError("A record ID is required to update this record.");
         return null;
       }
 
-      if (isUpdate && Object.keys(fields).length === 0) {
-        return { success: true, unchanged: true };
+      const fields = isUpdate ? updateFormData : values;
+
+      if (!fields || Object.keys(fields).length === 0) {
+        return isUpdate ? { success: true, unchanged: true } : null;
       }
 
       setIsLoading(true);
@@ -91,8 +100,14 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
           fields,
           ...(isUpdate ? { id: recordId } : {}),
         });
-        const savedRecords = response?.data ?? values ?? [];
-        return savedRecords;
+
+        if (!response || response.success === false) {
+          throw new Error(
+            response?.message || "The record could not be saved.",
+          );
+        }
+
+        return response;
       } catch (requestError) {
         setError(requestError.message || "Unable to save this form.");
         return null;
@@ -103,7 +118,12 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
     [action, dispatch, entityName, formMethods, recordId, updateFormData],
   );
 
-  return { getData, saveData, isLoading, error };
+  return {
+    getData,
+    saveData,
+    isLoading,
+    error,
+  };
 };
 
 export default useFormApi;
