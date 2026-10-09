@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -12,9 +12,9 @@ import {
 } from "./utils/TableUtils";
 
 import useTableData from "./hooks/useTableData";
-import useTableSelection from "./hooks/useTableSelection";
 import useTableActions from "./hooks/useTableActions";
 import useTableToolbars from "./hooks/useTableToolbars";
+import { RowContextualMenu } from "./rowContextualMenu";
 
 const TableComponent = ({
   entityName: entityNameProp,
@@ -25,54 +25,82 @@ const TableComponent = ({
   onPageToolbarChange,
 }) => {
   const entityName = entityNameProp ?? entity_name;
-  const columns = columnsProp.length ? columnsProp : [];
-  const toolbars = toolbarsProp.length ? toolbarsProp : [];
+  const columns = columnsProp;
+  const toolbars = toolbarsProp;
 
-  const { rowSelectionModel, setRowSelectionModel, selectedRows } =
-    useTableSelection();
   const formattedColumns = useMemo(() => buildColumns(columns), [columns]);
+
   const { rows = [] } = useTableData({
     entityName,
     columns,
   });
 
-  const { pageToolbars, gridToolbars, hasSelectionToolbar } = useTableToolbars(
+  const { pageToolbars, gridToolbars, rowToolbars } = useTableToolbars(
     toolbars,
-    selectedRows,
+    [],
   );
 
   const { handleToolbarClick } = useTableActions({
     showPageComponent,
-    selectedRows,
+    selectedRows: [],
   });
 
   useEffect(() => {
-    pageToolbars?.length && onPageToolbarChange?.(pageToolbars);
+    pageToolbars.length && onPageToolbarChange?.(pageToolbars);
   }, [pageToolbars, onPageToolbarChange]);
 
-  const renderToolbar = (toolbar) => {
-    const action = toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION;
-    const Icon = TOOLBAR_ICONS[action];
+  const renderToolbar = useCallback(
+    (toolbar) => {
+      const action = String(
+        toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION ?? "",
+      ).toLowerCase();
 
-    return (
-      <Button
-        key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID}
-        variant="contained"
-        startIcon={Icon ? <Icon /> : null}
-        onClick={() => handleToolbarClick(toolbar)}
-      >
-        {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
-      </Button>
-    );
-  };
+      const Icon = TOOLBAR_ICONS[action];
+
+      return (
+        <Button
+          key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID ?? action}
+          variant="contained"
+          startIcon={Icon ? <Icon /> : null}
+          onClick={() => handleToolbarClick(toolbar, [])}
+        >
+          {toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME}
+        </Button>
+      );
+    },
+    [handleToolbarClick],
+  );
+
+  const columnsWithActions = useMemo(() => {
+    if (!rowToolbars.length) return formattedColumns;
+
+    return [
+      ...formattedColumns,
+      {
+        field: "__rowActions",
+        headerName: "",
+        width: 56,
+        minWidth: 56,
+        maxWidth: 56,
+        sortable: false,
+        filterable: false,
+        disableColumnMenu: true,
+        resizable: false,
+        align: "center",
+        headerAlign: "center",
+        renderCell: (params) => (
+          <RowContextualMenu
+            row={params.row}
+            toolbars={rowToolbars}
+            onAction={handleToolbarClick}
+          />
+        ),
+      },
+    ];
+  }, [formattedColumns, rowToolbars, handleToolbarClick]);
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        minWidth: 0,
-      }}
-    >
+    <Box sx={{ width: "100%", minWidth: 0 }}>
       {gridToolbars.length > 0 && (
         <Box
           sx={{
@@ -88,13 +116,11 @@ const TableComponent = ({
 
       <DataGrid
         rows={rows}
-        columns={formattedColumns}
-        checkboxSelection={hasSelectionToolbar}
+        columns={columnsWithActions}
+        checkboxSelection={false}
         autoHeight
         disableRowSelectionOnClick
         hideFooterSelectedRowCount
-        rowSelectionModel={rowSelectionModel}
-        onRowSelectionModelChange={setRowSelectionModel}
         initialState={{
           pagination: {
             paginationModel: {
