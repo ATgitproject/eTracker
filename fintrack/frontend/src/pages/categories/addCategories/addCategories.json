@@ -3,32 +3,78 @@
   "components": [
     {
       "field_type": "textfield",
-      "field_id": "name",
-      "entitiy_field_name": "name",
-      "width": 12,
-      "label": "Name",
-      "placeholder": "Enter Name",
+      "field_id": "category name",
+      "entity_field_name": "name",
+      "label": "Category Name",
+      "placeholder": "Enter Category Name",
       "required": true
     },
     {
       "field_type": "segmentButtonComponent",
       "field_id": "type",
       "label": "Type",
-      "entitiy_field_name": "category_type",
+      "entity_field_name": "category_type",
       "defaultValue": "Expense",
       "listname": "categories"
     },
     {
-      "field_type": "documentUploadComponent",
-      "field_id": "type",
-      "label": "Doc Upload",
-      "entitiy_field_name": "icon"
+      "field_type": "segmentButtonComponent",
+      "field_id": "category_level",
+      "label": "Category Level",
+      "hasDependentField": true,
+      "options": [
+        {
+          "label": "Main Category",
+          "value": "MC"
+        },
+        {
+          "label": "Sub Category",
+          "value": "SC"
+        }
+      ]
     },
     {
-      "field_type": "photoUploadComponent",
-      "field_id": "type",
-      "label": "Photo Upload",
-      "entitiy_field_name": "color"
+      "field_type": "dropdownComponent",
+      "field_id": "parent_category",
+      "entity_field_name": "parent_category_id",
+      "hidden": true,
+      "label": "Parent Category",
+      "listname": "transaction_category",
+      "optCode": "id",
+      "optValue": "name",
+      "condition": [
+        {
+          "dependentFieldId": "category_level",
+          "conditionAction": "show",
+          "conditionValue": "SC"
+        },
+        {
+          "dependentFieldId": "category_level",
+          "conditionAction": "mandatory",
+          "conditionValue": "SC"
+        },
+        {
+          "dependentFieldId": "category_level",
+          "conditionAction": "clear",
+          "conditionValue": "MC"
+        }
+      ]
+    },
+    {
+      "field_type": "iconComponent",
+      "field_id": "icon",
+      "label": "Icon",
+      "entity_field_name": "icon",
+      "required": true,
+      "defaultValue": "shopping-cart"
+    },
+    {
+      "field_type": "colorSelectComponent",
+      "field_id": "color",
+      "label": "Color",
+      "entity_field_name": "color",
+      "required": true,
+      "defaultValue": "#6842FF"
     }
   ]
 }

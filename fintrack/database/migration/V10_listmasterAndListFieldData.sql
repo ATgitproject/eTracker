@@ -93,7 +93,7 @@ VALUES
 	, NULL
 	, '2026-10-09 10:53:26.76819'
 	, NULL
-	, 'categories'
+	, 'v_parent_categories'
 	);
 
 

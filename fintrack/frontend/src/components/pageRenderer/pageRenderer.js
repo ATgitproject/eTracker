@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { Controller, FormProvider } from "react-hook-form";
 import ButtonComponent from "../controls/ButtonComponent";
@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setUpdateFormData } from "@/redux/slices/formDataSlice";
 import { debounce } from "lodash";
 import getRules from "../shared/validation/formValidation";
+import { ConditionValidator } from "../shared/validation/conditionValidator";
 
 const FORM_FIELD_TYPES = new Set([
   "textfield",
@@ -22,7 +23,9 @@ const FORM_FIELD_TYPES = new Set([
   "photoUploadComponent",
   "documentUploadComponent",
   "iconComponent",
+  "colorSelectComponent",
 ]);
+const EMPTY_COMPONENTS = [];
 
 const PageRenderer = ({
   page,
@@ -33,6 +36,7 @@ const PageRenderer = ({
   useForm: sourceUseForm,
 }) => {
   const dispatch = useDispatch();
+  const { updateDependentFields } = ConditionValidator();
   const { useForm: formMethods } = useFormHook({
     source: {
       useForm: sourceUseForm,
@@ -41,18 +45,20 @@ const PageRenderer = ({
   });
   const { control, getValues, handleSubmit } = formMethods;
   const [pageToolbars, setPageToolbars] = useState([]);
+  const components = page?.components ?? EMPTY_COMPONENTS;
+  const [jsonSource, setJsonSource] = useState(components);
 
   if (!page) {
     return null;
   }
 
-  const { title, description, components = [], entity_name } = page;
+  const { title, description, entity_name } = page;
 
-  const handleStoredUpdateValue = ({ entitiy_field_name, newValue }) => {
+  const handleStoredUpdateValue = ({ entity_field_name, newValue }) => {
     dispatch(
       setUpdateFormData({
         entity_name: entity_name,
-        [entity_name]: { [entitiy_field_name]: newValue },
+        [entity_name]: { [entity_field_name]: newValue },
       }),
     );
   };
@@ -62,8 +68,22 @@ const PageRenderer = ({
     [],
   );
 
+  const handleDependencyChange = (fieldName, newValue, hasDependentField) => {
+    if (!hasDependentField) {
+      return null;
+    }
+    const updatedJsonSource = updateDependentFields({
+      jsonSource,
+      fieldName,
+      newValue,
+      useForm: formMethods,
+      entity_name,
+    });
+    setJsonSource(updatedJsonSource);
+  };
+
   const renderComponent = (component) => {
-    if (!component) {
+    if (!component || component?.hidden) {
       return null;
     }
 
@@ -77,15 +97,16 @@ const PageRenderer = ({
     const {
       id,
       field_id,
-      entitiy_field_name,
+      entity_field_name,
       defaultValue,
       field_type,
       type,
       width,
+      hasDependentField,
     } = component;
 
-    const fieldName = entitiy_field_name || field_id || id;
-    const componentKey = field_id || id || entitiy_field_name;
+    const fieldName = entity_field_name || field_id || id;
+    const componentKey = field_id || id || entity_field_name;
     const rules = getRules(component);
     const isFormField =
       FORM_FIELD_TYPES.has(componentType) &&
@@ -126,39 +147,23 @@ const PageRenderer = ({
             defaultValue={defaultValue ?? ""}
             render={({ field, fieldState }) => {
               const onChange = (event) => {
-                const newValue = event?.target
+                const value = event?.target
                   ? event.target.type === "checkbox"
                     ? event.target.checked
                     : event.target.value
                   : event;
+                const newValue = type === "number" ? Number(value) : value;
                 field.onChange(newValue);
                 ["Textfieldcomponent", "TextareaComponent"].includes(field_type)
                   ? debouncedHandleStoredUpdateValue({
-                      entitiy_field_name,
+                      entity_field_name,
                       newValue,
                     })
                   : handleStoredUpdateValue({
-                      entitiy_field_name,
+                      entity_field_name,
                       newValue,
                     });
-
-                if (overWritesCallBack?.onChange) {
-                  overWritesCallBack.onChange(field.onChange, getValues);
-                } else if (overWritesCallBack?.beforeOnChange) {
-                  overWritesCallBack.beforeOnChange(
-                    event,
-                    field.onChange,
-                    overWritesCallBack?.beforeOnChangeHandler,
-                  );
-                }
-
-                sourceOnChange?.({
-                  e: event,
-                  controlType: field_type,
-                  entitiy_field_name: fieldName,
-                  entity_name,
-                  useForm: formMethods,
-                });
+                handleDependencyChange(fieldName, newValue, hasDependentField);
               };
 
               return (
@@ -239,13 +244,13 @@ const PageRenderer = ({
 
             {pageToolbars.length > 0 && (
               <Box className="page-renderer__actions">
-                {pageToolbars.map(renderPageToolbar)}
+                {pageToolbars?.map(renderPageToolbar)}
               </Box>
             )}
           </Box>
         )}
         <Grid container spacing={2} className="page-renderer__content">
-          {components.map(renderComponent)}
+          {jsonSource?.map(renderComponent)}
         </Grid>
       </div>
     </FormProvider>

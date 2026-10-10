@@ -10,7 +10,6 @@ const ICON_REGISTRY = {
 
 const ToggleComponent = ({
   label = "",
-  checked: checkedProp = false,
   value,
   onChange,
   icon,
@@ -20,7 +19,6 @@ const ToggleComponent = ({
   ...props
 }) => {
   const Icon = ICON_REGISTRY[icon];
-  const checked = value === undefined ? checkedProp : Boolean(value);
 
   return (
     <Box
@@ -54,7 +52,7 @@ const ToggleComponent = ({
       <Switch
         {...props}
         name={name}
-        checked={checked}
+        checked={value}
         disabled={disabled}
         onChange={onChange}
       />

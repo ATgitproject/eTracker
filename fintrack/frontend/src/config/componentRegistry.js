@@ -13,9 +13,8 @@ import SegmentButtonComponent from "@/components/controls/SegmentButtonComponent
 import DropdownComponent from "@/components/controls/DropdownComponent";
 import PhotoUploadComponent from "@/components/controls/PhotoUploadComponent";
 import DocumentUploadComponent from "@/components/controls/DocumentUploadComponent";
-import TilesComponent from "@/components/controls/TilesComponent/TilesComponent";
-import IconComponent from "@/components/controls/IconComponent/IconComponent";
-import ColorSelectComponent from "@/components/controls/ColorSelectComponent/ColorSelectComponent";
+import IconComponent from "@/components/controls/IconComponent";
+import ColorSelectComponent from "@/components/controls/ColorSelectComponent";
 
 const componentRegistry = {
   textfield: TextField,
