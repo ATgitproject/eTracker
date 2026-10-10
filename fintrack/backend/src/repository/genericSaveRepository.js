@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-const insert = async ({ req, table, fields, createdField, modifiedField }) => {
+const insert = async ({ req, objName, fields }) => {
   const fieldNames = Object.keys(fields);
   const user_id = JSON.parse(req?.cookies?.session)?.userData?.id;
   const values = Object.values(fields);
@@ -11,11 +11,11 @@ const insert = async ({ req, table, fields, createdField, modifiedField }) => {
   const placeholders = fieldNames.map((_, index) => `$${index + 1}`);
 
   const query = `
-    INSERT INTO ${table}
+    INSERT INTO ${objName}
     (
       ${fieldNames.join(", ")},
-      ${createdField},
-      ${modifiedField}
+      ${"created_at"},
+      ${"updated_at"}
     )
     VALUES
     (
@@ -31,9 +31,8 @@ const insert = async ({ req, table, fields, createdField, modifiedField }) => {
   return result.rows[0];
 };
 
-const update = async ({ req, table, id, fields, modifiedField }) => {
+const update = async ({ req, objName, id, fields }) => {
   const fieldNames = Object.keys(fields);
-
   const values = Object.values(fields);
 
   const setClause = fieldNames
@@ -43,10 +42,10 @@ const update = async ({ req, table, id, fields, modifiedField }) => {
   values.push(id);
 
   const query = `
-    UPDATE ${table}
+    UPDATE ${objName}
     SET
       ${setClause},
-      ${modifiedField} = CURRENT_TIMESTAMP
+      ${"updated_at"} = CURRENT_TIMESTAMP
     WHERE id = $${values.length}
     RETURNING *
   `;

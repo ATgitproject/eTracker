@@ -32,7 +32,8 @@ const ICON_OPTIONS = [
   { name: "gift", label: "Gifts", Icon: Gift },
 ];
 
-const getIconOption = (name) => ICON_OPTIONS.find((item) => item.name === name);
+const getIconOption = (name) =>
+  ICON_OPTIONS.find((item) => item.name === name) || ICON_OPTIONS?.[0];
 
 export { ICON_OPTIONS, getIconOption };
 

@@ -55,12 +55,14 @@ const PageRenderer = ({
   const { title, description, entity_name } = page;
 
   const handleStoredUpdateValue = ({ entity_field_name, newValue }) => {
-    dispatch(
-      setUpdateFormData({
-        entity_name: entity_name,
-        [entity_name]: { [entity_field_name]: newValue },
-      }),
-    );
+    if (entity_field_name) {
+      dispatch(
+        setUpdateFormData({
+          entity_name: entity_name,
+          [entity_name]: { [entity_field_name]: newValue },
+        }),
+      );
+    }
   };
 
   const debouncedHandleStoredUpdateValue = useCallback(
