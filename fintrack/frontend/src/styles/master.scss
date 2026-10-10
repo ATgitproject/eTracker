@@ -221,3 +221,497 @@ body {
 .MuiPickersTextField-root {
   width: 100% !important;
 }
+
+.bar-chart-component {
+  width: 100%;
+  min-width: 0;
+
+  border: 1px solid #e8eaf3;
+  border-radius: 14px;
+
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.bar-chart-component__header {
+  padding: 18px 18px 8px;
+}
+
+.bar-chart-component__title {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #11184f;
+}
+
+.bar-chart-component__content {
+  padding: 8px 18px 18px;
+}
+
+.bar-chart-component__empty {
+  height: 280px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #737899;
+  font-size: 14px;
+}
+
+.app-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  &__label {
+    font-size: 15px;
+    line-height: 1;
+
+    color: #4f5d7d;
+
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+.app-header {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  &__logo {
+    width: 49px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #5936ef;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1;
+  }
+
+  &__title {
+    font-size: 29px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+
+    color: #111a40;
+  }
+
+  &__subtitle {
+    margin-top: 5px;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    color: #5936ef;
+  }
+}
+
+.layout-container {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  box-sizing: border-box;
+  gap: 12px;
+  align-items: start;
+}
+
+.layout-container > .page-renderer__item {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.line-chart-component {
+  width: 100%;
+  min-width: 0;
+
+  border: 1px solid #e8ecf4 !important;
+  border-radius: 16px !important;
+
+  background: #ffffff !important;
+
+  box-shadow: 0 4px 18px rgba(45, 55, 90, 0.035) !important;
+
+  overflow: hidden;
+}
+
+.line-chart-component__header {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+}
+
+.line-chart-component__title {
+  color: #10184a !important;
+
+  font-size: 18px !important;
+  line-height: 24px !important;
+
+  font-weight: 700 !important;
+}
+
+.line-chart-component__filter {
+  min-width: 104px;
+
+  .MuiOutlinedInput-root {
+    height: 32px;
+
+    border-radius: 8px;
+
+    background: #f7f8fc;
+
+    font-size: 12px;
+    color: #10184a;
+
+    fieldset {
+      border-color: #e5e9f2;
+    }
+
+    &:hover fieldset {
+      border-color: #d8ddec;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #7047eb;
+    }
+  }
+
+  .MuiSelect-select {
+    padding: 6px 30px 6px 12px;
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 18px;
+    color: #53638a;
+  }
+}
+
+.line-chart-component__chart {
+  width: 100%;
+
+  padding: 0 10px 10px;
+
+  box-sizing: border-box;
+}
+
+.pie-chart-component {
+  width: 100%;
+  min-width: 0;
+
+  border: 1px solid #e8eaf3;
+  border-radius: 14px;
+
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.pie-chart-component__header {
+  padding: 18px 18px 8px;
+}
+
+.pie-chart-component__title {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #11184f;
+}
+
+.pie-chart-component__content {
+  padding: 8px 18px 18px;
+}
+
+.pie-chart-component__empty {
+  height: 280px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #737899;
+  font-size: 14px;
+}
+
+.pie-chart-component__legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px 18px;
+
+  margin-top: 8px;
+}
+
+.pie-chart-component__legend-item {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  font-size: 12px;
+  color: #737899;
+
+  strong {
+    margin-left: auto;
+
+    color: #11184f;
+    font-weight: 600;
+  }
+}
+
+.pie-chart-component__legend-dot {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+.steps-component {
+  width: 100%;
+  margin-bottom: 32px;
+
+  .MuiStepLabel-label {
+    font-size: 12px;
+  }
+
+  .MuiStepIcon-root.Mui-active,
+  .MuiStepIcon-root.Mui-completed {
+    color: #6239f5;
+  }
+}
+
+.text-field {
+  width: 100%;
+}
+
+.tiles-component {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 114px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e8ebf3 !important;
+  border-radius: 16px !important;
+
+  background: #ffffff !important;
+
+  box-shadow: 0 3px 12px rgba(45, 55, 90, 0.035) !important;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 20px rgba(45, 55, 90, 0.07) !important;
+  }
+
+  // --------------------------------
+  // Icon
+  // --------------------------------
+
+  &__icon {
+    width: 62px;
+    height: 62px;
+
+    min-width: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    svg {
+      width: 31px;
+      height: 31px;
+    }
+
+    // Balance
+    &--balance {
+      background: #ddf7eb;
+      color: #08a96c;
+    }
+
+    // Expenses
+    &--expenses {
+      background: #f2d9ff;
+      color: #9b3fe8;
+    }
+
+    // Income
+    &--income {
+      background: #dceeff;
+      color: #147ee8;
+    }
+
+    // Budget
+    &--budget {
+      background: #ffead1;
+      color: #ff8a00;
+    }
+  }
+
+  // --------------------------------
+  // Content
+  // --------------------------------
+
+  &__content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+  }
+
+  // --------------------------------
+  // Title
+  // --------------------------------
+
+  &__title {
+    margin: 0 !important;
+
+    color: #52618a !important;
+
+    font-size: 12px !important;
+    line-height: 18px !important;
+
+    font-weight: 500 !important;
+  }
+
+  // --------------------------------
+  // Value
+  // --------------------------------
+
+  &__value {
+    margin-top: 3px !important;
+
+    color: #10184a !important;
+
+    font-size: 22px !important;
+    line-height: 28px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: -0.3px;
+  }
+
+  // --------------------------------
+  // Trend
+  // --------------------------------
+
+  &__trend-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 4px;
+  }
+
+  &__trend {
+    margin: 0 !important;
+
+    font-size: 11px !important;
+    line-height: 16px !important;
+
+    font-weight: 600 !important;
+
+    &--positive {
+      color: #00a86b !important;
+    }
+
+    &--negative {
+      color: #ef4444 !important;
+    }
+  }
+
+  &__subtitle {
+    margin: 0 !important;
+
+    color: #73809e !important;
+
+    font-size: 11px !important;
+    line-height: 16px !important;
+
+    font-weight: 400 !important;
+  }
+
+  // --------------------------------
+  // Budget Progress
+  // --------------------------------
+
+  &__progress {
+    width: 100%;
+
+    margin-top: 7px;
+  }
+
+  &__progress .MuiLinearProgress-root {
+    height: 8px;
+
+    border-radius: 5px;
+
+    background-color: #e9edf5;
+  }
+
+  &__progress .MuiLinearProgress-bar {
+    border-radius: 5px;
+
+    background-color: #ff8a00;
+  }
+
+  &__progress-label {
+    margin-top: 3px !important;
+
+    color: #6f7d9e !important;
+
+    font-size: 10px !important;
+    line-height: 14px !important;
+  }
+}

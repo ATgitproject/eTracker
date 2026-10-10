@@ -1,5 +1,4 @@
 "use client";
-
 import { Dialog, DialogContent } from "@mui/material";
 
 const DialogComponent = ({ Component, open, onClose, props = {} }) => {

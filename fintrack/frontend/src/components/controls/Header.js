@@ -1,7 +1,6 @@
+"use client";
 import React from "react";
 import { WalletCards } from "lucide-react";
-
-import "./Header.scss";
 
 const Header = ({ title = "Expenses", subtitle = "Tracker" }) => {
   return (

@@ -2,7 +2,7 @@
 
 import { Box } from "@mui/material";
 import { TOOLBAR_ICONS } from "./utils/TableUtils";
-import ButtonComponent from "../Button/ButtonComponent";
+import ButtonComponent from "../ButtonComponent";
 
 const PageToolbar = ({ toolbars = [], selectedRows = [], onToolbarAction }) => {
   if (!toolbars.length) {

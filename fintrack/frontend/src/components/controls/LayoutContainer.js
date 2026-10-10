@@ -1,8 +1,6 @@
 "use client";
-
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import "./LayoutContainer.scss";
 
 const LayoutContainer = ({ children }) => {
   return (

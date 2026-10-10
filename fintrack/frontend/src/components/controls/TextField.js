@@ -5,7 +5,6 @@ import {
   InputAdornment,
   InputLabel,
 } from "@mui/material";
-import "./TextField.scss";
 
 const TextField = ({
   label,

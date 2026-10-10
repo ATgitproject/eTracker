@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { Controller, FormProvider } from "react-hook-form";
-import ButtonComponent from "../controls/Button/ButtonComponent";
+import ButtonComponent from "../controls/ButtonComponent";
 import componentRegistry from "../../config/componentRegistry";
 import { TOOLBAR_ICONS } from "../controls/TableComponent/utils/TableUtils";
 import useFormHook from "../shared/hooks/useFormHook";
@@ -19,6 +19,8 @@ const FORM_FIELD_TYPES = new Set([
   "segmentButtonComponent",
   "datePickerComponent",
   "dropdownComponent",
+  "photoUploadComponent",
+  "documentUploadComponent",
 ]);
 
 const PageRenderer = ({

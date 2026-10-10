@@ -1,12 +1,7 @@
 "use client";
-
 import React from "react";
-
 import { Card, CardHeader, CardContent, Typography } from "@mui/material";
-
 import { BarChart } from "@mui/x-charts/BarChart";
-
-import "./BarChartComponent.scss";
 
 const BarChartComponent = ({
   title,

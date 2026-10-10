@@ -1,10 +1,6 @@
 "use client";
-
 import React from "react";
-
 import { Step, StepLabel, Stepper } from "@mui/material";
-
-import "./StepsComponent.scss";
 
 const StepsComponent = ({ steps = [], currentStep = 1 }) => {
   return (

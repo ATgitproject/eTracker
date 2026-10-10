@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Eye, Mail, Lock } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { setCookie } from "../../utils/genericUtils";
-import TextField from "../../components/controls/TextField/TextField";
-import Button from "../../components/controls/Button/ButtonComponent";
-import Checkbox from "../../components/controls/Checkbox/Checkbox";
+import TextField from "../../components/controls/TextField";
+import Button from "../../components/controls/ButtonComponent";
+import Checkbox from "../../components/controls/Checkbox";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../services/authService";
 

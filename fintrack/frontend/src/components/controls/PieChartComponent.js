@@ -1,12 +1,7 @@
 "use client";
-
 import React from "react";
-
 import { Card, CardHeader, CardContent, Typography } from "@mui/material";
-
 import { PieChart } from "@mui/x-charts/PieChart";
-
-import "./PieChartComponent.scss";
 
 const PieChartComponent = ({
   title,

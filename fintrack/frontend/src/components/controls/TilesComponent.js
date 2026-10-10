@@ -10,10 +10,9 @@ import {
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import { useSelector } from "react-redux";
-import "./TilesComponent.scss";
 import dayjs from "dayjs";
-import { getData } from "../../../services/dataService";
-import { getCookie } from "../../../utils/genericUtils";
+import { getData } from "../../services/dataService";
+import { getCookie } from "../../utils/genericUtils";
 
 const icons = {
   "income-icon": ArrowUpwardOutlined,

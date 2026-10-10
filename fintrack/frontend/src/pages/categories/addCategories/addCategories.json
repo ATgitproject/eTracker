@@ -17,6 +17,18 @@
       "entitiy_field_name": "category_type",
       "defaultValue": "Expense",
       "listname": "categories"
+    },
+    {
+      "field_type": "documentUploadComponent",
+      "field_id": "type",
+      "label": "Doc Upload",
+      "entitiy_field_name": "icon"
+    },
+    {
+      "field_type": "photoUploadComponent",
+      "field_id": "type",
+      "label": "Photo Upload",
+      "entitiy_field_name": "color"
     }
   ]
 }

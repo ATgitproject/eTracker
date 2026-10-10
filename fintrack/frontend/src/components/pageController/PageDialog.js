@@ -1,7 +1,7 @@
 "use client";
 
 import { Alert, Drawer, Box, Typography, IconButton } from "@mui/material";
-import ButtonComponent from "../controls/Button/ButtonComponent";
+import ButtonComponent from "../controls/ButtonComponent";
 import CloseIcon from "@mui/icons-material/Close";
 import useFormFields from "../shared/hooks/useFormFields";
 

@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { InputLabel } from "@mui/material";
 import { Checkbox as MuiCheckbox, FormControlLabel } from "@mui/material";

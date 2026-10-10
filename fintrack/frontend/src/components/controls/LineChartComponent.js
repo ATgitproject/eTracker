@@ -1,7 +1,5 @@
 "use client";
-
 import React from "react";
-
 import {
   Card,
   Box,
@@ -10,10 +8,8 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-
 import { LineChart } from "@mui/x-charts/LineChart";
 
-import "./LineChartComponent.scss";
 
 const LineChartComponent = ({
   title = "Spending Trend",

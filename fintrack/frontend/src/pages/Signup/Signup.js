@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import { Eye, Mail, Lock, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import TextField from "@/components/controls/TextField/TextField";
-import Button from "../../components/controls/Button/ButtonComponent";
-import Checkbox from "../../components/controls/Checkbox/Checkbox";
-import StepsComponent from "../../components/controls/StepsComponent/StepsComponent";
+import TextField from "@/components/controls/TextField";
+import Button from "../../components/controls/ButtonComponent";
+import Checkbox from "../../components/controls/Checkbox";
+import StepsComponent from "../../components/controls/StepsComponent";
 import { saveData } from "../../services/dataService";
 
 import { signupUser } from "../../services/authService";
