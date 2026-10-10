@@ -59,7 +59,7 @@
       "entity_field_name": "is_recurring",
       "label": "Mark as recurring",
       "icon": "sync",
-      "defaultValue": false,
+      "checked": false,
       "name": "isRecurring"
     },
     {

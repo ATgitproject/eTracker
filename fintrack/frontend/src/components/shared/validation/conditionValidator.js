@@ -88,7 +88,24 @@ export function ConditionValidator() {
     });
   };
 
+  const setDefaultValue = ({
+    useForm,
+    entity_name,
+    entity_field_name,
+    newValue,
+  }) => {
+    if (!useForm?.getValues()?.[entity_field_name]) {
+      setDataInReduxUseForm({
+        useForm,
+        entity_name,
+        entity_field_name,
+        newValue,
+      });
+    }
+  };
+
   return {
     updateDependentFields,
+    setDefaultValue,
   };
 }

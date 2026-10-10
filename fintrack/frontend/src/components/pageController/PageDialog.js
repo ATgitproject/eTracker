@@ -35,7 +35,6 @@ const PageDialog = ({
   const { isSavable } = useFormFields({
     useForm,
   });
-  const submitForm = useForm?.handleSubmit(onSave) ?? onSave;
 
   const isSaveAction = action === "create" || action === "get";
 
@@ -161,7 +160,7 @@ const PageDialog = ({
             variant="primary"
             type="button"
             fullWidth={false}
-            onClick={submitForm}
+            onClick={onSave}
             disabled={!isSavable || isSaving}
           >
             {isSaving

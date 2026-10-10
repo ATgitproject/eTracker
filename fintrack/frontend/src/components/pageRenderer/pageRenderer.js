@@ -36,7 +36,7 @@ const PageRenderer = ({
   useForm: sourceUseForm,
 }) => {
   const dispatch = useDispatch();
-  const { updateDependentFields } = ConditionValidator();
+  const { updateDependentFields, setDefaultValue } = ConditionValidator();
   const { useForm: formMethods } = useFormHook({
     source: {
       useForm: sourceUseForm,
@@ -144,7 +144,16 @@ const PageRenderer = ({
             name={fieldName}
             control={control}
             rules={rules}
-            defaultValue={defaultValue ?? ""}
+            defaultValue={
+              defaultValue
+                ? setDefaultValue({
+                    useForm: formMethods,
+                    entity_name,
+                    entity_field_name: fieldName,
+                    newValue: defaultValue,
+                  })
+                : ""
+            }
             render={({ field, fieldState }) => {
               const onChange = (event) => {
                 const value = event?.target

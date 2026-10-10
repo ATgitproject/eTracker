@@ -73,50 +73,45 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
     [dispatch, entityName, formMethods, recordId],
   );
 
-  const saveData = useCallback(
-    async (values = {}) => {
-      if (!entityName) {
-        setError("An entity is required to save this form.");
-        return null;
+  const saveData = useCallback(async () => {
+    if (!entityName) {
+      setError("An entity is required to save this form.");
+      return null;
+    }
+
+    if (isUpdate && recordId == null) {
+      setError("A record ID is required to update this record.");
+      return null;
+    }
+
+    const fields = updateFormData;
+
+    if (!fields || Object.keys(fields).length === 0) {
+      return isUpdate ? { success: true, unchanged: true } : null;
+    }
+
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await saveApi({
+        objName: entityName,
+        fields,
+        ...(isUpdate ? { id: recordId } : {}),
+      });
+
+      if (!response || response.success === false) {
+        throw new Error(response?.message || "The record could not be saved.");
       }
 
-      if (isUpdate && recordId == null) {
-        setError("A record ID is required to update this record.");
-        return null;
-      }
-
-      const fields = isUpdate ? updateFormData : values;
-
-      if (!fields || Object.keys(fields).length === 0) {
-        return isUpdate ? { success: true, unchanged: true } : null;
-      }
-
-      setIsLoading(true);
-      setError("");
-
-      try {
-        const response = await saveApi({
-          objName: entityName,
-          fields,
-          ...(isUpdate ? { id: recordId } : {}),
-        });
-
-        if (!response || response.success === false) {
-          throw new Error(
-            response?.message || "The record could not be saved.",
-          );
-        }
-
-        return response;
-      } catch (requestError) {
-        setError(requestError.message || "Unable to save this form.");
-        return null;
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [action, dispatch, entityName, formMethods, recordId, updateFormData],
-  );
+      return response;
+    } catch (requestError) {
+      setError(requestError.message || "Unable to save this form.");
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
+  }, [action, dispatch, entityName, formMethods, recordId, updateFormData]);
 
   return {
     getData,
