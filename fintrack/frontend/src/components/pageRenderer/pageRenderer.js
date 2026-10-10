@@ -21,6 +21,7 @@ const FORM_FIELD_TYPES = new Set([
   "dropdownComponent",
   "photoUploadComponent",
   "documentUploadComponent",
+  "iconComponent",
 ]);
 
 const PageRenderer = ({
