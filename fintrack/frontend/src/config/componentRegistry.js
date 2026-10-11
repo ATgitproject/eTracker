@@ -15,6 +15,7 @@ import PhotoUploadComponent from "@/components/controls/PhotoUploadComponent";
 import DocumentUploadComponent from "@/components/controls/DocumentUploadComponent";
 import IconComponent from "@/components/controls/IconComponent";
 import ColorSelectComponent from "@/components/controls/ColorSelectComponent";
+import ButtonGroupComponent from "@/components/controls/ButtonGroupComponent";
 
 const componentRegistry = {
   textfield: TextField,
@@ -34,6 +35,7 @@ const componentRegistry = {
   documentUploadComponent: DocumentUploadComponent,
   iconComponent: IconComponent,
   colorSelectComponent: ColorSelectComponent,
+  buttonGroupComponent: ButtonGroupComponent,
 };
 
 export default componentRegistry;

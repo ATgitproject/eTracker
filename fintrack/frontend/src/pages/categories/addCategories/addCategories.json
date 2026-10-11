@@ -18,10 +18,11 @@
       "required": true
     },
     {
-      "field_type": "segmentButtonComponent",
+      "field_type": "buttonGroupComponent",
       "field_id": "category_level",
       "entity_field_name": "category_level",
       "label": "Category Level",
+      "required": true,
       "hasDependentField": true,
       "options": [
         {

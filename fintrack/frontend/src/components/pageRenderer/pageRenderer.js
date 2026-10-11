@@ -24,6 +24,7 @@ const FORM_FIELD_TYPES = new Set([
   "documentUploadComponent",
   "iconComponent",
   "colorSelectComponent",
+  "buttonGroupComponent",
 ]);
 const EMPTY_COMPONENTS = [];
 
