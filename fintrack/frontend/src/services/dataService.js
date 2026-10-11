@@ -26,6 +26,31 @@ export const saveData = async ({ objName, fields, id }) => {
   return responseData;
 };
 
+export const deleteData = async ({ objName, id }) => {
+  const accessToken = localStorage.getItem("accessToken");
+
+  const response = await fetch(`${API_URL}/api/delete`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      objName,
+      id,
+    }),
+  });
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(responseData.message || "Unable to delete data");
+  }
+
+  return responseData;
+};
+
 export const getData = async ({
   objName,
   filterCondition,

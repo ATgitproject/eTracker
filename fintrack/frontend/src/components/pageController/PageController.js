@@ -21,7 +21,7 @@ const PageController = ({ page }) => {
 
   const recordId = panel?.props?.row?.id ?? panel?.props?.row;
 
-  const { getData, isLoading, error, onSave, onClose, clearFormState } =
+  const { getData, isLoading, error, onSave, onDelete, onClose, clearFormState } =
     usePageActionMiddleware({
       formMethods,
       setPanel,
@@ -35,6 +35,7 @@ const PageController = ({ page }) => {
     formMethods,
     onClose,
     onSave,
+    onDelete,
     clearFormState,
   });
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getData as getApi,
   saveData as saveApi,
+  deleteData as deleteApi,
 } from "../../../services/dataService";
 import {
   setFormData,
@@ -124,9 +125,53 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
     }
   }, [action, dispatch, entityName, formMethods, recordId, updateFormData]);
 
+  const deleteData = useCallback(
+    async ({ objName = entityName, id = recordId } = {}) => {
+      if (!objName) {
+        setError("An entity is required to delete this record.");
+        return null;
+      }
+
+      if (id === undefined || id === null || id === "") {
+        setError("A record ID is required to delete this record.");
+        return null;
+      }
+
+      setIsLoading(true);
+      setError("");
+
+      try {
+        const response = await deleteApi({ objName, id });
+
+        if (!response || response.success === false) {
+          throw new Error(
+            response?.message || "The record could not be deleted.",
+          );
+        }
+
+        dispatch(
+          setTableRefresh({
+            response,
+            success: true,
+            entity_name: objName,
+          }),
+        );
+
+        return response;
+      } catch (requestError) {
+        setError(requestError.message || "Unable to delete this record.");
+        return null;
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [dispatch, entityName, recordId],
+  );
+
   return {
     getData,
     saveData,
+    deleteData,
     isLoading,
     error,
   };

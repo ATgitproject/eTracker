@@ -155,6 +155,7 @@ export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
             disableElevation
             onClick={(event) => {
               handleAction(event, deleteToolbar);
+              setShowConfirmation(false);
             }}
             sx={{
               minHeight: 40,

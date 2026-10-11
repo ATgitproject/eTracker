@@ -14,7 +14,7 @@ const usePageActionMiddleware = ({
 }) => {
   const dispatch = useDispatch();
 
-  const { getData, saveData, isLoading, error } = useFormApi({
+  const { getData, saveData, deleteData, isLoading, error } = useFormApi({
     entityName,
     action,
     recordId,
@@ -57,12 +57,33 @@ const usePageActionMiddleware = ({
     [saveData, clearFormState, setPanel],
   );
 
+  const onDelete = useCallback(
+    async ({ entityName: entity, recordId: id } = {}) => {
+      const result = await deleteData({
+        objName: entity,
+        id,
+      });
+
+      if (!result || result.success === false) {
+        return false;
+      }
+
+      clearFormState();
+      setPanel(null);
+
+      return true;
+    },
+    [deleteData, clearFormState, setPanel],
+  );
+
   return {
     getData,
     saveData,
+    deleteData,
     isLoading,
     error,
     onSave,
+    onDelete,
     onClose,
     clearFormState,
   };

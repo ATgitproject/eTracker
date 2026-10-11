@@ -9,6 +9,7 @@ const usePageComponentController = ({
   formMethods,
   onClose,
   onSave,
+  onDelete,
   clearFormState,
 }) => {
   const showPageComponent = useCallback(
@@ -20,6 +21,20 @@ const usePageComponentController = ({
       selectedRows = [],
       props = {},
     }) => {
+      const row = selectedRows?.[0] || null;
+      const action = getPageAction(toolbar?.toolbar_action);
+
+      if (action === "delete") {
+        clearFormState();
+
+        await onDelete?.({
+          entityName: toolbar?.entity_name ?? toolbar?.ENTITYNAME,
+          recordId: row?.id ?? row,
+        });
+
+        return;
+      }
+
       if (!componentPath) {
         console.warn("showPageComponent: componentPath is required");
         return;
@@ -34,10 +49,6 @@ const usePageComponentController = ({
           console.error("Invalid dynamic component:", componentPath);
           return;
         }
-
-        const row = selectedRows?.[0] || null;
-
-        const action = getPageAction(toolbar?.toolbar_action);
 
         const source = {
           action,
@@ -75,7 +86,7 @@ const usePageComponentController = ({
         console.error("showPageComponent failed:", componentPath, error);
       }
     },
-    [setPanel, formMethods, onClose, onSave, clearFormState],
+    [setPanel, formMethods, onClose, onSave, onDelete, clearFormState],
   );
 
   return { showPageComponent };
