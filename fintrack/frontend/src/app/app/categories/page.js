@@ -1,5 +1,6 @@
 "use client";
-import CategoriesRenderer from "@/pages/categories/categoriesRenderer";
+
+import CategoriesRenderer from "@/pages/Categories/categoriesRenderer";
 
 export default function AppPage() {
   return <CategoriesRenderer />;

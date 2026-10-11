@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, MenuItem, Select } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 import {
@@ -25,6 +25,12 @@ import {
   Wallet,
   GraduationCap,
   Gift,
+  Landmark,
+  CreditCard,
+  Smartphone,
+  Banknote,
+  FileCheck,
+  ArrowLeftRight,
 } from "lucide-react";
 import useTableData from "./hooks/useTableData";
 import useTableActions from "./hooks/useTableActions";
@@ -51,6 +57,14 @@ const ICON_MAP = {
   wallet: Wallet,
   "graduation-cap": GraduationCap,
   gift: Gift,
+  "Net Banking": Landmark,
+  "Credit Card": CreditCard,
+  UPI: "/upi.png",
+  "Debit Card": CreditCard,
+  Cash: Banknote,
+  Wallet,
+  Cheque: FileCheck,
+  "Bank Transfer": ArrowLeftRight,
 };
 const TableComponent = ({
   entityName: entityNameProp,
@@ -187,13 +201,12 @@ const TableComponent = ({
             );
           }
 
-          const iconName =
-            row[column.iconFieldName || "icon"] || row.category_icon;
+          const iconName = row[column?.hasIcon?.iconFieldName || "icon"];
 
           const Icon = column.hasIcon ? ICON_MAP[iconName] : null;
 
           const color =
-            row[column.colorFieldName || "color"] ||
+            row[column?.hasColor?.colorFieldName || "color"] ||
             row.category_color ||
             "#6842FF";
 
@@ -223,7 +236,20 @@ const TableComponent = ({
                     bgcolor: column.hasIconColor ? `${color}20` : "#F1EDFF",
                   }}
                 >
-                  <Icon size={18} />
+                  {Icon &&
+                    (typeof Icon === "string" ? (
+                      <Box
+                        component="img"
+                        src={Icon}
+                        sx={{
+                          width: 18,
+                          height: 18,
+                          objectFit: "contain",
+                        }}
+                      />
+                    ) : (
+                      <Icon size={18} />
+                    ))}
                 </Box>
               )}
 
@@ -370,21 +396,49 @@ const TableComponent = ({
           <FilterSearch config={filtersConfig} onApply={setConditions} />
         )}
       </Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 1,
+          mb: 1.5,
+          width: "100%",
+        }}
+      >
+        {tableTitle && (
+          <Typography
+            component="h2"
+            sx={{
+              fontSize: 18,
+              fontWeight: 700,
+              color: "#10184A",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {tableTitle}
+          </Typography>
+        )}
 
-      {enableViewMore && (
-        <Button
-          variant="text"
-          onClick={handleViewMore}
-          sx={{
-            flexShrink: 0,
-            textTransform: "none",
-            color: "#5b3df5",
-            fontWeight: 500,
-          }}
-        >
-          View All
-        </Button>
-      )}
+        {enableViewMore && (
+          <Button
+            variant="text"
+            onClick={handleViewMore}
+            sx={{
+              flexShrink: 0,
+              textTransform: "none",
+              color: "#5b3df5",
+              fontWeight: 500,
+              minWidth: "auto",
+              p: 0,
+            }}
+          >
+            View All
+          </Button>
+        )}
+      </Box>
 
       <DataGrid
         rows={visibleRows}
