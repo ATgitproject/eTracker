@@ -2,20 +2,20 @@
   "entity_name": "categories",
   "components": [
     {
-      "field_type": "textfield",
-      "field_id": "category name",
-      "entity_field_name": "name",
-      "label": "Category Name",
-      "placeholder": "Enter Category Name",
-      "required": true
-    },
-    {
       "field_type": "segmentButtonComponent",
       "field_id": "type",
       "label": "Type",
       "entity_field_name": "category_type",
       "defaultValue": "Expense",
       "listname": "categories"
+    },
+    {
+      "field_type": "textfield",
+      "field_id": "category name",
+      "entity_field_name": "name",
+      "label": "Category Name",
+      "placeholder": "Enter Category Name",
+      "required": true
     },
     {
       "field_type": "segmentButtonComponent",

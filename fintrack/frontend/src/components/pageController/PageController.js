@@ -5,7 +5,6 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import PagePanelController from "./PagePanelController";
 import PageRenderer from "../pageRenderer/pageRenderer";
-import useFormApi from "../shared/hooks/useFormApi";
 import usePageActionMiddleware from "../shared/hooks/usePageActionMiddleware";
 import usePageComponentController from "../shared/hooks/usePageComponentController";
 

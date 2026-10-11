@@ -94,6 +94,13 @@
           "toolbar_action": "view",
           "order": 3,
           "component_path": ""
+        },
+        {
+          "toolbar_id": "transaction_delete",
+          "isbutton": false,
+          "toolbar_name": "Delete Transaction",
+          "toolbar_action": "delete",
+          "order": 4
         }
       ],
       "filters": {

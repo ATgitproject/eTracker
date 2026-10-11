@@ -372,14 +372,12 @@ const TableComponent = ({
       ...formattedColumns,
       {
         field: "__rowActions",
-        headerName: "",
-        width: 56,
-        minWidth: 56,
-        maxWidth: 56,
+        headerName: "Action",
+        minWidth: 200,
         sortable: false,
         filterable: false,
         disableColumnMenu: true,
-        resizable: false,
+        resizable: true,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => (

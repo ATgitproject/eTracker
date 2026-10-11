@@ -1,20 +1,38 @@
 "use client";
-
 import { useState } from "react";
 import {
   IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
 } from "@mui/material";
-import { MoreVertOutlined } from "@mui/icons-material";
+import { Pencil, Trash2, Eye } from "lucide-react";
 
 import { TOOLBAR_ICONS } from "./utils/TableUtils";
 
 export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const open = Boolean(anchorEl);
+  const editToolbar = toolbars?.find((tb) => tb?.toolbar_action === "edit");
+  const viewToolbar = toolbars?.find((tb) => tb?.toolbar_action === "view");
+  const deleteToolbar = toolbars?.find((tb) => tb?.toolbar_action === "delete");
+
+  const actionSx = {
+    view: {
+      ...{ borderRadius: "6px", color: "#4f35e8" },
+      "&:hover": { backgroundColor: "#f1f5f9", color: "#4f35e8" },
+    },
+    edit: {
+      ...{ borderRadius: "6px", color: "#16A34A" },
+      "&:hover": { backgroundColor: "#eff6ff", color: "#16A34A" },
+    },
+    delete: {
+      ...{ borderRadius: "6px", color: "#dc2626" },
+      "&:hover": { backgroundColor: "#fef2f2", color: "#dc2626" },
+    },
+  };
 
   const handleOpen = (event) => {
     event.stopPropagation();
@@ -33,78 +51,77 @@ export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
 
   return (
     <>
-      <IconButton
-        size="small"
-        aria-label="Row actions"
-        aria-haspopup="menu"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleOpen}
-        sx={{
-          color: "#64748b",
-          borderRadius: "6px",
-          "&:hover": {
-            backgroundColor: "#f1f5f9",
-            color: "#4f35e8",
-          },
-        }}
+      {editToolbar ? (
+        <IconButton
+          size="small"
+          aria-label="Row actions"
+          aria-haspopup="menu"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleOpen}
+          sx={actionSx.edit}
+        >
+          <Pencil
+            fontSize="small"
+            onClick={(event) => {
+              handleAction(event, editToolbar);
+            }}
+          />
+        </IconButton>
+      ) : null}
+
+      {deleteToolbar ? (
+        <IconButton
+          size="small"
+          aria-label="Row actions"
+          aria-haspopup="menu"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleOpen}
+          sx={actionSx.delete}
+        >
+          <Trash2
+            fontSize="small"
+            onClick={() => {
+              setShowConfirmation(true);
+            }}
+          />
+        </IconButton>
+      ) : null}
+
+      {viewToolbar ? (
+        <IconButton
+          size="small"
+          aria-label="Row actions"
+          aria-haspopup="menu"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleOpen}
+          sx={actionSx.view}
+        >
+          <Eye
+            fontSize="small"
+            onClick={(event) => {
+              handleAction(event, viewToolbar);
+            }}
+          />
+        </IconButton>
+      ) : null}
+
+      <Dialog
+        open={!!showConfirmation}
+        onClose={() => setShowConfirmation(false)}
       >
-        <MoreVertOutlined fontSize="small" />
-      </IconButton>
-
-      <Menu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        onClick={(event) => event.stopPropagation()}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        slotProps={{
-          paper: {
-            sx: {
-              minWidth: 170,
-              mt: 0.5,
-              border: "1px solid #e5e7eb",
-              borderRadius: "8px",
-              boxShadow: "0 8px 24px rgba(15, 23, 42, 0.12)",
-              "& .MuiMenuItem-root": {
-                minHeight: 38,
-                gap: 1,
-                fontSize: 13,
-                color: "#172554",
-              },
-            },
-          },
-        }}
-      >
-        {toolbars.map((toolbar) => {
-          const action = toolbar.toolbar_action ?? toolbar.TOOLBAR_ACTION;
-
-          const normalizedAction = String(action ?? "").toLowerCase();
-          const Icon = TOOLBAR_ICONS[normalizedAction];
-          const label = toolbar.toolbar_name ?? toolbar.TOOLBAR_NAME ?? action;
-
-          return (
-            <MenuItem
-              key={toolbar.toolbar_id ?? toolbar.TOOLBAR_ID ?? normalizedAction}
-              onClick={(event) => handleAction(event, toolbar)}
-            >
-              {Icon && (
-                <ListItemIcon sx={{ minWidth: "24px !important" }}>
-                  <Icon fontSize="small" />
-                </ListItemIcon>
-              )}
-
-              <ListItemText primary={label} />
-            </MenuItem>
-          );
-        })}
-      </Menu>
+        <DialogTitle>Are you sure you want to delete this record ?</DialogTitle>
+        <DialogActions>
+          <Button onClick={() => setShowConfirmation(false)}>Cancel</Button>
+          <Button
+            color="error"
+            onClick={(event) => {
+              handleAction(event, deleteToolbar);
+            }}
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

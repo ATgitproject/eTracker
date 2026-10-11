@@ -86,6 +86,21 @@
           "entity_name": "categories",
           "order": 2,
           "component_path": "categories/addCategories/addCategories"
+        },
+        {
+          "toolbar_id": "categories_view",
+          "isbutton": false,
+          "toolbar_name": "View Categories",
+          "toolbar_action": "view",
+          "order": 3,
+          "component_path": ""
+        },
+        {
+          "toolbar_id": "categories_delete",
+          "isbutton": false,
+          "toolbar_name": "Delete Categories",
+          "toolbar_action": "delete",
+          "order": 4
         }
       ]
     }

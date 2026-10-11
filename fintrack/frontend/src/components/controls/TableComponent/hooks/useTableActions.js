@@ -5,8 +5,6 @@ import { useCallback } from "react";
 const useTableActions = ({ showPageComponent, selectedRows = [] }) => {
   const handleToolbarClick = useCallback(
     (toolbar, rowsOverride) => {
-      console.log(rowsOverride);
-      console.log(showPageComponent);
       if (typeof showPageComponent !== "function") {
         console.error("showPageComponent is not available");
         return;
