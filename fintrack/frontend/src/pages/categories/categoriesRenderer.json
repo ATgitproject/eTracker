@@ -100,6 +100,7 @@
           "isbutton": false,
           "toolbar_name": "Delete Categories",
           "toolbar_action": "delete",
+          "entity_name": "categories",
           "order": 4
         }
       ]

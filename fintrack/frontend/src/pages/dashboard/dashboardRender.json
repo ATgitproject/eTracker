@@ -203,6 +203,7 @@
               "entity_field_name": "amount",
               "col_name": "Amount",
               "order": 4,
+              "isAmount": true,
               "sx": {
                 "fontWeight": 600,
                 "color": "#101A44"
@@ -255,6 +256,7 @@
               "entity_field_name": "amount",
               "col_name": "Amount",
               "order": 3,
+              "isAmount": true,
               "sx": {
                 "fontWeight": 600,
                 "color": "#101A44"

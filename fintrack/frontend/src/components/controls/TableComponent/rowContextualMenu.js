@@ -6,6 +6,8 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
+  DialogContent,
+  Typography,
 } from "@mui/material";
 import { Pencil, Trash2, Eye } from "lucide-react";
 
@@ -108,14 +110,57 @@ export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
       <Dialog
         open={!!showConfirmation}
         onClose={() => setShowConfirmation(false)}
+        maxWidth="xs"
+        fullWidth
+        PaperProps={{ sx: { borderRadius: "16px", p: 1 } }}
       >
-        <DialogTitle>Are you sure you want to delete this record ?</DialogTitle>
-        <DialogActions>
-          <Button onClick={() => setShowConfirmation(false)}>Cancel</Button>
+        <DialogTitle
+          sx={{
+            fontSize: 18,
+            fontWeight: 600,
+            color: "#24345B",
+            pb: 0.5,
+          }}
+        >
+          Delete Confirmation
+        </DialogTitle>
+
+        <DialogContent sx={{ textAlign: "center", pt: 1 }}>
+          <Typography sx={{ fontSize: 14, color: "#64748B" }}>
+            Are you sure you want to delete this record?
+          </Typography>
+        </DialogContent>
+
+        <DialogActions sx={{ px: 3, pb: 2.5, gap: 1 }}>
           <Button
-            color="error"
+            fullWidth
+            onClick={() => setShowConfirmation(false)}
+            sx={{
+              minHeight: 40,
+              textTransform: "none",
+              fontWeight: 600,
+              color: "#24345B",
+              border: "1px solid #DFE5F2",
+              borderRadius: "10px",
+              "&:hover": { bgcolor: "#F8F9FD", borderColor: "#6842FF" },
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            disableElevation
             onClick={(event) => {
               handleAction(event, deleteToolbar);
+            }}
+            sx={{
+              minHeight: 40,
+              textTransform: "none",
+              fontWeight: 600,
+              borderRadius: "10px",
+              bgcolor: "#DC2626",
+              "&:hover": { bgcolor: "#B91C1C" },
             }}
           >
             Delete
