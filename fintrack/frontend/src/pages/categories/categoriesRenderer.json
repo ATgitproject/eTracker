@@ -40,7 +40,11 @@
           "entity_field_name": "total_amount",
           "col_name": "Total Amount",
           "isAmount": true,
-          "order": 4
+          "order": 4,
+          "sx": {
+            "fontWeight": 600,
+            "color": "#101A44"
+          }
         },
         {
           "col_id": "status",

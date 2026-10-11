@@ -1,6 +1,6 @@
 
 
-CREATE VIEW public.v_category_summary AS
+CREATE OR REPLACE VIEW public.v_category_summary AS
 SELECT
     c.id,
     c.user_id,

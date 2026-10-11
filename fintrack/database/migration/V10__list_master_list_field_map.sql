@@ -428,9 +428,9 @@ INSERT INTO public.list_field_map
 VALUES
 	(
 	'2444CF47-D5B5-412B-9735-4A55DCAEA81C'
-	, 'Bank Tranfer'
+	, 'Bank Transfer'
 	, '3821CEB2-A242-419A-AA0A-D3FEDF7B71C9'
-	, 'Bank Tranfer'
+	, 'Bank Transfer'
 	, '0'
 	, 0
 	, '2026-10-09 11:09:53.445909'

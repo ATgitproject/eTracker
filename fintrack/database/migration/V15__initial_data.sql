@@ -67,40 +67,40 @@ DELETE FROM public.transactions
 WHERE id = 'D1000000-0000-4000-8000-000000000012';
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000001', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'income', 65000, 'Monthly Salary', 'A1000000-0000-4000-8000-000000000008', 'bank_transfer', 'Acme Technologies', '2026-10-07 09:00:00', 'Monthly salary', '1', NULL, 'SAL-001', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'briefcase-business', '#6842FF');
+VALUES ('D1000000-0000-4000-8000-000000000001', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'income', 65000, 'Monthly Salary', 'A1000000-0000-4000-8000-000000000008', 'Bank Transfer', 'Acme Technologies', '2026-10-07 09:00:00', 'Monthly salary', '1', NULL, 'SAL-001', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'briefcase-business', '#6842FF');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000002', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'income', 8500, 'Freelance Payment', 'A1000000-0000-4000-8000-000000000009', 'bank_transfer', 'Design Client', '2026-10-04 14:30:00', 'Website project payment', '0', NULL, 'INC-002', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'briefcase-business', '#16A765');
+VALUES ('D1000000-0000-4000-8000-000000000002', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'income', 8500, 'Freelance Payment', 'A1000000-0000-4000-8000-000000000009', 'Bank Transfer', 'Design Client', '2026-10-04 14:30:00', 'Website project payment', '0', NULL, 'INC-002', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'briefcase-business', '#16A765');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000003', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 450, 'Lunch', 'A1000000-0000-4000-8000-000000000001', 'upi', 'Restaurant', '2026-10-09 13:15:00', 'Lunch with colleagues', '0', NULL, 'EXP-001', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'utensils', '#FF6B35');
+VALUES ('D1000000-0000-4000-8000-000000000003', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 450, 'Lunch', 'A1000000-0000-4000-8000-000000000001', 'UPI', 'Restaurant', '2026-10-09 13:15:00', 'Lunch with colleagues', '0', NULL, 'EXP-001', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'utensils', '#FF6B35');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000004', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 850, 'Grocery Shopping', 'A1000000-0000-4000-8000-000000000001', 'upi', 'Supermarket', '2026-10-08 18:00:00', 'Weekly groceries', '0', NULL, 'EXP-002', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'shopping-cart', '#F44336');
+VALUES ('D1000000-0000-4000-8000-000000000004', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 850, 'Grocery Shopping', 'A1000000-0000-4000-8000-000000000001', 'UPI', 'Supermarket', '2026-10-08 18:00:00', 'Weekly groceries', '0', NULL, 'EXP-002', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'shopping-cart', '#F44336');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000005', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 320, 'Cab Ride', 'A1000000-0000-4000-8000-000000000002', 'upi', 'Uber', '2026-10-08 08:30:00', 'Office commute', '0', NULL, 'EXP-003', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'car-front', '#2196F3');
+VALUES ('D1000000-0000-4000-8000-000000000005', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 320, 'Cab Ride', 'A1000000-0000-4000-8000-000000000002', 'UPI', 'Uber', '2026-10-08 08:30:00', 'Office commute', '0', NULL, 'EXP-003', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'car-front', '#2196F3');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000006', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 649, 'Netflix Subscription', 'A1000000-0000-4000-8000-000000000003', 'credit_card', 'Netflix', '2026-10-07 10:00:00', 'Monthly subscription', '1', NULL, 'EXP-004', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'gamepad-2', '#FFC107');
+VALUES ('D1000000-0000-4000-8000-000000000006', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 649, 'Netflix Subscription', 'A1000000-0000-4000-8000-000000000003', 'Credit Card', 'Netflix', '2026-10-07 10:00:00', 'Monthly subscription', '1', NULL, 'EXP-004', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'gamepad-2', '#FFC107');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000007', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 2800, 'Electricity Bill', 'A1000000-0000-4000-8000-000000000004', 'upi', 'Electricity Provider', '2026-10-06 11:20:00', 'Monthly electricity bill', '0', NULL, 'EXP-005', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'zap', '#D936F5');
+VALUES ('D1000000-0000-4000-8000-000000000007', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 2800, 'Electricity Bill', 'A1000000-0000-4000-8000-000000000004', 'UPI', 'Electricity Provider', '2026-10-06 11:20:00', 'Monthly electricity bill', '0', NULL, 'EXP-005', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'zap', '#D936F5');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000008', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 2499, 'Online Shopping', 'A1000000-0000-4000-8000-000000000005', 'credit_card', 'Amazon', '2026-10-05 16:00:00', 'Household accessories', '0', NULL, 'EXP-006', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'shopping-cart', '#607D8B');
+VALUES ('D1000000-0000-4000-8000-000000000008', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 2499, 'Online Shopping', 'A1000000-0000-4000-8000-000000000005', 'Credit Card', 'Amazon', '2026-10-05 16:00:00', 'Household accessories', '0', NULL, 'EXP-006', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'shopping-cart', '#607D8B');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000009', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 12000, 'Monthly Rent', 'A1000000-0000-4000-8000-000000000006', 'bank_transfer', 'Property Owner', '2026-10-01 09:00:00', 'Monthly rent', '0', NULL, 'EXP-007', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'house', '#111827');
+VALUES ('D1000000-0000-4000-8000-000000000009', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 12000, 'Monthly Rent', 'A1000000-0000-4000-8000-000000000006', 'Bank Transfer', 'Property Owner', '2026-10-01 09:00:00', 'Monthly rent', '0', NULL, 'EXP-007', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'house', '#111827');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000010', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 1200, 'Movie Night', 'A1000000-0000-4000-8000-000000000003', 'credit_card', 'Cinema', '2026-10-03 19:30:00', 'Weekend entertainment', '0', NULL, 'EXP-008', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'gamepad-2', '#EC4899');
+VALUES ('D1000000-0000-4000-8000-000000000010', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 1200, 'Movie Night', 'A1000000-0000-4000-8000-000000000003', 'Credit Card', 'Cinema', '2026-10-03 19:30:00', 'Weekend entertainment', '0', NULL, 'EXP-008', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'gamepad-2', '#EC4899');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000011', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 550, 'Pharmacy', 'A1000000-0000-4000-8000-000000000007', 'upi', 'Local Pharmacy', '2026-10-02 12:00:00', 'Health supplies', '0', NULL, 'EXP-009', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'heart-pulse', '#16A765');
+VALUES ('D1000000-0000-4000-8000-000000000011', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'expense', 550, 'Pharmacy', 'A1000000-0000-4000-8000-000000000007', 'UPI', 'Local Pharmacy', '2026-10-02 12:00:00', 'Health supplies', '0', NULL, 'EXP-009', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'heart-pulse', '#16A765');
 
 INSERT INTO public.transactions (id, user_id, transaction_type, amount, description, category_id, payment_method, merchant, transaction_date, notes, is_recurring, recurring_transaction_id, reference_id, created_at, updated_at, icon, color)
-VALUES ('D1000000-0000-4000-8000-000000000012', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'income', 2500, 'Investment Dividend', 'A1000000-0000-4000-8000-000000000010', 'bank_transfer', 'Investment Account', '2026-09-30 10:00:00', 'Dividend received', '0', NULL, 'INC-003', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'wallet', '#6842FF');
+VALUES ('D1000000-0000-4000-8000-000000000012', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'income', 2500, 'Investment Dividend', 'A1000000-0000-4000-8000-000000000010', 'Bank Transfer', 'Investment Account', '2026-09-30 10:00:00', 'Dividend received', '0', NULL, 'INC-003', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535', 'wallet', '#6842FF');
 
 DELETE FROM public.budgets
 WHERE id = 'B1000000-0000-4000-8000-000000000001';
@@ -216,16 +216,16 @@ DELETE FROM public.subscriptions
 WHERE id = 'C1000000-0000-4000-8000-000000000004';
 
 INSERT INTO public.subscriptions (id, user_id, name, merchant, category_id, amount, billing_cycle, next_billing_date, payment_method, is_active, created_at, updated_at)
-VALUES ('C1000000-0000-4000-8000-000000000001', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Netflix Premium', 'Netflix', 'A1000000-0000-4000-8000-000000000003', 649, 'monthly', '2026-10-14', 'credit_card', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
+VALUES ('C1000000-0000-4000-8000-000000000001', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Netflix Premium', 'Netflix', 'A1000000-0000-4000-8000-000000000003', 649, 'monthly', '2026-10-14', 'Credit Card', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
 
 INSERT INTO public.subscriptions (id, user_id, name, merchant, category_id, amount, billing_cycle, next_billing_date, payment_method, is_active, created_at, updated_at)
-VALUES ('C1000000-0000-4000-8000-000000000002', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Spotify Premium', 'Spotify', 'A1000000-0000-4000-8000-000000000003', 119, 'monthly', '2026-10-17', 'upi', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
+VALUES ('C1000000-0000-4000-8000-000000000002', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Spotify Premium', 'Spotify', 'A1000000-0000-4000-8000-000000000003', 119, 'monthly', '2026-10-17', 'UPI', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
 
 INSERT INTO public.subscriptions (id, user_id, name, merchant, category_id, amount, billing_cycle, next_billing_date, payment_method, is_active, created_at, updated_at)
-VALUES ('C1000000-0000-4000-8000-000000000003', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Home Internet', 'Internet Provider', 'A1000000-0000-4000-8000-000000000004', 999, 'monthly', '2026-10-21', 'upi', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
+VALUES ('C1000000-0000-4000-8000-000000000003', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Home Internet', 'Internet Provider', 'A1000000-0000-4000-8000-000000000004', 999, 'monthly', '2026-10-21', 'UPI', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
 
 INSERT INTO public.subscriptions (id, user_id, name, merchant, category_id, amount, billing_cycle, next_billing_date, payment_method, is_active, created_at, updated_at)
-VALUES ('C1000000-0000-4000-8000-000000000004', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Cloud Storage', 'Cloud Provider', 'A1000000-0000-4000-8000-000000000005', 1300, 'yearly', '2026-11-08', 'credit_card', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
+VALUES ('C1000000-0000-4000-8000-000000000004', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Cloud Storage', 'Cloud Provider', 'A1000000-0000-4000-8000-000000000005', 1300, 'yearly', '2026-11-08', 'Credit Card', '1', '2026-10-09 11:30:24.4535', '2026-10-09 11:30:24.4535');
 
 
 
