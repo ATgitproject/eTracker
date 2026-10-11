@@ -10,6 +10,7 @@ import {
   setFormData,
   setUpdateFormData,
 } from "../../../redux/slices/formDataSlice";
+import { setTableRefresh } from "@/redux/slices/tableDataSlice";
 
 const getRecordFromResponse = (response) => {
   const data = response?.data;
@@ -103,7 +104,15 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
       if (!response || response.success === false) {
         throw new Error(response?.message || "The record could not be saved.");
       }
+      const success = Boolean(response && response.success !== false);
 
+      dispatch(
+        setTableRefresh({
+          response,
+          success,
+          entity_name: entityName,
+        }),
+      );
       return response;
     } catch (requestError) {
       setError(requestError.message || "Unable to save this form.");

@@ -86,98 +86,71 @@
         {
           "field_id": "spending-trend",
           "field_type": "lineChartComponent",
-          "width": 8,
+          "entity_name": "v_spending_trend",
+          "width": 7,
           "title": "Spending Trend",
           "filterLabel": "This Month",
           "xAxisKey": "date",
           "dataKey": "amount",
           "height": 300,
           "showArea": true,
-          "showPoints": true,
-          "data": [
-            {
-              "date": "May 1",
-              "amount": 300
-            },
-            {
-              "date": "May 5",
-              "amount": 900
-            },
-            {
-              "date": "May 7",
-              "amount": 900
-            },
-            {
-              "date": "May 10",
-              "amount": 1600
-            },
-            {
-              "date": "May 12",
-              "amount": 1450
-            },
-            {
-              "date": "May 16",
-              "amount": 2150
-            },
-            {
-              "date": "May 19",
-              "amount": 1950
-            },
-            {
-              "date": "May 22",
-              "amount": 2300
-            },
-            {
-              "date": "May 25",
-              "amount": 2150
-            },
-            {
-              "date": "May 28",
-              "amount": 2650
-            },
-            {
-              "date": "May 31",
-              "amount": 2800
-            }
-          ]
+          "showPoints": true
         },
         {
-          "field_id": "transaction-table",
+          "field_id": "monthly-budget-table",
           "field_type": "tableComponent",
-          "entity_name": "transactions",
-          "pagetitle": "Add Transaction",
-          "entityname": "transactions",
-          "width": 4,
+          "entity_name": "v_monthly_budget_vs_actual",
+          "width": 5,
+          "tableTitle": "Monthly Budget",
           "columns": [
             {
-              "col_id": "description",
-              "entity_field_name": "description",
-              "col_name": "Description",
-              "order": 1
-            },
-            {
               "col_id": "category",
-              "entity_field_name": "category",
+              "entity_field_name": "category_name",
               "col_name": "Category",
-              "order": 2
+              "order": 1,
+              "hasIcon": true,
+              "hasIconColor": true
             },
             {
-              "col_id": "date",
-              "entity_field_name": "date",
-              "col_name": "Date",
-              "order": 3
+              "col_id": "budget_progress",
+              "entity_field_name": "budget_amount",
+              "col_name": "Spent / Budget",
+              "order": 2,
+              "hasProgress": true,
+              "compare_field_name": {
+                "value_field": "spent_amount",
+                "max_field": "budget_amount",
+                "percentage_field": "percentage_used",
+                "color_field": "category_color"
+              }
             },
             {
-              "col_id": "amount",
-              "entity_field_name": "amount",
-              "col_name": "Amount",
-              "order": 4
+              "col_id": "spent_amount",
+              "entity_field_name": "spent_amount",
+              "col_name": "Spent Amount",
+              "order": 3,
+              "hide": true
             },
             {
-              "col_id": "payment_method",
-              "entity_field_name": "payment_method",
-              "col_name": "Payment Method",
-              "order": 5
+              "col_id": "percentage_used",
+              "entity_field_name": "percentage_used",
+              "col_name": "Percentage Used",
+              "order": 4,
+              "hide": true
+            },
+            {
+              "col_id": "category_icon",
+              "entity_field_name": "category_icon",
+              "col_name": "Category Icon",
+              "order": 5,
+              "hide": true
+            },
+            {
+              "col_id": "category_color",
+              "entity_field_name": "category_color",
+              "col_name": "Category Color",
+              "order": 6,
+              "hide": true
             }
           ]
         }
@@ -189,82 +162,113 @@
       "width": 12,
       "children": [
         {
-          "field_id": "recent-transactions",
+          "field_id": "transaction-table",
           "field_type": "tableComponent",
-          "entity_name": "transactions",
-          "pagetitle": "Recent Transactions",
-          "entityname": "transactions",
-          "width": 6,
+          "entity_name": "v_transaction_list",
+          "width": 8,
+          "tableTitle": "Recent Transactions",
+          "enableViewMore": {
+            "redirectPage": "/app/transactions",
+            "restrictRowCount": 5
+          },
           "columns": [
             {
               "col_id": "description",
               "entity_field_name": "description",
               "col_name": "Description",
-              "order": 1
+              "order": 1,
+              "hasIcon": true,
+              "hasIconColor": true
             },
             {
               "col_id": "category",
-              "entity_field_name": "category",
+              "entity_field_name": "category_name",
               "col_name": "Category",
-              "order": 2
+              "order": 2,
+              "hasTextColor": true
             },
             {
-              "col_id": "date",
-              "entity_field_name": "date",
-              "col_name": "Date",
-              "order": 3
+              "col_id": "datetime",
+              "entity_field_name": "transaction_data",
+              "col_name": "Datetime",
+              "order": 3,
+              "colType": "date"
             },
             {
               "col_id": "amount",
               "entity_field_name": "amount",
               "col_name": "Amount",
-              "order": 4
+              "order": 4,
+              "sx": {
+                "fontWeight": 600,
+                "color": "#101A44"
+              }
             },
             {
-              "col_id": "payment_method",
-              "entity_field_name": "payment_method",
-              "col_name": "Payment Method",
-              "order": 5
+              "col_id": "icon",
+              "entity_field_name": "icon",
+              "col_name": "icon",
+              "order": 5,
+              "hide": true
+            },
+            {
+              "col_id": "color",
+              "entity_field_name": "color",
+              "col_name": "color",
+              "order": 6,
+              "hide": true
             }
           ]
         },
         {
           "field_id": "upcoming-bills",
           "field_type": "tableComponent",
-          "entity_name": "transactions",
-          "pagetitle": "Upcoming Bills",
-          "entityname": "transactions",
-          "width": 6,
+          "entity_name": "v_upcoming_bills",
+          "tableTitle": "Upcoming Bills",
+          "width": 4,
+          "enableViewMore": {
+            "redirectPage": "/app/subscriptions",
+            "restrictRowCount": 4
+          },
           "columns": [
             {
               "col_id": "description",
               "entity_field_name": "description",
-              "col_name": "Description",
-              "order": 1
+              "col_name": "Bill Name",
+              "order": 1,
+              "hasIcon": true,
+              "hasIconColor": true
             },
             {
-              "col_id": "category",
-              "entity_field_name": "category",
-              "col_name": "Category",
-              "order": 2
-            },
-            {
-              "col_id": "date",
-              "entity_field_name": "date",
-              "col_name": "Date",
-              "order": 3
+              "col_id": "due_date",
+              "entity_field_name": "due_date",
+              "col_name": "Due Date",
+              "order": 2,
+              "colType": "date"
             },
             {
               "col_id": "amount",
               "entity_field_name": "amount",
               "col_name": "Amount",
-              "order": 4
+              "order": 3,
+              "sx": {
+                "fontWeight": 600,
+                "color": "#101A44"
+              }
             },
             {
-              "col_id": "payment_method",
-              "entity_field_name": "payment_method",
-              "col_name": "Payment Method",
-              "order": 5
+              "col_id": "icon",
+              "entity_field_name": "icon",
+              "col_name": "Icon",
+              "order": 4,
+              "hide": true
+            },
+            {
+              "col_id": "color",
+              "entity_field_name": "color",
+              "col_name": "Color",
+              "order": 5,
+              "hide": true
             }
           ]
         }

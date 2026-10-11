@@ -68,7 +68,76 @@
           "order": 3,
           "component_path": ""
         }
-      ]
+      ],
+      "filters": {
+        "layout": "popover",
+        "title": "Filter Transactions",
+        "applyLabel": "Apply Filters",
+        "resetLabel": "Reset",
+        "fields": [
+          {
+            "field_id": "date_range",
+            "field_type": "dropdownComponent",
+            "label": "Date Range",
+            "entity_field_name": "date",
+            "listname": "transaction_category",
+            "optCode": "id",
+            "optValue": "name"
+          },
+          {
+            "field_id": "transaction_type",
+            "field_type": "buttonGroup",
+            "label": "Transaction Type",
+            "options": [
+              { "label": "All", "value": "all" },
+              { "label": "Income", "value": "income" },
+              { "label": "Expense", "value": "expense" },
+              { "label": "Transfer", "value": "transfer" }
+            ]
+          },
+          {
+            "field_id": "category_id",
+            "field_type": "dropdownComponent",
+            "label": "Transaction Type",
+            "listname": "transaction_category",
+            "optCode": "id",
+            "optValue": "name",
+            "entity_field_name": "type"
+          },
+          {
+            "field_id": "payment_method",
+            "field_type": "dropdownComponent",
+            "label": "Payment Method",
+            "listname": "transaction_category",
+            "optCode": "id",
+            "optValue": "name",
+            "entity_field_name": "Payment_Method"
+          },
+          {
+            "field_id": "amount_min",
+            "field_type": "textfield",
+            "label": "Minimum Amount",
+            "placeholder": "Min amount",
+            "entity_field_name": "amount",
+            "filterOperator": "greaterthan"
+          },
+          {
+            "field_id": "amount_max",
+            "field_type": "textfield",
+            "label": "Maximum Amount",
+            "placeholder": "Max amount",
+            "entity_field_name": "amount",
+            "filterOperator": "lessthan"
+          },
+          {
+            "field_id": "merchant",
+            "field_type": "autocomplete",
+            "label": "Merchant",
+            "placeholder": "Search merchant...",
+            "entity_field_name": "Merchant"
+          }
+        ]
+      }
     }
   ]
 }

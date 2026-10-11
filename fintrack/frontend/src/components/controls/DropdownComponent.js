@@ -28,7 +28,11 @@ const DropdownComponent = ({
   const [listOptions, setListOptions] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const SelectedIcon = icon || AccountBalanceWalletOutlinedIcon;
+  const SelectedIcon = icon
+    ? React.isValidElement(icon)
+      ? icon.type
+      : icon
+    : AccountBalanceWalletOutlinedIcon;
 
   const fetchOptions = async () => {
     try {

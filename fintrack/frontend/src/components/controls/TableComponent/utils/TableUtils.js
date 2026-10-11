@@ -15,20 +15,22 @@ import {
   Download,
 } from "@mui/icons-material";
 
-export const buildColumns = (columns = []) => {
-  return [...columns]
-    .sort((a, b) => (a.order ?? a.ORDER ?? 0) - (b.order ?? b.ORDER ?? 0))
-    .map((column) => {
-      const fieldName = column.col_name ?? column.COL_NAME ?? "";
-
-      return {
-        field: fieldName,
-        headerName: fieldName,
-        flex: 1,
-        minWidth: 150,
-      };
-    });
-};
+export const buildColumns = (columns = []) =>
+  columns
+    .filter((column) => !column.hide)
+    .map((column) => ({
+      field: column.entity_field_name,
+      headerName: column.col_name,
+      flex: 1,
+      minWidth: 120,
+      hasIcon: column.hasIcon ?? false,
+      hasIconColor: column.hasIconColor ?? false,
+      hasTextColor: column.hasTextColor ?? false,
+      hasProgress: column.hasProgress ?? false,
+      compare_field_name: column.compare_field_name,
+      colType: column.colType,
+      sx: column.sx ?? {},
+    }));
 
 export const formatRows = (records = [], columns = []) => {
   return records.map((record) => {
@@ -37,7 +39,7 @@ export const formatRows = (records = [], columns = []) => {
     };
 
     columns.forEach((column) => {
-      const fieldName = column.col_name ?? column.COL_NAME ?? "";
+      const fieldName = column.entity_field_name;
       const entityFieldName = column.entity_field_name ?? "";
 
       row[fieldName] = record?.[entityFieldName] ?? "";
@@ -155,6 +157,53 @@ export const CustomPagination = () => {
   );
 };
 
+export const formatDateValue = (value, colType) => {
+  const type = String(colType ?? "").toLowerCase();
+
+  if (!value || !["date", "datetime"].includes(type)) {
+    return value ?? "";
+  }
+
+  const dateString = String(value);
+
+  if (type === "date") {
+    const dateOnly = dateString.match(/^(\d{4})-(\d{2})-(\d{2})/);
+
+    if (dateOnly) {
+      const [, year, month, day] = dateOnly;
+      return new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        timeZone: "UTC",
+      }).format(new Date(Date.UTC(+year, +month - 1, +day)));
+    }
+  }
+
+  const date = value instanceof Date ? value : new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  const options =
+    type === "date"
+      ? {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        }
+      : {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        };
+
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};
 export const TOOLBAR_ICONS = {
   add: Add,
   edit: EditOutlined,
@@ -195,7 +244,6 @@ export const tableStyles = {
 
   "& .MuiDataGrid-row": {
     minHeight: "48px !important",
-    borderBottom: "1px solid #e5e7eb",
   },
 
   "& .MuiDataGrid-cell": {

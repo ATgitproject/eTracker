@@ -49,6 +49,11 @@ const usePageActionMiddleware = ({
         return false;
       }
 
+      await source?.onSaveSuccess?.({
+        entityName,
+        result,
+      });
+
       clearFormState();
       setPanel(null);
 
