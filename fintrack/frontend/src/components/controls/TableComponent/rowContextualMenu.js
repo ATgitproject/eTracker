@@ -119,14 +119,16 @@ export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
             fontSize: 18,
             fontWeight: 600,
             color: "#24345B",
-            pb: 0.5,
+            padding: "10px",
+            textAlign: "center",
+            backgroundColor: "#d3d3d3",
           }}
         >
           Delete Confirmation
         </DialogTitle>
 
-        <DialogContent sx={{ textAlign: "center", pt: 1 }}>
-          <Typography sx={{ fontSize: 14, color: "#64748B" }}>
+        <DialogContent sx={{ textAlign: "center", padding: "20px !important" }}>
+          <Typography sx={{ fontSize: 14, color: "#000000" }}>
             Are you sure you want to delete this record?
           </Typography>
         </DialogContent>
