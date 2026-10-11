@@ -39,8 +39,6 @@ CREATE TABLE IF NOT EXISTS public.categories (
     updated_at         TIMESTAMPTZ  NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT categories_pkey PRIMARY KEY (id),
-    CONSTRAINT categories_category_type_check
-        CHECK (lower(category_type) IN ('income', 'expense')),
     CONSTRAINT categories_parent_category_id_fkey
         FOREIGN KEY (parent_category_id) REFERENCES public.categories (id)
         ON UPDATE NO ACTION ON DELETE SET NULL,

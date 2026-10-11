@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS public.list_master
     name            VARCHAR(100) NOT NULL,
     type            VARCHAR(50) NOT NULL,
     status          VARCHAR(50) NOT NULL DEFAULT 'active',
+	entityname      VARCHAR(100),
     created_on      TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by      UUID,
     modified_on     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,

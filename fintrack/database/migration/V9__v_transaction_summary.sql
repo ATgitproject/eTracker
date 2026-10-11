@@ -1,3 +1,8 @@
+
+
+
+
+
 CREATE OR REPLACE VIEW public.v_transaction_summary AS
 WITH transactions AS (
          SELECT transactions.user_id,

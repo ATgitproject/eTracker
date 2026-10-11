@@ -1,7 +1,7 @@
 
+
 DELETE FROM public.users
 WHERE id = 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD';
-
 
 INSERT INTO public.users
 	(
@@ -139,551 +139,67 @@ INSERT INTO public.budgets (id, user_id, name, amount, period_type, start_date, 
 VALUES ('F1AAA0D0-B9B2-46A1-B7CF-619230563D2B', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Monthly Budget', 7200, 'monthly', '2026-10-01', '2026-10-31', '1', '2026-10-09 15:11:38.33987', '2026-10-09 15:11:38.33987');
 
 
+DELETE FROM public.categories
+WHERE id = 'A1000000-0000-4000-8000-000000000001';
 
 DELETE FROM public.categories
-WHERE id = 'A101983D-D478-456E-9D91-9B732F82CF01';
+WHERE id = 'A1000000-0000-4000-8000-000000000002';
 
 DELETE FROM public.categories
-WHERE id = 'A101983D-D478-456E-9D91-9B732F82CF02';
+WHERE id = 'A1000000-0000-4000-8000-000000000003';
 
 DELETE FROM public.categories
-WHERE id = 'A101983D-D478-456E-9D91-9B732F82CF03';
+WHERE id = 'A1000000-0000-4000-8000-000000000004';
 
 DELETE FROM public.categories
-WHERE id = 'A101983D-D478-456E-9D91-9B732F82CF04';
+WHERE id = 'A1000000-0000-4000-8000-000000000005';
 
 DELETE FROM public.categories
-WHERE id = 'A101983D-D478-456E-9D91-9B732F82CF05';
+WHERE id = 'A1000000-0000-4000-8000-000000000006';
 
 DELETE FROM public.categories
-WHERE id = 'A101983D-D478-456E-9D91-9B732F82CF06';
+WHERE id = 'A1000000-0000-4000-8000-000000000007';
 
 DELETE FROM public.categories
-WHERE id = '111D3F38-B8EB-417F-8703-247FE3D0288C';
+WHERE id = 'A1000000-0000-4000-8000-000000000008';
 
 DELETE FROM public.categories
-WHERE id = '3A49E119-1F8B-4CC1-B512-9C9CB6DE664C';
+WHERE id = 'A1000000-0000-4000-8000-000000000009';
 
 DELETE FROM public.categories
-WHERE id = '16B10D69-6591-4008-8C5B-00F35007C757';
+WHERE id = 'A1000000-0000-4000-8000-000000000010';
 
 DELETE FROM public.categories
-WHERE id = 'DECCF2F6-B8C0-44A5-B944-D6C7A03B0C09';
+WHERE id = 'A1000000-0000-4000-8000-000000000011';
 
 DELETE FROM public.categories
-WHERE id = '418DFAA7-A284-4C09-A8B7-9B54413D71DA';
+WHERE id = 'A1000000-0000-4000-8000-000000000012';
 
 DELETE FROM public.categories
-WHERE id = '62AC473C-5EA9-4B54-877E-3B2B37C1BDEA';
+WHERE id = 'A1000000-0000-4000-8000-000000000013';
 
-DELETE FROM public.categories
-WHERE id = '5BD082EE-4CE7-4D22-9D4E-BCA1484C8771';
-
-DELETE FROM public.categories
-WHERE id = '71E4B7E7-4357-4FD9-B89F-9EEBB2B5AFB5';
-
-DELETE FROM public.categories
-WHERE id = 'CD041983-5DCC-4D38-A410-F45EA356B72F';
-
-DELETE FROM public.categories
-WHERE id = '94A0983D-D478-456E-9D91-9B732F82CFBC';
 
 INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
+    (id, user_id, name, category_type, icon, color,
+     is_system, is_active, created_at, updated_at,
+     parent_category_id, category_level)
 VALUES
-	(
-	'A101983D-D478-456E-9D91-9B732F82CF01'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Utilities'
-	, 'Expense'
-	, 'zap'
-	, '#F59E0B'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'A101983D-D478-456E-9D91-9B732F82CF02'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Housing'
-	, 'Expense'
-	, 'house'
-	, '#3B82F6'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'A101983D-D478-456E-9D91-9B732F82CF03'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Healthcare'
-	, 'Expense'
-	, 'heart-pulse'
-	, '#EF4444'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'A101983D-D478-456E-9D91-9B732F82CF04'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Travel'
-	, 'Expense'
-	, 'plane'
-	, '#8B5CF6'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'A101983D-D478-456E-9D91-9B732F82CF05'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Wallet'
-	, 'Expense'
-	, 'wallet'
-	, '#14B8A6'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'A101983D-D478-456E-9D91-9B732F82CF06'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Gifts'
-	, 'Expense'
-	, 'gift'
-	, '#EC4899'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'111D3F38-B8EB-417F-8703-247FE3D0288C'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Salary'
-	, 'Income'
-	, 'briefcase-business'
-	, '#16A34A'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'3A49E119-1F8B-4CC1-B512-9C9CB6DE664C'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Transport'
-	, 'Expense'
-	, 'car-front'
-	, '#3B82F6'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'16B10D69-6591-4008-8C5B-00F35007C757'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Shopping'
-	, 'Expense'
-	, 'shopping-cart'
-	, '#8B5CF6'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'DECCF2F6-B8C0-44A5-B944-D6C7A03B0C09'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Food'
-	, 'Expense'
-	, 'utensils'
-	, '#10B981'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'418DFAA7-A284-4C09-A8B7-9B54413D71DA'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Transfers'
-	, 'Transfer'
-	, 'arrow-left-right'
-	, '#3B82F6'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'62AC473C-5EA9-4B54-877E-3B2B37C1BDEA'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Freelance'
-	, 'Income'
-	, 'briefcase'
-	, '#EA580C'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'5BD082EE-4CE7-4D22-9D4E-BCA1484C8771'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Others'
-	, 'Expense'
-	, 'more-horizontal'
-	, '#94A3B8'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'71E4B7E7-4357-4FD9-B89F-9EEBB2B5AFB5'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Entertainment'
-	, 'Expense'
-	, 'gamepad-2'
-	, '#F97316'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'CD041983-5DCC-4D38-A410-F45EA356B72F'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Education'
-	, 'Expense'
-	, 'graduation-cap'
-	, '#2563EB'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
-INSERT INTO public.categories
-	(
-	id
-	, user_id
-	, name
-	, category_type
-	, icon
-	, color
-	, is_system
-	, is_active
-	, created_at
-	, updated_at
-	, parent_category_id
-	, category_level
-	)
-VALUES
-	(
-	'94A0983D-D478-456E-9D91-9B732F82CFBC'
-	, 'F1AAA0D0-B9B2-46A1-B7CF-619230563D2B'
-	, 'Personal Care'
-	, 'Expense'
-	, 'user'
-	, '#EC4899'
-	, '1'
-	, '1'
-	, '2026-10-09 18:34:39.010685'
-	, '2026-10-09 18:34:39.010685'
-	, NULL
-	, 'Main Category'
-	);
-
+    ('A1000000-0000-4000-8000-000000000001', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Food',          'Expense',  'utensils',           '#10B981', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000002', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Transport',     'Expense',  'car-front',          '#3B82F6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000003', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Entertainment', 'Expense',  'gamepad-2',          '#F97316', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000004', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Utilities',     'Expense',  'zap',                '#F59E0B', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000005', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Housing',       'Expense',  'house',              '#3B82F6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000006', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Healthcare',    'Expense',  'heart-pulse',        '#EF4444', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000007', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Travel',        'Expense',  'plane',              '#8B5CF6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000008', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Shopping',      'Expense',  'shopping-cart',      '#8B5CF6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000009', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Education',     'Expense',  'graduation-cap',     '#2563EB', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000010', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Personal Care', 'Expense',  'user',               '#EC4899', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000011', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Gifts',         'Expense',  'gift',               '#EC4899', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000012', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Wallet',        'Expense',  'wallet',             '#14B8A6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000013', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Others',        'Expense',  'more-horizontal',    '#94A3B8', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000014', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Salary',        'Income',   'briefcase-business', '#16A34A', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000015', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Freelance',     'Income',   'briefcase',          '#EA580C', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000016', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Transfers',     'Transfer', 'arrow-left-right',   '#3B82F6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category');
 
 
 
