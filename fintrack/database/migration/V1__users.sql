@@ -1,3 +1,7 @@
+
+
+
+
 CREATE TABLE IF NOT EXISTS public.users
 	(
 	id            UUID NOT NULL DEFAULT gen_random_uuid(),
