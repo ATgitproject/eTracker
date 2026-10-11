@@ -7,7 +7,7 @@ import ButtonComponent from "../controls/ButtonComponent";
 import componentRegistry from "../../config/componentRegistry";
 import { TOOLBAR_ICONS } from "../controls/TableComponent/utils/TableUtils";
 import useFormHook from "../shared/hooks/useFormHook";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUpdateFormData } from "@/redux/slices/formDataSlice";
 import { debounce } from "lodash";
 import getRules from "../shared/validation/formValidation";
@@ -53,6 +53,13 @@ const PageRenderer = ({
   }
 
   const { title, description, entity_name } = page;
+  const formData = useSelector(
+    (state) => state.formDataSlice?.formData?.[entity_name] ?? {},
+  );
+  const entityData = {
+    entity_name: entity_name,
+    entity_fields: formData,
+  };
 
   const handleStoredUpdateValue = ({ entity_field_name, newValue }) => {
     if (entity_field_name) {
@@ -83,6 +90,29 @@ const PageRenderer = ({
     });
     setJsonSource(updatedJsonSource);
   };
+
+  useEffect(() => {
+    if (
+      Object.keys(formData || {}).length &&
+      entity_name === entityData?.entity_name
+    ) {
+      let updatedJsonSource = [...(jsonSource || [])];
+
+      updatedJsonSource.forEach((obj) => {
+        if (obj?.hasDependentField) {
+          updatedJsonSource = updateDependentFields({
+            jsonSource: updatedJsonSource,
+            fieldName: obj?.entity_field_name || obj?.field_id,
+            newValue: formData?.[obj?.entity_field_name],
+            useForm: formMethods,
+            entity_name,
+          });
+        }
+      });
+
+      setJsonSource(updatedJsonSource);
+    }
+  }, [formData]);
 
   const renderComponent = (component) => {
     if (!component || component?.hidden) {

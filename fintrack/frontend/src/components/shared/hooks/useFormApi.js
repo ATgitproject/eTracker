@@ -40,11 +40,13 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
       try {
         const response = await getApi({
           objName: entityName,
-          filterCondition: {
-            field: "id",
-            operator: "equal",
-            value: id,
-          },
+          filterCondition: [
+            {
+              field: "id",
+              operator: "equal",
+              value: id,
+            },
+          ],
           recordCount: 1,
         });
 

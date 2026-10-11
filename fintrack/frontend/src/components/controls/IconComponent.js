@@ -15,21 +15,29 @@ import {
   Wallet,
   GraduationCap,
   Gift,
+  ArrowLeftRight,
+  Laptop,
+  MoreHorizontal,
+  User,
 } from "lucide-react";
 
 const ICON_OPTIONS = [
-  { name: "shopping-cart", label: "Shopping", Icon: ShoppingCart },
-  { name: "utensils", label: "Food", Icon: Utensils },
   { name: "zap", label: "Utilities", Icon: Zap },
-  { name: "car-front", label: "Transport", Icon: CarFront },
   { name: "house", label: "Housing", Icon: House },
   { name: "heart-pulse", label: "Healthcare", Icon: HeartPulse },
-  { name: "briefcase-business", label: "Salary", Icon: BriefcaseBusiness },
   { name: "plane", label: "Travel", Icon: Plane },
-  { name: "gamepad-2", label: "Entertainment", Icon: Gamepad2 },
   { name: "wallet", label: "Wallet", Icon: Wallet },
-  { name: "graduation-cap", label: "Education", Icon: GraduationCap },
   { name: "gift", label: "Gifts", Icon: Gift },
+  { name: "shopping-cart", label: "Shopping", Icon: ShoppingCart },
+  { name: "car-front", label: "Transport", Icon: CarFront },
+  { name: "briefcase-business", label: "Salary", Icon: BriefcaseBusiness },
+  { name: "utensils", label: "Food", Icon: Utensils },
+  { name: "graduation-cap", label: "Education", Icon: GraduationCap },
+  { name: "gamepad-2", label: "Entertainment", Icon: Gamepad2 },
+  { name: "arrow-left-right", label: "Transfer", Icon: ArrowLeftRight },
+  { name: "laptop", label: "Freelance", Icon: Laptop },
+  { name: "more-horizontal", label: "Others", Icon: MoreHorizontal },
+  { name: "user", label: "Personal Care", Icon: User },
 ];
 
 const getIconOption = (name) =>

@@ -20,16 +20,17 @@
     {
       "field_type": "segmentButtonComponent",
       "field_id": "category_level",
+      "entity_field_name": "category_level",
       "label": "Category Level",
       "hasDependentField": true,
       "options": [
         {
           "label": "Main Category",
-          "value": "MC"
+          "value": "Main Category"
         },
         {
           "label": "Sub Category",
-          "value": "SC"
+          "value": "Sub Category"
         }
       ]
     },
@@ -46,17 +47,17 @@
         {
           "dependentFieldId": "category_level",
           "conditionAction": "show",
-          "conditionValue": "SC"
+          "conditionValue": "Sub Category"
         },
         {
           "dependentFieldId": "category_level",
           "conditionAction": "mandatory",
-          "conditionValue": "SC"
+          "conditionValue": "Sub Category"
         },
         {
           "dependentFieldId": "category_level",
           "conditionAction": "clear",
-          "conditionValue": "MC"
+          "conditionValue": "Main Category"
         }
       ]
     },

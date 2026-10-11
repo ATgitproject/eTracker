@@ -43,7 +43,7 @@ export const getData = async ({
     },
     body: JSON.stringify({
       objName,
-      ...(filterCondition ? { filterCondition } : {}),
+      filterCondition: filterCondition?.length ? filterCondition : [],
       sortOrder,
       recordCount,
     }),

@@ -3,7 +3,7 @@ import PageRenderer from "../../../components/pageRenderer/pageRenderer";
 import categoriesConfig from "./addCategories.json";
 import { Box } from "@mui/material";
 
-const CategoriesRender = ({ onSave, useForm }) => {
+const AddCategories = ({ onSave, useForm }) => {
   return (
     <Box>
       <PageRenderer page={categoriesConfig} onSave={onSave} useForm={useForm} />
@@ -11,4 +11,4 @@ const CategoriesRender = ({ onSave, useForm }) => {
   );
 };
 
-export default CategoriesRender;
+export default AddCategories;

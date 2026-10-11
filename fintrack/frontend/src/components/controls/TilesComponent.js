@@ -32,11 +32,13 @@ const TilesComponent = (props) => {
     try {
       const results = await getData({
         objName: entity_name,
-        filterCondition: {
-          field: "user_id",
-          operator: "equal",
-          value: session?.userData?.id || sessionCookie?.userData?.id,
-        },
+        filterCondition: [
+          {
+            field: "user_id",
+            operator: "equal",
+            value: session?.userData?.id || sessionCookie?.userData?.id,
+          },
+        ],
       });
       const tileData = results?.data?.[0];
       setTileData(tileData);

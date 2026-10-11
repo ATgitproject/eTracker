@@ -1,5 +1,4 @@
 "use client";
-
 import categoriesConfig from "./categoriesRenderer.json";
 import PageController from "../../components/pageController/PageController";
 
