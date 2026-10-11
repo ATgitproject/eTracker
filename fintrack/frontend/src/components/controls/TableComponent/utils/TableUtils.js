@@ -28,6 +28,9 @@ export const buildColumns = (columns = []) =>
       hasTextColor: column.hasTextColor ?? false,
       hasProgress: column.hasProgress ?? false,
       compare_field_name: column.compare_field_name,
+      isAmount: column.isAmount ?? false,
+      isStatus: column.isStatus ?? false,
+      isType: column.isType ?? false,
       colType: column.colType,
       sx: column.sx ?? {},
     }));
@@ -301,4 +304,40 @@ export const tableStyles = {
     backgroundColor: "#cbd5e1",
     borderRadius: "10px",
   },
+};
+
+export const getStatusBgColor = (status) => {
+  if (status === "Active") {
+    return "#DCFCE7";
+  } else {
+    return "#FEE2E2";
+  }
+};
+
+export const getStatusColor = (status) => {
+  if (status === "Active") {
+    return "#22C55E";
+  } else {
+    return "#EF4444";
+  }
+};
+
+export const getTypeBgColor = (type) => {
+  if (type === "Income") {
+    return "#DCFCE7";
+  } else if (type === "Transfer") {
+    return "#DBEAFE";
+  } else {
+    return "#FEE2E2";
+  }
+};
+
+export const getTypeColor = (type) => {
+  if (type === "Income") {
+    return "#22C55E";
+  } else if (type === "Transfer") {
+    return "#3B82F6";
+  } else {
+    return "#EF4444";
+  }
 };

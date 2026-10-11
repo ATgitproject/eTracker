@@ -1,39 +1,67 @@
 {
-  "entity_name": "categories",
+  "entity_name": "v_category_summary",
   "title": "Categories",
   "description": "View and manage all your categories.",
   "components": [
     {
       "field_id": "categories-table",
       "field_type": "tableComponent",
-      "entity_name": "categories",
+      "entity_name": "v_category_summary",
       "pagetitle": "Add categories",
       "entityname": "categories",
       "columns": [
         {
-          "col_id": "icon",
-          "entity_field_name": "icon",
-          "col_name": "Icon",
-          "order": 1
-        },
-        {
           "col_id": "category_name",
-          "entity_field_name": "name",
+          "entity_field_name": "category_name",
           "col_name": "Category Name",
-          "order": 2
+          "order": 1,
+          "hasIcon": {
+            "iconFieldName": "icon"
+          },
+          "hasIconColor": {
+            "colorFieldName": "color"
+          }
         },
         {
           "col_id": "category_type",
           "entity_field_name": "category_type",
           "col_name": "Type",
+          "order": 2,
+          "isType": true
+        },
+        {
+          "col_id": "transactions",
+          "entity_field_name": "transaction_count",
+          "col_name": "Transactions",
           "order": 3
         },
-
         {
-          "col_id": "color",
-          "entity_field_name": "color",
-          "col_name": "Color",
+          "col_id": "total_amount",
+          "entity_field_name": "total_amount",
+          "col_name": "Total Amount",
+          "isAmount": true,
           "order": 4
+        },
+        {
+          "col_id": "status",
+          "entity_field_name": "status",
+          "col_name": "Status",
+          "order": 5,
+          "isStatus": true
+        },
+        {
+          "col_id": "category_icon",
+          "entity_field_name": "icon",
+          "col_name": "Category Icon",
+          "order": 6,
+          "hide": true
+        },
+        {
+          "col_id": "category_color",
+          "entity_field_name": "color",
+          "col_name": "Category Color",
+          "order": 7,
+          "hide": true
         }
       ],
       "toolbars": [

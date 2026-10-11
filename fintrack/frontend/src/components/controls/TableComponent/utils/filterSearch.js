@@ -17,7 +17,7 @@ import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import TextField from "../../TextField";
-import DatePickerComponent from "../../datePickerComponent";
+import DatePickerComponent from "../../DatePickerComponent";
 import DropdownComponent from "../../DropdownComponent";
 
 const FilterSearch = ({ config, onApply }) => {

@@ -11,6 +11,10 @@ import {
   buildColumns,
   TOOLBAR_ICONS,
   formatDateValue,
+  getTypeColor,
+  getTypeBgColor,
+  getStatusColor,
+  getStatusBgColor,
 } from "./utils/TableUtils";
 import {
   ShoppingCart,
@@ -38,34 +42,8 @@ import useTableToolbars from "./hooks/useTableToolbars";
 import { RowContextualMenu } from "./rowContextualMenu";
 import FilterSearch from "./utils/filterSearch";
 import { useSelector } from "react-redux";
-const ICON_MAP = {
-  "shopping-cart": ShoppingCart,
-  shopping_bag: ShoppingCart,
-  utensils: Utensils,
-  restaurant: Utensils,
-  zap: Zap,
-  bolt: Zap,
-  "car-front": CarFront,
-  directions_car: CarFront,
-  house: House,
-  home: House,
-  "heart-pulse": HeartPulse,
-  "briefcase-business": BriefcaseBusiness,
-  plane: Plane,
-  "gamepad-2": Gamepad2,
-  movie: Gamepad2,
-  wallet: Wallet,
-  "graduation-cap": GraduationCap,
-  gift: Gift,
-  "Net Banking": Landmark,
-  "Credit Card": CreditCard,
-  UPI: "/upi.png",
-  "Debit Card": CreditCard,
-  Cash: Banknote,
-  Wallet,
-  Cheque: FileCheck,
-  "Bank Transfer": ArrowLeftRight,
-};
+import { ICON_MAP } from "./utils/iconList";
+
 const TableComponent = ({
   entityName: entityNameProp,
   entity_name,
@@ -204,6 +182,7 @@ const TableComponent = ({
           const iconName = row[column?.hasIcon?.iconFieldName || "icon"];
 
           const Icon = column.hasIcon ? ICON_MAP[iconName] : null;
+          const AmountIcon = column.isAmount ? ICON_MAP?.["amountIcon"] : null;
 
           const color =
             row[column?.hasColor?.colorFieldName || "color"] ||
@@ -253,14 +232,55 @@ const TableComponent = ({
                 </Box>
               )}
 
+              {column?.isAmount && (
+                <Box
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    flexShrink: 0,
+                    borderRadius: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "inherit",
+                    bgcolor: "inherit",
+                  }}
+                >
+                  {AmountIcon &&
+                    (typeof AmountIcon === "string" ? (
+                      <Box
+                        component="img"
+                        src={AmountIcon}
+                        sx={{
+                          width: 18,
+                          height: 18,
+                          objectFit: "contain",
+                        }}
+                      />
+                    ) : (
+                      <AmountIcon size={18} />
+                    ))}
+                </Box>
+              )}
+
               <Typography
                 variant="body2"
                 sx={{
                   fontWeight: 400,
-                  color: "inherit",
+                  color: column?.isType
+                    ? getTypeColor(params.value ?? "")
+                    : column?.isStatus
+                      ? getStatusColor(params.value ?? "")
+                      : "inherit",
+                  bgcolor: column?.isType
+                    ? getTypeBgColor(params.value ?? "")
+                    : column?.isStatus
+                      ? getStatusBgColor(params.value ?? "")
+                      : undefined,
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
+                  padding: "5px",
                   ...column.sx,
                 }}
               >

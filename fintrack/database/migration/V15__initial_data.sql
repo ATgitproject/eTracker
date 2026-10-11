@@ -198,7 +198,7 @@ VALUES
     ('A1000000-0000-4000-8000-000000000012', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Wallet',        'Expense',  'wallet',             '#14B8A6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
     ('A1000000-0000-4000-8000-000000000013', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Others',        'Expense',  'more-horizontal',    '#94A3B8', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
     ('A1000000-0000-4000-8000-000000000014', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Salary',        'Income',   'briefcase-business', '#16A34A', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
-    ('A1000000-0000-4000-8000-000000000015', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Freelance',     'Income',   'briefcase',          '#EA580C', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
+    ('A1000000-0000-4000-8000-000000000015', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Freelance',     'Income',   'laptop',          '#EA580C', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category'),
     ('A1000000-0000-4000-8000-000000000016', 'FDD9DFE1-5A27-4596-B84D-9FFAD858AFBD', 'Transfers',     'Transfer', 'arrow-left-right',   '#3B82F6', true, true, '2026-10-09 18:34:39.010685', '2026-10-09 18:34:39.010685', NULL, 'Main Category');
 
 
