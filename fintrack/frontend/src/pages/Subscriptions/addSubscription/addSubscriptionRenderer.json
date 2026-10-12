@@ -19,7 +19,8 @@
       "label": "Category",
       "placeholder": "Select category",
       "required": true,
-      "listname": "transaction_category",
+      "listname": "categories",
+      "list_icon_field_id": "icon",
       "optCode": "id",
       "optValue": "name",
       "hasIcon": {

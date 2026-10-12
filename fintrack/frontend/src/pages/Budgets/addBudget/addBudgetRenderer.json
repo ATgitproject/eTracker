@@ -9,9 +9,10 @@
       "label": "Category",
       "placeholder": "Select category",
       "required": true,
-      "listname": "transaction_category",
+      "listname": "categories",
       "optCode": "id",
-      "optValue": "name"
+      "optValue": "name",
+      "list_icon_field_id": "icon"
     },
     {
       "field_type": "textfield",

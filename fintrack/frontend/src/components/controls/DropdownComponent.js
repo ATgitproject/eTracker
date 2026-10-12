@@ -1,11 +1,19 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Box, Select, MenuItem, InputLabel } from "@mui/material";
+import {
+  Box,
+  Select,
+  MenuItem,
+  InputLabel,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { getListData } from "@/services/listService";
 import { fieldLabelSx } from "./utils/fieldStyles";
+import * as LucideIcons from "lucide-react";
 
 const DropdownComponent = ({
   label,
@@ -22,6 +30,7 @@ const DropdownComponent = ({
   fullWidth = true,
   icon,
   required = false,
+  list_icon_field_id,
 }) => {
   const optionCode = optCode ? optCode : "field_id";
   const optionValue = optValue ? optValue : "value";
@@ -35,6 +44,34 @@ const DropdownComponent = ({
       : icon
     : AccountBalanceWalletOutlinedIcon;
 
+  const renderListIcon = (iconName) => {
+    if (!iconName) return null;
+
+    if (iconName.startsWith("/")) {
+      return (
+        <Box
+          component="img"
+          src={iconName}
+          alt=""
+          sx={{ width: 22, height: 22, objectFit: "contain" }}
+        />
+      );
+    }
+
+    const componentName = iconName
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join("");
+
+    const IconComponent = LucideIcons[componentName];
+
+    if (!IconComponent) {
+      return <AccountBalanceWalletOutlinedIcon sx={{ fontSize: 21 }} />;
+    }
+
+    return <IconComponent size={21} strokeWidth={1.8} />;
+  };
+
   const fetchOptions = async () => {
     try {
       setLoading(true);
@@ -42,6 +79,7 @@ const DropdownComponent = ({
       const mappedOptions = (data?.fields || []).map((item) => ({
         value: item[optionCode],
         label: item[optionValue],
+        icon: list_icon_field_id ? item[list_icon_field_id] : null,
       }));
 
       setListOptions(mappedOptions);
@@ -101,14 +139,9 @@ const DropdownComponent = ({
           IconComponent={KeyboardArrowDownIcon}
           fullWidth
           renderValue={(selected) => {
-            if (!selected) {
+            if (selected === "" || selected == null) {
               return (
-                <span
-                  style={{
-                    color: "#7182A6",
-                    fontSize: "16px",
-                  }}
-                >
+                <span style={{ color: "#7182A6", fontSize: 16 }}>
                   {loading ? "Loading..." : placeholder || `Select ${label}`}
                 </span>
               );
@@ -119,14 +152,23 @@ const DropdownComponent = ({
             );
 
             return (
-              <span
-                style={{
-                  color: "#172554",
-                  fontSize: "16px",
-                }}
-              >
-                {selectedOption?.label ?? selected}
-              </span>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                {selectedOption?.icon && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      color: "#64748B",
+                    }}
+                  >
+                    {renderListIcon(selectedOption.icon)}
+                  </Box>
+                )}
+
+                <span style={{ color: "#172554", fontSize: 16 }}>
+                  {selectedOption?.label ?? selected}
+                </span>
+              </Box>
             );
           }}
           sx={{
@@ -166,8 +208,33 @@ const DropdownComponent = ({
           }}
         >
           {dropdownOptions?.map((option) => (
-            <MenuItem key={option.label} value={option.value}>
-              {option.label}
+            <MenuItem
+              key={option.value}
+              value={option.value}
+              sx={{ minHeight: 40, gap: 1 }}
+            >
+              {option.icon && (
+                <ListItemIcon
+                  sx={{
+                    minWidth: "28px !important",
+                    color: "#64748B",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {renderListIcon(option.icon)}
+                </ListItemIcon>
+              )}
+
+              <ListItemText
+                primary={option.label}
+                slotProps={{
+                  primary: {
+                    sx: { fontSize: 14, color: "#172554" },
+                  },
+                }}
+              />
             </MenuItem>
           ))}
         </Select>

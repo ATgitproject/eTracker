@@ -6,7 +6,7 @@
       "field_id": "transaction_type",
       "entity_field_name": "transaction_type",
       "defaultValue": "Expense",
-      "listname": "categories"
+      "listname": "expense_categories"
     },
     {
       "field_type": "textfield",
@@ -38,9 +38,10 @@
       "label": "Category",
       "placeholder": "Enter category",
       "required": true,
-      "listname": "transaction_category",
+      "listname": "categories",
       "optCode": "id",
-      "optValue": "name"
+      "optValue": "name",
+      "list_icon_field_id": "icon"
     },
     {
       "field_type": "dropdownComponent",
