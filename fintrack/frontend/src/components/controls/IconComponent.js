@@ -38,6 +38,19 @@ const ICON_OPTIONS = [
   { name: "laptop", label: "Freelance", Icon: Laptop },
   { name: "more-horizontal", label: "Others", Icon: MoreHorizontal },
   { name: "user", label: "Personal Care", Icon: User },
+  { name: "upi", label: "UPI", image: "/icons/upi.png" },
+  { name: "netflix", label: "Netflix", image: "/icons/netflix.png" },
+  { name: "spotify", label: "Spotify", image: "/icons/Spotify.png" },
+  { name: "microsoft", label: "Microsoft", image: "/icons/Microsoft.png" },
+  { name: "hoststar", label: "JioHotstar", image: "/icons/jiohotstar.png" },
+  {
+    name: "Crunchyroll",
+    label: "Crunchyroll",
+    image: "/icons/Crunchyroll.png",
+  },
+  { name: "youtube", label: "YouTube", image: "/icons/Youtube.png" },
+  { name: "prime", label: "Prime Video", image: "/icons/prime.png" },
+  { name: "googleone", label: "Google One", image: "/icons/googleone.png" },
 ];
 
 const getIconOption = (name) =>
@@ -54,7 +67,7 @@ export default function IconComponent({
 }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const selectedIcon = getIconOption(value);
-  const SelectedIcon = selectedIcon.Icon;
+  const SelectedIcon = selectedIcon?.Icon;
 
   return (
     <>
@@ -78,7 +91,16 @@ export default function IconComponent({
             width: "100%",
           }}
         >
-          <SelectedIcon size={22} />
+          {selectedIcon?.image ? (
+            <Box
+              component="img"
+              src={selectedIcon.image}
+              alt={selectedIcon.label}
+              sx={{ width: 22, height: 22, objectFit: "contain" }}
+            />
+          ) : SelectedIcon ? (
+            <SelectedIcon size={22} />
+          ) : null}
           <Typography variant="body2">{selectedIcon.label}</Typography>
         </Box>
 
@@ -110,7 +132,7 @@ export default function IconComponent({
               gap: 1,
             }}
           >
-            {ICON_OPTIONS.map(({ name, label, Icon }) => {
+            {ICON_OPTIONS.map(({ name, label, Icon, image }) => {
               const selected = value === name;
 
               return (
@@ -141,7 +163,16 @@ export default function IconComponent({
                     cursor: "pointer",
                   }}
                 >
-                  <Icon size={20} />
+                  {image ? (
+                    <Box
+                      component="img"
+                      src={image}
+                      alt={label}
+                      sx={{ width: 22, height: 22, objectFit: "contain" }}
+                    />
+                  ) : Icon ? (
+                    <Icon size={20} />
+                  ) : null}
                   <Typography component="span" fontSize={11}>
                     {label}
                   </Typography>

@@ -239,8 +239,8 @@ const TableComponent = ({
               {column?.isAmount && (
                 <Box
                   sx={{
-                    width: 32,
-                    height: 32,
+                    width: 15,
+                    height: 15,
                     flexShrink: 0,
                     borderRadius: 2,
                     display: "flex",
@@ -248,6 +248,7 @@ const TableComponent = ({
                     justifyContent: "center",
                     color: "inherit",
                     bgcolor: "inherit",
+                    gap: 0,
                   }}
                 >
                   {AmountIcon &&

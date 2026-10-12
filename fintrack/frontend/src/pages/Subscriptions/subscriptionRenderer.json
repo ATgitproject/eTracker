@@ -14,6 +14,7 @@
           "entity_field_name": "service",
           "col_name": "Service",
           "order": 1,
+          "flex": 5,
           "hasIcon": true,
           "hasIconColor": true
         },

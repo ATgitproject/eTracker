@@ -21,7 +21,7 @@ export const buildColumns = (columns = []) =>
     .map((column) => ({
       field: column.entity_field_name,
       headerName: column.col_name,
-      flex: 1,
+      flex: column.flex ?? 1,
       minWidth: 120,
       hasIcon: column.hasIcon ?? false,
       hasIconColor: column.hasIconColor ?? false,

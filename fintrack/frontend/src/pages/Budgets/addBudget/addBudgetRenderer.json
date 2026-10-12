@@ -27,12 +27,14 @@
       "regex": "^[0-9]{1,12}(\\.[0-9]{1,2})?$"
     },
     {
-      "field_type": "datePickerComponent",
-      "field_id": "start_date",
+      "field_type": "dropdownComponent",
+      "field_id": "Month_id",
       "entity_field_name": "start_date",
       "width": 12,
       "label": "Month",
-      "required": true
+      "placeholder": "Select Month",
+      "required": true,
+      "listname": "Months"
     }
   ]
 }

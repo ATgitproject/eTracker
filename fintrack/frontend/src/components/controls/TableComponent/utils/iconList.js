@@ -1,3 +1,4 @@
+import { Pending } from "@mui/icons-material";
 import {
   ArrowLeftRight,
   Banknote,
@@ -23,42 +24,46 @@ import {
 } from "lucide-react";
 
 export const ICON_MAP = {
-  // Category icons (canonical names, same as the DB seed)
+  // Category icons
   utensils: Utensils,
-  "car-front": CarFront,
-  "gamepad-2": Gamepad2,
   zap: Zap,
   house: House,
-  "heart-pulse": HeartPulse,
   plane: Plane,
-  "shopping-cart": ShoppingCart,
-  "graduation-cap": GraduationCap,
   user: User,
   gift: Gift,
   wallet: Wallet,
-  "more-horizontal": MoreHorizontal,
-  "briefcase-business": BriefcaseBusiness,
   laptop: Laptop,
-  "arrow-left-right": ArrowLeftRight,
-
-  // Legacy aliases (remove once no old rows use these names)
   shopping_bag: ShoppingCart,
   restaurant: Utensils,
   bolt: Zap,
   directions_car: CarFront,
   home: House,
   movie: Gamepad2,
-
-  // Payment methods
-  "Net Banking": Landmark,
-  "Credit Card": CreditCard,
-  "Debit Card": CreditCard,
-  UPI: "/upi.png",
   Cash: Banknote,
   Wallet: Wallet,
   Cheque: FileCheck,
-  "Bank Transfer": ArrowLeftRight,
-
-  //Amount
   amountIcon: IndianRupee,
+  others: Pending,
+  "car-front": CarFront,
+  "gamepad-2": Gamepad2,
+  "heart-pulse": HeartPulse,
+  "shopping-cart": ShoppingCart,
+  "graduation-cap": GraduationCap,
+  "more-horizontal": MoreHorizontal,
+  "briefcase-business": BriefcaseBusiness,
+  "arrow-left-right": ArrowLeftRight,
+  "Net Banking": Landmark,
+  "Bank Transfer": ArrowLeftRight,
+  "Credit Card": CreditCard,
+  "Debit Card": CreditCard,
+
+  UPI: "/icons/upi.png",
+  netflix: "/icons/netflix.png",
+  spotify: "/icons/Spotify.png",
+  microsoft: "/icons/Microsoft.png",
+  hoststar: "/icons/jiohotstar.png",
+  Crunchyroll: "/icons/crunchyroll.png",
+  youtube: "/icons/Youtube.png",
+  prime: "/icons/prime.png",
+  googleone: "/icons/googleone.png",
 };

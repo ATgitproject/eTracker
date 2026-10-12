@@ -22,6 +22,7 @@ import navigation from "../../../config/navigation";
 import "./Sidebar.scss";
 import { getCookie } from "../../../utils/genericUtils";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 const iconMap = {
   dashboard: LayoutDashboard,
@@ -47,7 +48,13 @@ const Sidebar = ({ collapsed = false, onToggle }) => {
       {/* Brand */}
       <div className="sidebar__brand">
         <div className="sidebar__brand-icon">
-          <WalletCards size={27} strokeWidth={2.2} />
+          <Image
+            src="/logo.png"
+            alt="Expense Tracker Logo"
+            width={100}
+            height={50}
+            priority
+          />
         </div>
 
         <div className="sidebar__brand-name">
