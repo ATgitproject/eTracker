@@ -6,6 +6,7 @@ import {
   ArrowDownwardOutlined,
   ArrowUpwardOutlined,
   PaidOutlined,
+  Warning,
 } from "@mui/icons-material";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
@@ -13,16 +14,28 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import { getData } from "../../services/dataService";
 import { getCookie } from "../../utils/genericUtils";
+import { ClockIcon, ShoppingBag } from "lucide-react";
 
 const icons = {
   "income-icon": ArrowUpwardOutlined,
   "expenses-icon": ArrowDownwardOutlined,
   "balance-icon": AccountBalanceWalletOutlined,
   "savings-icon": PaidOutlined,
+  "clock-icon": ShoppingBag,
+  "warning-icon": Warning,
+  "budget-icon": ClockIcon,
 };
 
 const TilesComponent = (props) => {
-  const { title, fieldid, entity_name, tiles } = props;
+  const {
+    title,
+    fieldid,
+    entity_name,
+    tiles,
+    style,
+    isAmount = true,
+    showTrend = true,
+  } = props;
   const [tileData, setTileData] = useState(null);
   const lastMonth = dayjs()?.subtract(1, "month")?.format("MMMM");
   const { session } = useSelector((state) => state.userSessionDataReducer);
@@ -105,6 +118,7 @@ const TilesComponent = (props) => {
               minWidth: 0,
               borderRadius: 2,
               boxShadow: 1,
+              backgroundColor: tile?.style?.background_color,
             }}
           >
             <CardContent>
@@ -142,33 +156,35 @@ const TilesComponent = (props) => {
                   </Typography>
 
                   <Typography variant="h5" sx={{ fontWeight: 600, mb: 0.5 }}>
-                    {formatAmount(tileValue)}
+                    {isAmount ? formatAmount(tileValue) : tileValue}
                   </Typography>
 
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                      gap: 0.5,
-                      color: getTrendColor(trend),
-                    }}
-                  >
-                    {getTrendIcon(trend)}
-
-                    <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                      {Math.abs(percentage || 0)}%
-                    </Typography>
-
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "text.secondary" }}
+                  {showTrend && (
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        gap: 0.5,
+                        color: getTrendColor(trend),
+                      }}
                     >
-                      {trend === "No Change"
-                        ? "No change"
-                        : `from ${lastMonth}`}
-                    </Typography>
-                  </Stack>
+                      {getTrendIcon(trend)}
+
+                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                        {Math.abs(percentage || 0)}%
+                      </Typography>
+
+                      <Typography
+                        variant="body2"
+                        sx={{ color: "text.secondary" }}
+                      >
+                        {trend === "No Change"
+                          ? "No change"
+                          : `from ${lastMonth}`}
+                      </Typography>
+                    </Stack>
+                  )}
                 </Box>
               </Stack>
             </CardContent>

@@ -1,0 +1,73 @@
+{
+  "entity_name": "transactions",
+  "components": [
+    {
+      "field_type": "segmentButtonComponent",
+      "field_id": "transaction_type",
+      "entity_field_name": "transaction_type",
+      "defaultValue": "Expense",
+      "listname": "categories"
+    },
+    {
+      "field_type": "textfield",
+      "field_id": "description",
+      "entity_field_name": "description",
+      "width": 12,
+      "label": "Description",
+      "name": "description",
+      "placeholder": "Enter description",
+      "required": true
+    },
+    {
+      "field_type": "textfield",
+      "field_id": "amount",
+      "entity_field_name": "amount",
+      "type": "number",
+      "width": 12,
+      "label": "Amount",
+      "name": "amount",
+      "placeholder": "Enter Amount",
+      "required": true,
+      "regex": "^[0-9]{0,50}$"
+    },
+    {
+      "field_type": "dropdownComponent",
+      "field_id": "category_id",
+      "entity_field_name": "category_id",
+      "width": 12,
+      "label": "Category",
+      "placeholder": "Enter category",
+      "required": true,
+      "listname": "transaction_category",
+      "optCode": "id",
+      "optValue": "name"
+    },
+    {
+      "field_type": "dropdownComponent",
+      "field_id": "payment_method",
+      "entity_field_name": "payment_method",
+      "width": 12,
+      "label": "Payment Method",
+      "name": "payment_method",
+      "placeholder": "Enter Payment Method",
+      "required": true,
+      "listname": "payment_method"
+    },
+    {
+      "field_type": "toggleComponent",
+      "field_id": "mark_recurring",
+      "entity_field_name": "is_recurring",
+      "label": "Mark as recurring",
+      "icon": "sync",
+      "name": "isRecurring"
+    },
+    {
+      "field_type": "datePickerComponent",
+      "field_id": "transaction_date",
+      "entity_field_name": "transaction_date",
+      "label": "Transaction Date",
+      "setDefCurrrentDate": true,
+      "required": true
+    }
+  ]
+}

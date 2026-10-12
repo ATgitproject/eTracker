@@ -1,0 +1,146 @@
+{
+  "title": "Budgets",
+  "description": "Set and Manage your monthly Budget to stay on track.",
+  "components": [
+    {
+      "field_id": "budget-tiles-tiles",
+      "field_type": "tilesComponent",
+      "entity_name": "v_budget_tiles",
+      "isAmount": false,
+      "showTrend": false,
+      "tiles": [
+        {
+          "key": 1,
+          "control_id": "active-budgets",
+          "tiles_name": "Active Budgets",
+          "entity_field_name": "active_budgets",
+          "icon": {
+            "icon_name": "budget-icon",
+            "icon_color": "#22C55E",
+            "background_color": "#D0F7E7"
+          },
+          "style": {
+            "background_color": "#DCFCE7"
+          }
+        },
+        {
+          "key": 2,
+          "control_id": "over-budget",
+          "tiles_name": "Over Budget",
+          "entity_field_name": "overdue_budgets",
+          "icon": {
+            "icon_name": "warning-icon",
+            "icon_color": "#EF4444",
+            "background_color": "#FFE0E5"
+          },
+          "style": {
+            "background_color": "#FEE2E2"
+          }
+        },
+        {
+          "key": 3,
+          "control_id": "days-left",
+          "tiles_name": "Days Left",
+          "entity_field_name": "days_left",
+          "icon": {
+            "icon_name": "clock-icon",
+            "icon_color": "#3B82F6",
+            "background_color": "#E9DFFF"
+          },
+          "style": {
+            "background_color": "#DBEAFE"
+          }
+        }
+      ]
+    },
+    {
+      "field_id": "Budget-table",
+      "field_type": "tableComponent",
+      "entity_name": "v_monthly_budget_vs_actual",
+      "parent_entity": "Budgets",
+      "columns": [
+        {
+          "col_id": "category",
+          "entity_field_name": "category_name",
+          "col_name": "Category",
+          "order": 1,
+          "hasIcon": {
+            "iconFieldName": "category_icon"
+          },
+          "hasIconColor": {
+            "colorFieldName": "category_color"
+          }
+        },
+        {
+          "col_id": "budget_progress",
+          "entity_field_name": "budget_amount",
+          "col_name": "Spent / Budget",
+          "order": 2,
+          "hasProgress": true,
+          "compare_field_name": {
+            "value_field": "spent_amount",
+            "max_field": "budget_amount",
+            "percentage_field": "percentage_used",
+            "color_field": "category_color"
+          }
+        },
+        {
+          "col_id": "spent_amount",
+          "entity_field_name": "spent_amount",
+          "col_name": "Spent Amount",
+          "order": 3,
+          "hide": true
+        },
+        {
+          "col_id": "percentage_used",
+          "entity_field_name": "percentage_used",
+          "col_name": "Percentage Used",
+          "order": 4,
+          "hide": true
+        },
+        {
+          "col_id": "icon",
+          "entity_field_name": "category_icon",
+          "col_name": "Icon",
+          "order": 5,
+          "hide": true
+        },
+        {
+          "col_id": "category_color",
+          "entity_field_name": "category_color",
+          "col_name": "Category Color",
+          "order": 6,
+          "hide": true
+        }
+      ],
+      "toolbars": [
+        {
+          "toolbar_id": "budget_add",
+          "isbutton": true,
+          "toolbar_name": "Add Budget",
+          "toolbar_action": "add",
+          "entity_name": "budgets",
+          "order": 1,
+          "component_path": "Budget/addBudget/addBudget"
+        },
+        {
+          "toolbar_id": "budget_edit",
+          "isbutton": false,
+          "toolbar_name": "Edit Budget",
+          "toolbar_action": "edit",
+          "entity_name": "budgets",
+          "order": 2,
+          "component_path": "Budget/addBudget/addBudget"
+        },
+        {
+          "toolbar_id": "budget_delete",
+          "isbutton": false,
+          "toolbar_name": "Delete budget",
+          "toolbar_action": "delete",
+          "entity_name": "budgets",
+          "order": 4
+        }
+      ]
+    }
+  ]
+}

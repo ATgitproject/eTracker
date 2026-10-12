@@ -23,10 +23,6 @@
                 "icon_name": "income-icon",
                 "icon_color": "#2E7D32",
                 "background_color": "#9bf39f"
-              },
-              "trend": {
-                "trend_label_field_name": "total_income_trend",
-                "trend_percentage_field_name": "total_income_percentage"
               }
             },
             {
@@ -38,10 +34,6 @@
                 "icon_name": "expenses-icon",
                 "icon_color": "#6A1B9A",
                 "background_color": "#d8b9dd"
-              },
-              "trend": {
-                "trend_label_field_name": "total_expenses_trend",
-                "trend_percentage_field_name": "total_expenses_percentage"
               }
             },
             {
@@ -53,10 +45,6 @@
                 "icon_name": "balance-icon",
                 "icon_color": "#2E7D32",
                 "background_color": "#9bf39f"
-              },
-              "trend": {
-                "trend_label_field_name": "remaining_balance_trend",
-                "trend_percentage_field_name": "remaining_balance_percentage"
               }
             },
             {
@@ -68,10 +56,6 @@
                 "icon_name": "savings-icon",
                 "icon_color": "#6A1B9A",
                 "background_color": "#d8b9dd"
-              },
-              "trend": {
-                "trend_label_field_name": "total_saving_trend",
-                "trend_percentage_field_name": "total_saving_percentage"
               }
             }
           ]
