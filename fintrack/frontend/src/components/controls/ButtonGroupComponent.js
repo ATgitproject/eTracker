@@ -2,7 +2,7 @@
 import { Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function ButtonGroupComponent({
+const ButtonGroupComponent = ({
   value,
   onChange,
   options = [],
@@ -11,7 +11,7 @@ export default function ButtonGroupComponent({
   optCode,
   optValue,
   ...props
-}) {
+}) => {
   const [optionList, setoptionList] = useState(options || []);
   const optionCode = optCode ? optCode : "field_id";
   const optionValue = optValue ? optValue : "value";
@@ -75,4 +75,6 @@ export default function ButtonGroupComponent({
       })}
     </Box>
   );
-}
+};
+
+export default ButtonGroupComponent;

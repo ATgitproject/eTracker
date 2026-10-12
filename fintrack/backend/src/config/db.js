@@ -1,4 +1,12 @@
-const { Pool } = require("pg");
+const { Pool, types } = require("pg");
+
+types.setTypeParser(16, (value) => value === "t"); // BOOLEAN
+types.setTypeParser(20, (value) => value); // BIGINT: keep string for precision
+types.setTypeParser(21, Number); // SMALLINT
+types.setTypeParser(23, Number); // INTEGER
+types.setTypeParser(700, Number); // REAL
+types.setTypeParser(701, Number); // DOUBLE PRECISION
+types.setTypeParser(1700, Number); // NUMERIC / DECIMAL
 
 const pool = new Pool({
   host: process.env.DB_HOST,

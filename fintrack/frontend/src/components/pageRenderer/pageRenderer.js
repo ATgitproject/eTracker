@@ -189,12 +189,11 @@ const PageRenderer = ({
             }
             render={({ field, fieldState }) => {
               const onChange = (event) => {
-                const value = event?.target
+                const newValue = event?.target
                   ? event.target.type === "checkbox"
                     ? event.target.checked
                     : event.target.value
                   : event;
-                const newValue = type === "number" ? Number(value) : value;
                 field.onChange(newValue);
                 ["Textfieldcomponent", "TextareaComponent"].includes(field_type)
                   ? debouncedHandleStoredUpdateValue({
