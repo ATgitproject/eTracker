@@ -114,6 +114,7 @@ const PageDialog = ({
           overflowY: "auto",
           px: 2.5,
           py: 2.5,
+          padding: "5px 15px",
 
           "&::-webkit-scrollbar": {
             width: 6,

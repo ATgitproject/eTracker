@@ -5,6 +5,7 @@ import {
   InputAdornment,
   InputLabel,
 } from "@mui/material";
+import { fieldControlSx, fieldLabelSx } from "./utils/fieldStyles";
 
 const TextField = ({
   label,
@@ -23,7 +24,9 @@ const TextField = ({
 }) => {
   return (
     <div>
-      <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
+      <InputLabel sx={fieldLabelSx} className={required ? "asterisk" : ""}>
+        {label}
+      </InputLabel>
       <MuiTextField
         id={id}
         name={name}
@@ -36,6 +39,7 @@ const TextField = ({
         fullWidth={fullWidth}
         size={size}
         variant="outlined"
+        sx={fieldControlSx}
         slotProps={{
           input: {
             startAdornment: icon ? (

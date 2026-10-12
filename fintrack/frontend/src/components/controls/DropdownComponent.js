@@ -5,6 +5,7 @@ import { Box, Select, MenuItem, InputLabel } from "@mui/material";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { getListData } from "@/services/listService";
+import { fieldLabelSx } from "./utils/fieldStyles";
 
 const DropdownComponent = ({
   label,
@@ -68,7 +69,9 @@ const DropdownComponent = ({
         width: fullWidth ? "100%" : "auto",
       }}
     >
-      <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
+      <InputLabel sx={fieldLabelSx} className={required ? "asterisk" : ""}>
+        {label}
+      </InputLabel>
 
       <Box
         sx={{
@@ -128,7 +131,7 @@ const DropdownComponent = ({
           }}
           sx={{
             height: "48px",
-            borderRadius: "10px",
+            borderRadius: "8px",
             backgroundColor: "#FFFFFF",
 
             "& .MuiSelect-select": {
@@ -143,16 +146,15 @@ const DropdownComponent = ({
             },
 
             "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#DCE2F0",
-              borderWidth: "1px",
+              borderColor: "#D0D0D0",
             },
 
             "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#B8C3DC",
+              borderColor: "#B8B8B8",
             },
 
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#6D3DF5",
+              borderColor: "#6842FF",
               borderWidth: "1px",
             },
 
@@ -160,10 +162,6 @@ const DropdownComponent = ({
               right: "12px",
               color: "#5B6B92",
               fontSize: "24px",
-            },
-
-            "&.Mui-disabled": {
-              backgroundColor: "#F8FAFC",
             },
           }}
         >

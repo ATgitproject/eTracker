@@ -5,6 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvider";
 import dayjs from "dayjs";
 import { useEffect, useRef, useState } from "react";
+import { fieldControlSx, fieldLabelSx } from "./utils/fieldStyles";
 
 export default function DatePickerComponent(props) {
   let {
@@ -43,7 +44,9 @@ export default function DatePickerComponent(props) {
   return (
     <>
       <div>
-        <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
+        <InputLabel sx={fieldLabelSx} className={required ? "asterisk" : ""}>
+          {label}
+        </InputLabel>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             name={name}
@@ -52,6 +55,46 @@ export default function DatePickerComponent(props) {
             onChange={handleDateChange}
             disabled={disabled}
             className={className}
+            format={format}
+            slotProps={{
+              textField: {
+                fullWidth: true,
+                size: "medium",
+                placeholder: placeholder || "DD-MMMM-YYYY",
+                sx: {
+                  "& .MuiPickersInputBase-root": {
+                    height: "48px",
+                    borderRadius: "8px",
+                    backgroundColor: "#FFFFFF",
+                  },
+
+                  "& .MuiPickersOutlinedInput-notchedOutline": {
+                    borderColor: "#D0D0D0",
+                  },
+
+                  "& .MuiPickersInputBase-root:hover .MuiPickersOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "#B8B8B8",
+                    },
+
+                  "& .MuiPickersInputBase-root.Mui-focused .MuiPickersOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "#6842FF",
+                      borderWidth: "1px",
+                    },
+
+                  "& .MuiPickersInputBase-input": {
+                    padding: "0 12px",
+                    fontSize: "14px",
+                  },
+
+                  "& .MuiIconButton-root": {
+                    color: "#757575",
+                    marginRight: "2px",
+                  },
+                },
+              },
+            }}
           />
         </LocalizationProvider>
       </div>
