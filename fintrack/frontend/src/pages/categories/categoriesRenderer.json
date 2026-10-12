@@ -8,7 +8,7 @@
       "field_type": "tableComponent",
       "entity_name": "v_category_summary",
       "pagetitle": "Add categories",
-      "entityname": "categories",
+      "parent_entity": "categories",
       "columns": [
         {
           "col_id": "category_name",

@@ -45,8 +45,8 @@ import { useSelector } from "react-redux";
 import { ICON_MAP } from "./utils/iconList";
 
 const TableComponent = ({
-  entityName: entityNameProp,
-  entity_name,
+  entity_name: entityName,
+  parent_entity: parentEntity,
   columns: columnsProp = [],
   toolbars: toolbarsProp = [],
   filters: filtersConfig,
@@ -59,10 +59,8 @@ const TableComponent = ({
   const [conditions, setConditions] = useState([]);
   const [refreshList, setRefreshList] = useState(null);
   const router = useRouter();
-  const entityName = entityNameProp ?? entity_name;
   const columns = columnsProp;
   const toolbars = toolbarsProp;
-
   const refreshData = useSelector((state) => state.tableData.refreshData);
 
   const formattedColumns = useMemo(() => {
@@ -336,7 +334,7 @@ const TableComponent = ({
   }, [rows, enableViewMore]);
 
   useEffect(() => {
-    const refresh = refreshData?.[entityName];
+    const refresh = refreshData?.[parentEntity];
 
     if (refresh?.success) {
       fetchData();

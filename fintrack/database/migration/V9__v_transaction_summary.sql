@@ -9,12 +9,12 @@ WITH transactions AS (
             date_trunc('month'::text, transactions.transaction_date) AS month,
             COALESCE(sum(
                 CASE
-                    WHEN ((transactions.transaction_type)::text = 'income'::text) THEN transactions.amount
+                    WHEN ((transactions.transaction_type)::text = 'Income'::text) THEN transactions.amount
                     ELSE (0)::numeric
                 END), (0)::numeric) AS total_income,
             COALESCE(sum(
                 CASE
-                    WHEN ((transactions.transaction_type)::text = 'expense'::text) THEN transactions.amount
+                    WHEN ((transactions.transaction_type)::text = 'Expense'::text) THEN transactions.amount
                     ELSE (0)::numeric
                 END), (0)::numeric) AS total_expenses
 FROM public.transactions
