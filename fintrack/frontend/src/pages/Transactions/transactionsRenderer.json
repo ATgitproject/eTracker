@@ -66,6 +66,13 @@
           "col_name": "color",
           "order": 6,
           "hide": true
+        },
+        {
+          "col_id": "transaction_type",
+          "entity_field_name": "transaction_type",
+          "col_name": "Transaction Type",
+          "order": 7,
+          "hide": true
         }
       ],
       "toolbars": [
@@ -86,14 +93,6 @@
           "entity_name": "transactions",
           "order": 2,
           "component_path": "Transactions/addTransaction/addTransactionsRenderer"
-        },
-        {
-          "toolbar_id": "transaction_view",
-          "isbutton": false,
-          "toolbar_name": "View Transaction",
-          "toolbar_action": "view",
-          "order": 3,
-          "component_path": ""
         },
         {
           "toolbar_id": "transaction_delete",
@@ -118,17 +117,6 @@
             "listname": "transaction_category",
             "optCode": "id",
             "optValue": "name"
-          },
-          {
-            "field_id": "transaction_type",
-            "field_type": "buttonGroup",
-            "label": "Transaction Type",
-            "options": [
-              { "label": "All", "value": "all" },
-              { "label": "Income", "value": "income" },
-              { "label": "Expense", "value": "expense" },
-              { "label": "Transfer", "value": "transfer" }
-            ]
           },
           {
             "field_id": "category_id",
@@ -170,6 +158,28 @@
             "label": "Merchant",
             "placeholder": "Search merchant...",
             "entity_field_name": "Merchant"
+          }
+        ]
+      },
+      "gridFilter": {
+        "defaultFilter": "All",
+        "entity_field": "transaction_type",
+        "options": [
+          {
+            "label": "All",
+            "value": "All"
+          },
+          {
+            "label": "Expense",
+            "value": "Expense"
+          },
+          {
+            "label": "Income",
+            "value": "Income"
+          },
+          {
+            "label": "Transfer",
+            "value": "Transfer"
           }
         ]
       }

@@ -39,9 +39,8 @@ const ButtonGroupComponent = ({
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-        gap: 0.75,
+        display: "flex",
+        gap: 1,
       }}
     >
       {options?.map((option) => {
@@ -54,17 +53,19 @@ const ButtonGroupComponent = ({
             sx={{
               minWidth: 0,
               minHeight: 39,
-              px: 1,
+              px: 0,
+              px: 3,
               border: "1px solid",
-              borderColor: selected ? "#6842FF" : "#DFE5F2",
-              borderRadius: "10px",
-              bgcolor: selected ? "#F1EDFF" : "#FFFFFF",
-              color: selected ? "#6842FF" : "#24345B",
+              borderColor: selected ? "#6738f5" : "#DFE5F2",
+              borderRadius: "20px",
+              bgcolor: selected ? "#6738f5" : "#FFFFFF",
+              color: selected ? "#fff" : "#24345B",
               fontSize: 13,
               fontWeight: selected ? 600 : 400,
               textTransform: "none",
+              boxShadow: "0 2px 6px #6738f52e",
               "&:hover": {
-                bgcolor: selected ? "#EAE3FF" : "#F8F9FD",
+                bgcolor: selected ? "#6738f5" : "#F8F9FD",
                 borderColor: "#6842FF",
               },
             }}

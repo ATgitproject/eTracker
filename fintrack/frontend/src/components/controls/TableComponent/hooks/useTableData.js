@@ -31,7 +31,7 @@ const useTableData = ({ entityName, columns, conditions = [] }) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   return { rows, loading, fetchData };
 };

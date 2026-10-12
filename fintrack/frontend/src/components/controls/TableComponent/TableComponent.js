@@ -43,6 +43,7 @@ import { RowContextualMenu } from "./rowContextualMenu";
 import FilterSearch from "./utils/filterSearch";
 import { useSelector } from "react-redux";
 import { ICON_MAP } from "./utils/iconList";
+import ButtonGroupComponent from "../ButtonGroupComponent";
 
 const TableComponent = ({
   entity_name: entityName,
@@ -55,9 +56,14 @@ const TableComponent = ({
   enableViewMore,
   tableTitle,
   onRefetchReady,
+  gridFilter = null,
 }) => {
   const [conditions, setConditions] = useState([]);
   const [refreshList, setRefreshList] = useState(null);
+  const [gridFilterValue, setGridFilterValue] = useState(
+    gridFilter?.defaultFilter,
+  );
+  const [gridCondition, setGridCondition] = useState([]);
   const router = useRouter();
   const columns = columnsProp;
   const toolbars = toolbarsProp;
@@ -298,7 +304,7 @@ const TableComponent = ({
   } = useTableData({
     entityName,
     columns,
-    conditions,
+    conditions: [...conditions, ...gridCondition],
   });
 
   const { pageToolbars, gridToolbars, rowToolbars } = useTableToolbars(
@@ -340,6 +346,27 @@ const TableComponent = ({
       fetchData();
     }
   }, [refreshData, entityName]);
+
+  useEffect(() => {
+    fetchData();
+  }, [conditions, gridCondition]);
+
+  const onGridFilterChange = (event, entity_field) => {
+    const value = event?.target?.value || event;
+    setGridFilterValue(value);
+    if (value !== "All") {
+      setGridCondition([
+        {
+          field: entity_field,
+          operator: "equal",
+          value: value,
+        },
+      ]);
+    } else {
+      setGridFilterValue("All");
+      setGridCondition([]);
+    }
+  };
 
   const renderToolbar = useCallback(
     (toolbar) => {
@@ -399,19 +426,25 @@ const TableComponent = ({
         minWidth: 0,
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          gap: 1,
-          mb: 1.5,
-        }}
-      >
+      <Box className="filter-box">
+        {gridFilter && (
+          <Box className="grid-filter">
+            <ButtonGroupComponent
+              value={gridFilterValue}
+              onChange={(event) => {
+                onGridFilterChange(event, gridFilter?.entity_field);
+              }}
+              options={gridFilter?.options}
+            />
+          </Box>
+        )}
         {filtersConfig && (
-          <FilterSearch config={filtersConfig} onApply={setConditions} />
+          <Box className="advance-filter">
+            <FilterSearch config={filtersConfig} onApply={setConditions} />
+          </Box>
         )}
       </Box>
+
       <Box
         sx={{
           display: "flex",

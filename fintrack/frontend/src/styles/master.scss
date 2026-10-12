@@ -715,3 +715,16 @@ body {
     line-height: 14px !important;
   }
 }
+
+.filter-box {
+  display: flex;
+  .grid-filter {
+    width: 50%;
+    display: flex;
+  }
+  .advance-filter {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -8,9 +8,9 @@ import {
   DialogTitle,
   DialogContent,
   Typography,
+  Box,
 } from "@mui/material";
 import { Pencil, Trash2, Eye } from "lucide-react";
-
 import { TOOLBAR_ICONS } from "./utils/TableUtils";
 
 export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
@@ -53,60 +53,61 @@ export const RowContextualMenu = ({ row, toolbars = [], onAction }) => {
 
   return (
     <>
-      {editToolbar ? (
-        <IconButton
-          size="small"
-          aria-label="Row actions"
-          aria-haspopup="menu"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleOpen}
-          sx={actionSx.edit}
-        >
-          <Pencil
-            fontSize="small"
-            onClick={(event) => {
-              handleAction(event, editToolbar);
-            }}
-          />
-        </IconButton>
-      ) : null}
+      <Box sx={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+        {editToolbar ? (
+          <IconButton
+            size="small"
+            aria-label="Row actions"
+            aria-haspopup="menu"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleOpen}
+            sx={actionSx.edit}
+          >
+            <Pencil
+              fontSize="small"
+              onClick={(event) => {
+                handleAction(event, editToolbar);
+              }}
+            />
+          </IconButton>
+        ) : null}
 
-      {deleteToolbar ? (
-        <IconButton
-          size="small"
-          aria-label="Row actions"
-          aria-haspopup="menu"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleOpen}
-          sx={actionSx.delete}
-        >
-          <Trash2
-            fontSize="small"
-            onClick={() => {
-              setShowConfirmation(true);
-            }}
-          />
-        </IconButton>
-      ) : null}
+        {deleteToolbar ? (
+          <IconButton
+            size="small"
+            aria-label="Row actions"
+            aria-haspopup="menu"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleOpen}
+            sx={actionSx.delete}
+          >
+            <Trash2
+              fontSize="small"
+              onClick={() => {
+                setShowConfirmation(true);
+              }}
+            />
+          </IconButton>
+        ) : null}
 
-      {viewToolbar ? (
-        <IconButton
-          size="small"
-          aria-label="Row actions"
-          aria-haspopup="menu"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleOpen}
-          sx={actionSx.view}
-        >
-          <Eye
-            fontSize="small"
-            onClick={(event) => {
-              handleAction(event, viewToolbar);
-            }}
-          />
-        </IconButton>
-      ) : null}
-
+        {viewToolbar ? (
+          <IconButton
+            size="small"
+            aria-label="Row actions"
+            aria-haspopup="menu"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleOpen}
+            sx={actionSx.view}
+          >
+            <Eye
+              fontSize="small"
+              onClick={(event) => {
+                handleAction(event, viewToolbar);
+              }}
+            />
+          </IconButton>
+        ) : null}
+      </Box>
       <Dialog
         open={!!showConfirmation}
         onClose={() => setShowConfirmation(false)}
