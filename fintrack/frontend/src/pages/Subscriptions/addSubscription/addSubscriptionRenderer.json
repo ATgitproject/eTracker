@@ -1,34 +1,15 @@
 {
-  "entity_name": "transactions",
+  "entity_name": "subscriptions",
   "components": [
     {
-      "field_type": "segmentButtonComponent",
-      "field_id": "transaction_type",
-      "entity_field_name": "transaction_type",
-      "defaultValue": "Expense",
-      "listname": "categories"
-    },
-    {
       "field_type": "textfield",
-      "field_id": "description",
-      "entity_field_name": "description",
+      "field_id": "name",
+      "entity_field_name": "name",
       "width": 12,
-      "label": "Description",
-      "name": "description",
-      "placeholder": "Enter description",
+      "label": "Service Name",
+      "name": "name",
+      "placeholder": "e.g. Netflix",
       "required": true
-    },
-    {
-      "field_type": "textfield",
-      "field_id": "amount",
-      "entity_field_name": "amount",
-      "type": "number",
-      "width": 12,
-      "label": "Amount",
-      "name": "amount",
-      "placeholder": "Enter Amount",
-      "required": true,
-      "regex": "^[0-9]{0,50}$"
     },
     {
       "field_type": "dropdownComponent",
@@ -36,38 +17,55 @@
       "entity_field_name": "category_id",
       "width": 12,
       "label": "Category",
-      "placeholder": "Enter category",
+      "placeholder": "Select category",
       "required": true,
       "listname": "transaction_category",
       "optCode": "id",
-      "optValue": "name"
+      "optValue": "name",
+      "hasIcon": {
+        "listName": "CATEGORY_ICONS",
+        "iconFieldName": "name"
+      }
+    },
+    {
+      "field_type": "textfield",
+      "field_id": "amount",
+      "entity_field_name": "amount",
+      "width": 12,
+      "label": "Amount",
+      "name": "amount",
+      "type": "number",
+      "placeholder": "e.g. 299",
+      "required": true,
+      "regex": "^[0-9]{1,12}(\\.[0-9]{1,2})?$"
     },
     {
       "field_type": "dropdownComponent",
-      "field_id": "payment_method",
-      "entity_field_name": "payment_method",
+      "field_id": "billing_cycle",
+      "entity_field_name": "billing_cycle",
       "width": 12,
-      "label": "Payment Method",
-      "name": "payment_method",
-      "placeholder": "Enter Payment Method",
+      "label": "Billing Cycle",
+      "name": "billing_cycle",
+      "placeholder": "Select billing cycle",
       "required": true,
-      "listname": "payment_method"
-    },
-    {
-      "field_type": "toggleComponent",
-      "field_id": "mark_recurring",
-      "entity_field_name": "is_recurring",
-      "label": "Mark as recurring",
-      "icon": "sync",
-      "name": "isRecurring"
+      "listname": "billing_cycle"
     },
     {
       "field_type": "datePickerComponent",
-      "field_id": "transaction_date",
-      "entity_field_name": "transaction_date",
-      "label": "Transaction Date",
-      "setDefCurrrentDate": true,
-      "required": true
+      "field_id": "next_billing_date",
+      "entity_field_name": "next_billing_date",
+      "width": 12,
+      "label": "Next Billing Date",
+      "required": true,
+      "setDefCurrrentDate": true
+    },
+    {
+      "field_type": "toggleComponent",
+      "field_id": "is_active",
+      "entity_field_name": "is_active",
+      "label": "Status",
+      "name": "is_active",
+      "defaultValue": true
     }
   ]
 }
