@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS public.subscriptions (
                 'yearly'
             )
         ),
-
+    status VARCHAR(150) NOT NULL,
     next_billing_date DATE,
 
     payment_method VARCHAR(50),
