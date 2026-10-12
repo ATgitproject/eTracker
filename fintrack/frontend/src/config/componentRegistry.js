@@ -17,6 +17,7 @@ import IconComponent from "@/components/controls/IconComponent";
 import ColorSelectComponent from "@/components/controls/ColorSelectComponent";
 import ButtonGroupComponent from "@/components/controls/ButtonGroupComponent";
 import DatePickerComponent from "@/components/controls/DatePickerComponent";
+import SummaryOverview from "@/components/controls/SummaryOverview";
 
 const componentRegistry = {
   textfield: TextField,
@@ -38,6 +39,7 @@ const componentRegistry = {
   colorSelectComponent: ColorSelectComponent,
   buttonGroupComponent: ButtonGroupComponent,
   datePickerComponent: DatePickerComponent,
+  summaryOverviewComponent: SummaryOverview,
 };
 
 export default componentRegistry;

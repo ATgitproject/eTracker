@@ -3,56 +3,82 @@
   "description": "Set and Manage your monthly Budget to stay on track.",
   "components": [
     {
-      "field_id": "budget-tiles-tiles",
-      "field_type": "tilesComponent",
-      "entity_name": "v_budget_tiles",
-      "isAmount": false,
-      "showTrend": false,
-      "tiles": [
+      "field_id": "summary-container",
+      "field_type": "layoutContainer",
+      "width": 12,
+      "children": [
         {
-          "key": 1,
-          "control_id": "active-budgets",
-          "tiles_name": "Active Budgets",
-          "entity_field_name": "active_budgets",
-          "icon": {
-            "icon_name": "budget-icon",
-            "icon_color": "#22C55E",
-            "background_color": "#D0F7E7"
-          },
-          "style": {
-            "background_color": "#DCFCE7"
-          }
+          "field_id": "budget-overview",
+          "field_type": "summaryOverviewComponent",
+          "entity_name": "v_budget_overview_tiles",
+          "title": "Total Budget",
+          "primary_field": "total_budget",
+          "primary_label": "Total Budget",
+          "secondary_field": "total_spent",
+          "secondary_label": "spent",
+          "remaining_field": "remaining_balance",
+          "remaining_label": "remaining",
+          "percentage_field": "percentage_used",
+          "format": "currency",
+          "accent_color": "#19A982",
+          "width": 3
         },
         {
-          "key": 2,
-          "control_id": "over-budget",
-          "tiles_name": "Over Budget",
-          "entity_field_name": "overdue_budgets",
-          "icon": {
-            "icon_name": "warning-icon",
-            "icon_color": "#EF4444",
-            "background_color": "#FFE0E5"
-          },
-          "style": {
-            "background_color": "#FEE2E2"
-          }
-        },
-        {
-          "key": 3,
-          "control_id": "days-left",
-          "tiles_name": "Days Left",
-          "entity_field_name": "days_left",
-          "icon": {
-            "icon_name": "clock-icon",
-            "icon_color": "#3B82F6",
-            "background_color": "#E9DFFF"
-          },
-          "style": {
-            "background_color": "#DBEAFE"
-          }
+          "field_id": "budget-tiles-tiles",
+          "field_type": "tilesComponent",
+          "entity_name": "v_budget_tiles",
+          "isAmount": false,
+          "showTrend": false,
+          "width": 9,
+          "tile_width": "220px",
+          "tiles": [
+            {
+              "key": 1,
+              "control_id": "active-budgets",
+              "tiles_name": "Active Budgets",
+              "entity_field_name": "active_budgets",
+              "icon": {
+                "icon_name": "clock-icon",
+                "icon_color": "#22C55E",
+                "background_color": "#D0F7E7"
+              },
+              "style": {
+                "background_color": "#DCFCE7"
+              }
+            },
+            {
+              "key": 2,
+              "control_id": "over-budget",
+              "tiles_name": "Over Budget",
+              "entity_field_name": "overdue_budgets",
+              "icon": {
+                "icon_name": "warning-icon",
+                "icon_color": "#EF4444",
+                "background_color": "#FFE0E5"
+              },
+              "style": {
+                "background_color": "#FEE2E2"
+              }
+            },
+            {
+              "key": 3,
+              "control_id": "days-left",
+              "tiles_name": "Days Left",
+              "entity_field_name": "days_left",
+              "icon": {
+                "icon_name": "budget-icon",
+                "icon_color": "#3B82F6",
+                "background_color": "#E9DFFF"
+              },
+              "style": {
+                "background_color": "#DBEAFE"
+              }
+            }
+          ]
         }
       ]
     },
+
     {
       "field_id": "Budget-table",
       "field_type": "tableComponent",

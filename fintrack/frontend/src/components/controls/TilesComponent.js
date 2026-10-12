@@ -35,6 +35,7 @@ const TilesComponent = (props) => {
     style,
     isAmount = true,
     showTrend = true,
+    tile_width,
   } = props;
   const [tileData, setTileData] = useState(null);
   const lastMonth = dayjs()?.subtract(1, "month")?.format("MMMM");
@@ -91,12 +92,7 @@ const TilesComponent = (props) => {
     <Box
       key={fieldid}
       sx={{
-        display: "grid",
-        gridTemplateColumns: {
-          xs: "1fr",
-          sm: "repeat(2, 1fr)",
-          md: "repeat(auto-fit, minmax(240px, 1fr))",
-        },
+        display: "flex",
         gap: 2,
         width: "100%",
         minWidth: 0,
@@ -114,6 +110,7 @@ const TilesComponent = (props) => {
           <Card
             key={tile?.key}
             sx={{
+              width: tile_width ? tile_width : "",
               height: "100%",
               minWidth: 0,
               borderRadius: 2,
