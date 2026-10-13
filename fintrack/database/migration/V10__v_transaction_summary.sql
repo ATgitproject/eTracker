@@ -1,10 +1,9 @@
 
 
-
-
+DROP VIEW IF EXISTS public.v_transaction_summary;
 
 CREATE OR REPLACE VIEW public.v_transaction_summary AS
-WITH transactions AS (
+ WITH transactions AS (
          SELECT transactions.user_id,
             date_trunc('month'::text, transactions.transaction_date) AS month,
             COALESCE(sum(
@@ -17,6 +16,7 @@ WITH transactions AS (
                     WHEN ((transactions.transaction_type)::text = 'Expense'::text) THEN transactions.amount
                     ELSE (0)::numeric
                 END), (0)::numeric) AS total_expenses
+           
 FROM public.transactions
           WHERE (transactions.transaction_date >= (date_trunc('month'::text, (CURRENT_DATE)::timestamp with time zone) - '1 mon'::interval))
           GROUP BY transactions.user_id, (date_trunc('month'::text, transactions.transaction_date))
@@ -24,16 +24,18 @@ FROM public.transactions
          SELECT transactions.user_id,
             transactions.total_income,
             transactions.total_expenses
+           
 FROM transactions
           WHERE (transactions.month = date_trunc('month'::text, (CURRENT_DATE)::timestamp with time zone))
         ), previous_month AS (
          SELECT transactions.user_id,
             transactions.total_income,
             transactions.total_expenses
+           
 FROM transactions
           WHERE (transactions.month = (date_trunc('month'::text, (CURRENT_DATE)::timestamp with time zone) - '1 mon'::interval))
         )
-SELECT c.user_id,
+ SELECT c.user_id,
     c.total_income,
     round(
         CASE
@@ -94,6 +96,7 @@ SELECT c.user_id,
             WHEN ((c.total_income - c.total_expenses) < (COALESCE(p.total_income, (0)::numeric) - COALESCE(p.total_expenses, (0)::numeric))) THEN 'Negative'::text
             ELSE 'No Change'::text
         END AS total_saving_trend
+   
 FROM (current_month c
      LEFT JOIN previous_month p ON ((c.user_id = p.user_id)));
- 
+

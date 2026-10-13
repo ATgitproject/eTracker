@@ -1,7 +1,12 @@
 
 
+
+
+
+DROP VIEW IF EXISTS public.v_transaction_list;
+
 CREATE OR REPLACE VIEW public.v_transaction_list AS
-SELECT t.id,
+ SELECT t.id,
     t.user_id,
     t.transaction_type,
     t.amount,
@@ -12,5 +17,7 @@ SELECT t.id,
     c.name AS category_name,
     t.icon,
     t.color
+   
 FROM (transactions t
      LEFT JOIN categories c ON ((t.category_id = c.id)));
+

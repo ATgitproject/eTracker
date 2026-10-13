@@ -1,9 +1,11 @@
 
 
+
+
 DROP VIEW IF EXISTS public.v_upcoming_bills;
- 
+
 CREATE OR REPLACE VIEW public.v_upcoming_bills AS
-SELECT s.id,
+ SELECT s.id,
     s.user_id,
     s.name AS description,
     s.merchant,
@@ -20,12 +22,10 @@ SELECT s.id,
             WHEN (s.next_billing_date = CURRENT_DATE) THEN 'due_today'::text
             ELSE 'upcoming'::text
         END AS bill_status
+   
 FROM (subscriptions s
      LEFT JOIN categories c ON ((c.id = s.category_id)))
   WHERE ((s.is_active = true) AND (s.next_billing_date IS NOT NULL) AND (s.next_billing_date <= (CURRENT_DATE + '30 days'::interval)));
- 
- 
- 
- 
- 
- 
+
+
+
