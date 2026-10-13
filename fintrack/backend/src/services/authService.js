@@ -44,6 +44,7 @@ const signup = async (payload) => {
 
     const passwordHash = await hashPassword(password);
 
+    const userResult = await client.query(
       `INSERT INTO users (
         name, email, mobile_number, password
       )
