@@ -88,11 +88,9 @@
           "entity_field_name": "category_name",
           "col_name": "Category",
           "order": 1,
-          "hasIcon": {
-            "iconFieldName": "category_icon"
-          },
-          "hasIconColor": {
-            "colorFieldName": "category_color"
+          "icon": {
+            "icon_entity_field": "category_icon",
+            "icon_color_entity_field": "category_color"
           }
         },
         {
@@ -127,7 +125,21 @@
           "entity_field_name": "status",
           "col_name": "Status",
           "order": 4,
-          "isStatus": true
+          "value_based_color": "true"
+        },
+        {
+          "col_id": "icon",
+          "entity_field_name": "category_icon",
+          "col_name": "icon",
+          "order": 5,
+          "hide": "true"
+        },
+        {
+          "col_id": "color",
+          "entity_field_name": "category_color",
+          "col_name": "color",
+          "order": 6,
+          "hide": "true"
         }
       ],
       "toolbars": [

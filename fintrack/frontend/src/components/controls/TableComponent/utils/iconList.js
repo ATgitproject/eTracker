@@ -21,6 +21,8 @@ import {
   Utensils,
   Wallet,
   Zap,
+  Cloud,
+  CircleHelp,
 } from "lucide-react";
 
 export const ICON_MAP = {
@@ -44,6 +46,7 @@ export const ICON_MAP = {
   Cheque: FileCheck,
   amountIcon: IndianRupee,
   others: Pending,
+
   "car-front": CarFront,
   "gamepad-2": Gamepad2,
   "heart-pulse": HeartPulse,
@@ -61,9 +64,10 @@ export const ICON_MAP = {
   netflix: "/icons/netflix.png",
   spotify: "/icons/Spotify.png",
   microsoft: "/icons/Microsoft.png",
-  hoststar: "/icons/jiohotstar.png",
+  hotstar: "/icons/jiohotstar.png",
   Crunchyroll: "/icons/crunchyroll.png",
   youtube: "/icons/Youtube.png",
   prime: "/icons/prime.png",
   googleone: "/icons/googleone.png",
+  cloud: Cloud,
 };

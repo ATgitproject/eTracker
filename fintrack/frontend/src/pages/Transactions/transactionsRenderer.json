@@ -14,15 +14,14 @@
           "entity_field_name": "description",
           "col_name": "Description",
           "order": 1,
-          "hasIcon": true,
-          "hasIconColor": true
+          "icon": { "has_icon": true, "has_icon_colour": true }
         },
         {
           "col_id": "category",
           "entity_field_name": "category_name",
           "col_name": "Category",
           "order": 2,
-          "hasTextColor": true
+          "icon": { "has_icon": true, "has_icon_colour": true }
         },
         {
           "col_id": "datetime",
@@ -48,10 +47,7 @@
           "entity_field_name": "payment_method",
           "col_name": "Payment Method",
           "order": 5,
-          "hasIcon": {
-            "listName": "PAYMENT_METHOD_ICONS",
-            "iconFieldName": "payment_method"
-          }
+          "icon": { "has_icon": true, "has_icon_colour": true }
         },
         {
           "col_id": "icon",

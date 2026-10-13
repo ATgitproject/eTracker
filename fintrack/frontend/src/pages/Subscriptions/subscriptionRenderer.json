@@ -15,15 +15,14 @@
           "col_name": "Service",
           "order": 1,
           "flex": 3,
-          "hasIcon": true,
-          "hasIconColor": true
+          "icon": { "has_icon": true, "has_icon_colour": true }
         },
         {
           "col_id": "category",
           "entity_field_name": "category",
           "col_name": "Category",
           "order": 2,
-          "isType": true
+          "value_based_color": "true"
         },
         {
           "col_id": "amount",
@@ -54,7 +53,7 @@
           "entity_field_name": "status",
           "col_name": "Status",
           "order": 6,
-          "isStatus": true
+          "value_based_color": "true"
         },
         {
           "col_id": "icon",

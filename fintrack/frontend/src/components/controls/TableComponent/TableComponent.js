@@ -11,10 +11,8 @@ import {
   buildColumns,
   TOOLBAR_ICONS,
   formatDateValue,
-  getTypeColor,
-  getTypeBgColor,
-  getStatusColor,
-  getStatusBgColor,
+  getColor,
+  getBgColor,
 } from "./utils/TableUtils";
 import {
   ShoppingCart,
@@ -184,15 +182,10 @@ const TableComponent = ({
             );
           }
 
-          const iconName = row[column?.hasIcon?.iconFieldName || "icon"];
-
-          const Icon = column.hasIcon ? ICON_MAP[iconName] : null;
+          const iconName = row[column?.icon?.icon_entity_field || "icon"];
+          const Icon = ICON_MAP[iconName || "CircleHelp"];
           const AmountIcon = column.isAmount ? ICON_MAP?.["amountIcon"] : null;
-
-          const color =
-            row[column?.hasColor?.colorFieldName || "color"] ||
-            row.category_color ||
-            "#6842FF";
+          const color = row[column?.icon?.icon_color_entity_field || "color"];
 
           return (
             <Box
@@ -206,7 +199,7 @@ const TableComponent = ({
                 p: 0,
               }}
             >
-              {column.hasIcon && Icon && (
+              {column?.icon && Icon && (
                 <Box
                   sx={{
                     width: 32,
@@ -216,8 +209,8 @@ const TableComponent = ({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: column.hasIconColor ? color : "#6842FF",
-                    bgcolor: column.hasIconColor ? `${color}20` : "#F1EDFF",
+                    color: color ? color : "#6842FF",
+                    bgcolor: color ? `${color}20` : "#F1EDFF",
                   }}
                 >
                   {Icon &&
@@ -273,16 +266,12 @@ const TableComponent = ({
                 variant="body2"
                 sx={{
                   fontWeight: 400,
-                  color: column?.isType
-                    ? getTypeColor(params.value ?? "")
-                    : column?.isStatus
-                      ? getStatusColor(params.value ?? "")
-                      : "inherit",
-                  bgcolor: column?.isType
-                    ? getTypeBgColor(params.value ?? "")
-                    : column?.isStatus
-                      ? getStatusBgColor(params.value ?? "")
-                      : undefined,
+                  color: column?.value_based_color
+                    ? getColor(params.value ?? "")
+                    : "inherit",
+                  bgcolor: column?.value_based_color
+                    ? getBgColor(params.value ?? "")
+                    : "inherit",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",

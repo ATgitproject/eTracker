@@ -108,11 +108,9 @@
               "entity_field_name": "category_name",
               "col_name": "Category",
               "order": 1,
-              "hasIcon": {
-                "iconFieldName": "category_icon"
-              },
-              "hasIconColor": {
-                "colorFieldName": "category_color"
+              "icon": {
+                "icon_entity_field": "category_icon",
+                "icon_color_entity_field": "category_color"
               }
             },
             {
@@ -181,15 +179,13 @@
               "entity_field_name": "description",
               "col_name": "Description",
               "order": 1,
-              "hasIcon": true,
-              "hasIconColor": true
+              "icon": { "has_icon": true, "has_icon_colour": true }
             },
             {
               "col_id": "category",
               "entity_field_name": "category_name",
               "col_name": "Category",
-              "order": 2,
-              "hasTextColor": true
+              "order": 2
             },
             {
               "col_id": "datetime",
@@ -241,8 +237,7 @@
               "entity_field_name": "description",
               "col_name": "Bill Name",
               "order": 1,
-              "hasIcon": true,
-              "hasIconColor": true
+              "icon": { "hasIcon": true, "hasIconColor": true }
             },
             {
               "col_id": "due_date",

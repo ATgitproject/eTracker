@@ -23,14 +23,11 @@ export const buildColumns = (columns = []) =>
       headerName: column.col_name,
       flex: column.flex ?? 1,
       minWidth: 120,
-      hasIcon: column.hasIcon ?? false,
-      hasIconColor: column.hasIconColor ?? false,
-      hasTextColor: column.hasTextColor ?? false,
+      icon: column?.icon ?? false,
+      value_based_color: column?.value_based_color ?? false,
       hasProgress: column.hasProgress ?? false,
       compare_field_name: column.compare_field_name,
       isAmount: column.isAmount ?? false,
-      isStatus: column.isStatus ?? false,
-      isType: column.isType ?? false,
       colType: column.colType,
       sx: column.sx ?? {},
     }));
@@ -306,58 +303,38 @@ export const tableStyles = {
   },
 };
 
-export const getStatusBgColor = (status) => {
-  if (status === "Active") {
-    return "#DCFCE7";
-  }
-  if (status === "On Track") {
-    return "#DCFCE7";
-  }
-  if (status === "Over Budget") {
-    return "#FEE2E2";
-  } else {
-    return "#FEE2E2";
-  }
-};
-
-export const getStatusColor = (status) => {
-  if (status === "Active") {
+export const getColor = (value) => {
+  if (value === "Income" || value === "Active" || value === "On Track") {
     return "#22C55E";
-  }
-  if (status === "On Track") {
-    return "#22C55E";
-  }
-  if (status === "Over Budget") {
-    return "#EF4444";
+  } else if (value === "Transfer" || value === "Income") {
+    return "#3B82F6";
+  } else if (value === "Utilities" || value === "Shopping") {
+    return "#6D28D9";
+  } else if (
+    value === "Entertainment" ||
+    value === "Over Budget" ||
+    value === "InActive"
+  ) {
+    return "#DC2626";
   } else {
     return "#EF4444";
   }
 };
 
-export const getTypeBgColor = (type) => {
-  if (type === "Income") {
+export const getBgColor = (value) => {
+  if (value === "Income" || value === "Active" || value === "On Track") {
     return "#DCFCE7";
-  } else if (type === "Transfer") {
+  } else if (value === "Transfer" || value === "Income") {
     return "#DBEAFE";
-  } else if (type === "Entertainment") {
+  } else if (value === "Utilities" || value === "Shopping") {
     return "#FCE7EC";
-  } else if (type === "Utilities" || type === "Shopping") {
+  } else if (
+    value === "Entertainment" ||
+    value === "Over Budget" ||
+    value === "InActive"
+  ) {
     return "#EEE8FE";
   } else {
     return "#FEE2E2";
-  }
-};
-
-export const getTypeColor = (type) => {
-  if (type === "Income") {
-    return "#22C55E";
-  } else if (type === "Transfer") {
-    return "#3B82F6";
-  } else if (type === "Entertainment") {
-    return "#DC2626";
-  } else if (type === "Utilities" || type === "Shopping") {
-    return "#6D28D9";
-  } else {
-    return "#EF4444";
   }
 };
