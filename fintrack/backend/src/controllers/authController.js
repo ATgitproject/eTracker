@@ -2,34 +2,20 @@ const authService = require("../services/authService");
 
 const signup = async (req, res) => {
   try {
-    const { name, email, mobileNumber, password } = req.body;
-
-    if (!name || !email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: "Name, email and password are required",
-      });
-    }
-
-    const result = await authService.signup({
-      req,
-      name,
-      email,
-      mobileNumber,
-      password,
-    });
+    const result = await authService.signup(req.body);
 
     return res.status(201).json({
       success: true,
+      message: "Signup successful",
       data: result,
     });
   } catch (error) {
-    console.error("SIGNUP ERROR:", error);
-
-    return res.status(400).json({
-      success: false,
-      message: error.message || "Signup failed",
-    });
+    return res
+      .status(error.message === "Email already registered" ? 409 : 400)
+      .json({
+        success: false,
+        message: error.message,
+      });
   }
 };
 

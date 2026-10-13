@@ -129,13 +129,6 @@
   cursor: pointer;
 }
 
-.login-form__forgot {
-  display: flex;
-  justify-content: flex-end;
-
-  margin-top: 8px;
-}
-
 .login-form__forgot button {
   padding: 0;
 
@@ -151,9 +144,36 @@
   cursor: pointer;
 }
 
+.login-form__options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin: 4px 0 20px;
+}
+
 .login-form__options {
-  margin-top: 19px;
-  margin-bottom: 23px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.login-form__forgot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+
+  button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #5925ff;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
 }
 
 /* ================================================

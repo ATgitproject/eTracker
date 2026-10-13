@@ -43,28 +43,23 @@ export const logoutUser = async (userId) => {
   return data;
 };
 
-export const signupUser = async ({ name, email, password }) => {
+export const signupUser = async (payload) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/auth/signup`,
     {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
+      body: JSON.stringify(payload),
     },
   );
 
-  const data = await response.json();
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Unable to create account");
+    throw new Error(result?.message || result?.error || "Signup failed.");
   }
 
-  return data;
+  return result;
 };

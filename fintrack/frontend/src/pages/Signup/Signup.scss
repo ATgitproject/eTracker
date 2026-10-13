@@ -493,3 +493,249 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Setup section headings */
+.setup-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.setup-section-heading h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #10183b;
+}
+
+.setup-section-heading p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #8290b1;
+}
+
+.setup-section-heading > strong {
+  flex-shrink: 0;
+  color: #5737ef;
+  font-size: 13px;
+}
+
+/* Budget rows */
+.budget-list,
+.subscription-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.budget-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(110px, 42%);
+  align-items: center;
+  gap: 12px;
+}
+
+.budget-category {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  font-size: 13px;
+  color: #27345d;
+}
+
+.budget-category-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #f0eaff;
+  color: #6239f5;
+}
+
+.budget-amount,
+.subscription-amount {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  height: 39px;
+  border: 1px solid #e1e5f0;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.budget-amount > span,
+.subscription-amount > span {
+  color: #8290b1;
+  font-size: 12px;
+}
+
+.budget-amount input,
+.subscription-amount input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #10183b;
+  font: inherit;
+  font-size: 13px;
+}
+
+.budget-amount input:focus,
+.subscription-amount:focus-within {
+  border-color: #8b72ff;
+}
+
+/* Subscription rows */
+.subscription-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px 105px 22px;
+  align-items: center;
+  gap: 7px;
+}
+
+.subscription-name,
+.subscription-row select {
+  width: 100%;
+  min-width: 0;
+  height: 39px;
+  padding: 0 9px;
+  border: 1px solid #e1e5f0;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #27345d;
+  font: inherit;
+  font-size: 12px;
+}
+
+.subscription-name:focus,
+.subscription-row select:focus {
+  border-color: #8b72ff;
+}
+
+.subscription-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  color: #8290b1;
+  cursor: pointer;
+}
+
+.subscription-remove:hover {
+  color: #dc2626;
+}
+
+.subscription-add {
+  width: 100%;
+  min-height: 39px;
+  margin-top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #d8ceff;
+  border-radius: 9px;
+  background: #fff;
+  color: #5737ef;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.subscription-add:hover {
+  background: #f7f4ff;
+}
+
+/* Review */
+.review-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.review-card-heading h3 {
+  margin-bottom: 8px;
+}
+
+.review-card-heading button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: #5737ef;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.review-row--total {
+  margin-top: 5px;
+  padding-top: 10px;
+  border-top: 1px solid #e8eaf3;
+}
+
+.review-row--total strong {
+  color: #5737ef;
+}
+
+/* Completion */
+.signup-summary--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.signup-summary--three > div {
+  min-width: 0;
+  padding: 14px 8px;
+}
+
+.signup-summary--three svg {
+  margin-bottom: 8px;
+  color: #6239f5;
+}
+
+.signup-summary--three strong {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .subscription-row {
+    grid-template-columns: minmax(0, 1fr) 90px 90px 20px;
+    gap: 5px;
+  }
+
+  .subscription-name,
+  .subscription-row select {
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .signup-summary--three {
+    gap: 7px;
+  }
+
+  .signup-summary--three > div {
+    padding: 12px 5px;
+  }
+
+  .signup-summary--three strong {
+    font-size: 13px;
+  }
+}

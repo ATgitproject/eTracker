@@ -17,7 +17,7 @@ const Checkbox = ({
 
   return (
     <div>
-      <InputLabel className={required ? "asterisk" : ""}>{label}</InputLabel>
+      <InputLabel className={required ? "asterisk" : ""} />
       <FormControlLabel
         control={
           <MuiCheckbox

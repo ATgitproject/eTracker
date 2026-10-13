@@ -106,7 +106,6 @@ const Login = () => {
                 onChange={(event) => handleChange("email", event.target.value)}
                 required
               />
-
               <div className="password-field">
                 <TextField
                   label="Password"
@@ -129,27 +128,29 @@ const Login = () => {
                   <Eye size={23} />
                 </button>
               </div>
+              <div className="login-form__options-row">
+                <div className="login-form__options">
+                  <Checkbox
+                    id="remember-me"
+                    label="Remember me"
+                    checked={rememberMe}
+                    onChange={(event) => setRememberMe(event.target.checked)}
+                  />
+                </div>
 
-              <div className="login-form__forgot">
-                <button type="button">Forgot your password?</button>
+                <div className="login-form__forgot">
+                  <button type="button">Forgot your password?</button>
+                </div>
               </div>
-
-              <div className="login-form__options">
-                <Checkbox
-                  id="remember-me"
-                  label="Remember me"
-                  checked={rememberMe}
-                  onChange={(event) => setRememberMe(event.target.checked)}
-                />
-              </div>
-
               {error && <div className="login-form__error">{error}</div>}
-
               <Button
                 type="submit"
                 label={loading ? "Logging in..." : "Log In"}
                 variant="primary"
                 disabled={loading}
+                sx={{
+                  width: "100%",
+                }}
               />
             </form>
 

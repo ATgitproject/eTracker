@@ -13,6 +13,7 @@ const ButtonComponent = ({
   fullWidth = false,
   startIcon,
   endIcon,
+  sx,
   ...props
 }) => {
   const muiVariant =
@@ -32,6 +33,7 @@ const ButtonComponent = ({
       startIcon={loading ? null : startIcon}
       endIcon={loading ? null : endIcon}
       sx={{
+        ...sx,
         height: "40px",
         minWidth: "140px",
         padding: "0 20px",
