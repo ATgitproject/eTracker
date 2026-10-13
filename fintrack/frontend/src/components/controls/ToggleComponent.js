@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Box, InputLabel, Switch, Typography } from "@mui/material";
+import { Box, InputLabel, Switch } from "@mui/material";
 import SyncIcon from "@mui/icons-material/Sync";
 
 const ICON_REGISTRY = {
@@ -52,9 +52,51 @@ const ToggleComponent = ({
       <Switch
         {...props}
         name={name}
-        checked={value}
+        checked={Boolean(value)}
         disabled={disabled}
         onChange={onChange}
+        sx={{
+          width: 46,
+          height: 28,
+          padding: 0,
+          overflow: "visible",
+
+          "& .MuiSwitch-switchBase": {
+            padding: "3px",
+            transitionDuration: "200ms",
+
+            "&.Mui-checked": {
+              transform: "translateX(18px)",
+              color: "#FFFFFF",
+
+              "& + .MuiSwitch-track": {
+                backgroundColor: "#7C3AED",
+                opacity: 1,
+                border: "none",
+              },
+            },
+
+            "&.Mui-disabled": {
+              "& + .MuiSwitch-track": {
+                opacity: 0.4,
+              },
+            },
+          },
+
+          "& .MuiSwitch-thumb": {
+            width: 22,
+            height: 22,
+            backgroundColor: "#FFFFFF",
+            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.15)",
+          },
+
+          "& .MuiSwitch-track": {
+            borderRadius: 14,
+            backgroundColor: "#CBD5E1",
+            opacity: 1,
+            border: "none",
+          },
+        }}
       />
     </Box>
   );

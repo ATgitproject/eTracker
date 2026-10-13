@@ -49,7 +49,7 @@
       "name": "billing_cycle",
       "placeholder": "Select billing cycle",
       "required": true,
-      "listname": "billing_cycle"
+      "listname": "Billing_Cycle"
     },
     {
       "field_type": "datePickerComponent",
