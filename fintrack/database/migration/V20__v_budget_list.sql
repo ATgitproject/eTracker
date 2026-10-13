@@ -38,6 +38,6 @@ FROM (((budgets b
      LEFT JOIN LATERAL ( SELECT sum(t.amount) AS total_spent
            
 FROM transactions t
-          WHERE ((t.user_id = b.user_id) AND (t.category_id = bc.category_id) AND (lower((t.transaction_type)::text) = 'Expense'::text) AND (t.transaction_date >= b.start_date) AND (t.transaction_date < (COALESCE(b.end_date, CURRENT_DATE) + '1 day'::interval)))) spent ON (true))
+          WHERE ((t.user_id = b.user_id) AND (t.category_id = bc.category_id) AND (lower((t.transaction_type)::text) = 'expense'::text) AND (t.transaction_date >= b.start_date) AND (t.transaction_date < (COALESCE(b.end_date, CURRENT_DATE) + '1 day'::interval)))) spent ON (true))
   WHERE (b.is_active = true);
 
