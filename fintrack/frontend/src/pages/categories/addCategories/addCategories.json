@@ -7,7 +7,7 @@
       "label": "Type",
       "entity_field_name": "category_type",
       "defaultValue": "Expense",
-      "listname": "categories"
+      "listname": "expense_categories"
     },
     {
       "field_type": "textfield",

@@ -1,5 +1,6 @@
 "use client";
 import { setUpdateFormData } from "@/redux/slices/formDataSlice";
+import dayjs from "dayjs";
 import { useDispatch } from "react-redux";
 
 export function ConditionValidator() {
@@ -22,6 +23,26 @@ export function ConditionValidator() {
           [entity_name]: { [entity_field_name]: newValue },
         }),
       );
+    }
+  };
+
+  const updateData = ({
+    useForm,
+    entity_name,
+    entity_field_name,
+    newValue,
+  }) => {
+    const today = dayjs();
+    const currentValue = today?.add(1, newValue?.toLowerCase());
+    const existingValue = useForm?.getValues()?.[entity_field_name];
+
+    if (existingValue !== currentValue) {
+      setDataInReduxUseForm({
+        useForm,
+        entity_name,
+        entity_field_name,
+        newValue: currentValue,
+      });
     }
   };
 
@@ -79,6 +100,13 @@ export function ConditionValidator() {
                 entity_name,
                 entity_field_name: obj?.entity_field_name,
               });
+          case "update":
+            updateData({
+              useForm,
+              entity_name,
+              entity_field_name: obj?.entity_field_name,
+              newValue,
+            });
           default:
             break;
         }

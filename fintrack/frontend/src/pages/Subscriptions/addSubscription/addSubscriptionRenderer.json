@@ -49,7 +49,8 @@
       "name": "billing_cycle",
       "placeholder": "Select billing cycle",
       "required": true,
-      "listname": "Billing_Cycle"
+      "listname": "Billing_Cycle",
+      "hasDependentField": true
     },
     {
       "field_type": "datePickerComponent",
@@ -58,7 +59,13 @@
       "width": 12,
       "label": "Next Billing Date",
       "required": true,
-      "setDefCurrrentDate": true
+      "setDefCurrrentDate": true,
+      "condition": [
+        {
+          "dependentFieldId": "billing_cycle",
+          "conditionAction": "update"
+        }
+      ]
     },
     {
       "field_type": "toggleComponent",

@@ -405,4 +405,14 @@ VALUES ('A830AC28-DB7C-47A5-AF35-A1ADE5515CCA', 'months', '8F59E1E2-1750-4919-9A
 INSERT INTO public.list_field_map (id, field_id, list_id, value, is_hidden, sort_order, created_on, created_by, modified_on, modified_by, is_default)
 VALUES ('E3CB83E8-7C15-43F9-AD93-866FF5BEF1AC', 'months', '8F59E1E2-1750-4919-9ADA-ACB240BA7028', 'Dec 2029', '0', 48, '2026-10-12 23:07:57.316754', NULL, '2026-10-12 23:07:57.316754', NULL, '0');
 
- 
+
+
+UPDATE public.list_field_map
+SET field_id = 'month'
+WHERE id = 'FDA31BAF-9377-4A0A-A137-3BC71E1725D6';
+
+
+UPDATE public.list_field_map
+SET field_id = 'year'
+WHERE id = '152FCB0A-CFE5-4DBC-8276-50FC5FF58F34';
+
