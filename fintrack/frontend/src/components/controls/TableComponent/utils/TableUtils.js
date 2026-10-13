@@ -309,6 +309,12 @@ export const tableStyles = {
 export const getStatusBgColor = (status) => {
   if (status === "Active") {
     return "#DCFCE7";
+  }
+  if (status === "On Track") {
+    return "#DCFCE7";
+  }
+  if (status === "Over Budget") {
+    return "#FEE2E2";
   } else {
     return "#FEE2E2";
   }
@@ -317,6 +323,12 @@ export const getStatusBgColor = (status) => {
 export const getStatusColor = (status) => {
   if (status === "Active") {
     return "#22C55E";
+  }
+  if (status === "On Track") {
+    return "#22C55E";
+  }
+  if (status === "Over Budget") {
+    return "#EF4444";
   } else {
     return "#EF4444";
   }

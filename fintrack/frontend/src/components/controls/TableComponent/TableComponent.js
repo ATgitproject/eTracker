@@ -122,7 +122,7 @@ const TableComponent = ({
                   ? (spent / budget) * 100
                   : 0;
 
-            const color = row[color_field] || "#6842FF";
+            const color = percentage >= 100 ? "#EF4444" : "#10B981";
 
             return (
               <Box
@@ -173,8 +173,9 @@ const TableComponent = ({
                   sx={{
                     minWidth: 44,
                     textAlign: "right",
-                    color: "#42557F",
+                    color: percentage >= 100 ? "#EF4444" : "#42557F",
                     fontSize: 12,
+                    fontWeight: percentage >= 100 ? 600 : 400,
                   }}
                 >
                   {percentage.toFixed(1)}%

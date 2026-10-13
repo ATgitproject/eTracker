@@ -30,7 +30,6 @@
           "isAmount": false,
           "showTrend": false,
           "width": 7,
-          "tile_width": "30%",
           "tiles": [
             {
               "key": 1,
@@ -78,11 +77,10 @@
         }
       ]
     },
-
     {
       "field_id": "Budget-table",
       "field_type": "tableComponent",
-      "entity_name": "v_monthly_budget_vs_actual",
+      "entity_name": "v_budget_list",
       "parent_entity": "Budgets",
       "columns": [
         {
@@ -98,45 +96,38 @@
           }
         },
         {
-          "col_id": "budget_progress",
+          "col_id": "budget_amount",
           "entity_field_name": "budget_amount",
-          "col_name": "Spent / Budget",
+          "col_name": "Budget Amount",
           "order": 2,
-          "hasProgress": true,
-          "compare_field_name": {
-            "value_field": "spent_amount",
-            "max_field": "budget_amount",
-            "percentage_field": "percentage_used",
-            "color_field": "category_color"
-          }
+          "isAmount": true
         },
         {
           "col_id": "spent_amount",
           "entity_field_name": "spent_amount",
           "col_name": "Spent Amount",
+          "order": 2,
+          "isAmount": true
+        },
+        {
+          "col_id": "budget_progress",
+          "entity_field_name": "progress_percentage",
+          "col_name": "Progress",
           "order": 3,
-          "hide": true
+          "hasProgress": true,
+          "compare_field_name": {
+            "value_field": "spent_amount",
+            "max_field": "budget_amount",
+            "percentage_field": "progress_percentage",
+            "color_field": "category_color"
+          }
         },
         {
-          "col_id": "percentage_used",
-          "entity_field_name": "percentage_used",
-          "col_name": "Percentage Used",
+          "col_id": "status",
+          "entity_field_name": "status",
+          "col_name": "Status",
           "order": 4,
-          "hide": true
-        },
-        {
-          "col_id": "icon",
-          "entity_field_name": "category_icon",
-          "col_name": "Icon",
-          "order": 5,
-          "hide": true
-        },
-        {
-          "col_id": "category_color",
-          "entity_field_name": "category_color",
-          "col_name": "Category Color",
-          "order": 6,
-          "hide": true
+          "isStatus": true
         }
       ],
       "toolbars": [
@@ -161,10 +152,10 @@
         {
           "toolbar_id": "budget_delete",
           "isbutton": false,
-          "toolbar_name": "Delete budget",
+          "toolbar_name": "Delete Budget",
           "toolbar_action": "delete",
           "entity_name": "budgets",
-          "order": 4
+          "order": 3
         }
       ]
     }
