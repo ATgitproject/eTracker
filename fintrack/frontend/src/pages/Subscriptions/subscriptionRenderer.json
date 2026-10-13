@@ -14,7 +14,7 @@
           "entity_field_name": "service",
           "col_name": "Service",
           "order": 1,
-          "flex": 5,
+          "flex": 3,
           "hasIcon": true,
           "hasIconColor": true
         },
@@ -23,7 +23,7 @@
           "entity_field_name": "category",
           "col_name": "Category",
           "order": 2,
-          "hasTextColor": true
+          "isType": true
         },
         {
           "col_id": "amount",
@@ -54,7 +54,7 @@
           "entity_field_name": "status",
           "col_name": "Status",
           "order": 6,
-          "hasTextColor": true
+          "isStatus": true
         },
         {
           "col_id": "icon",

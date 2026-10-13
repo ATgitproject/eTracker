@@ -21,7 +21,7 @@
           "percentage_field": "percentage_used",
           "format": "currency",
           "accent_color": "#19A982",
-          "width": 3
+          "width": 5
         },
         {
           "field_id": "budget-tiles-tiles",
@@ -29,8 +29,8 @@
           "entity_name": "v_budget_tiles",
           "isAmount": false,
           "showTrend": false,
-          "width": 9,
-          "tile_width": "220px",
+          "width": 7,
+          "tile_width": "30%",
           "tiles": [
             {
               "key": 1,

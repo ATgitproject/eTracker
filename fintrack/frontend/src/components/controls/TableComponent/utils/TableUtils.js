@@ -327,6 +327,10 @@ export const getTypeBgColor = (type) => {
     return "#DCFCE7";
   } else if (type === "Transfer") {
     return "#DBEAFE";
+  } else if (type === "Entertainment") {
+    return "#FCE7EC";
+  } else if (type === "Utilities" || type === "Shopping") {
+    return "#EEE8FE";
   } else {
     return "#FEE2E2";
   }
@@ -337,6 +341,10 @@ export const getTypeColor = (type) => {
     return "#22C55E";
   } else if (type === "Transfer") {
     return "#3B82F6";
+  } else if (type === "Entertainment") {
+    return "#DC2626";
+  } else if (type === "Utilities" || type === "Shopping") {
+    return "#6D28D9";
   } else {
     return "#EF4444";
   }
