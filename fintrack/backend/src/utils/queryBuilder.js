@@ -1,18 +1,34 @@
 const OPERATORS = require("./operators");
 
-const buildQuery = ({ table, filterCondition, sortOrder, recordCount }) => {
+const buildQuery = ({
+  table,
+  filterCondition,
+  sortOrder,
+  recordCount,
+  userId,
+}) => {
   const values = [];
   const whereConditions = [];
 
-  let query = `
-    SELECT *
-    FROM ${table}
-  `;
+  if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(table || "")) {
+    throw new Error("Invalid table name");
+  }
 
-  if (Array.isArray(filterCondition) && filterCondition.length > 0) {
+  if (!userId) {
+    throw new Error("Authenticated user ID is required");
+  }
+
+  values.push(userId);
+  whereConditions.push(`user_id = $${values.length}`);
+
+  if (Array.isArray(filterCondition)) {
     filterCondition.forEach(({ field, operator, value }) => {
       if (!field) {
         throw new Error("Filter field is required");
+      }
+
+      if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(field)) {
+        throw new Error("Invalid filter field");
       }
 
       if (value === undefined || value === null || value === "") {
@@ -40,18 +56,17 @@ const buildQuery = ({ table, filterCondition, sortOrder, recordCount }) => {
         );
       } else {
         values.push(value);
-
         whereConditions.push(`${field} ${sqlOperator} $${values.length}`);
       }
     });
-
-    if (whereConditions.length > 0) {
-      query += ` WHERE ${whereConditions.join(" AND ")}`;
-    }
   }
 
-  if (sortOrder && ["ASC", "DESC"].includes(sortOrder.toUpperCase())) {
-    query += ` ORDER BY id ${sortOrder.toUpperCase()}`;
+  let query = `SELECT * FROM ${table}`;
+
+  query += ` WHERE ${whereConditions.join(" AND ")}`;
+
+  if (sortOrder && ["ASC", "DESC"].includes(String(sortOrder).toUpperCase())) {
+    query += ` ORDER BY id ${String(sortOrder).toUpperCase()}`;
   }
 
   if (recordCount !== undefined && recordCount !== null) {
@@ -64,12 +79,7 @@ const buildQuery = ({ table, filterCondition, sortOrder, recordCount }) => {
     query += ` LIMIT ${count}`;
   }
 
-  return {
-    query,
-    values,
-  };
+  return { query, values };
 };
 
-module.exports = {
-  buildQuery,
-};
+module.exports = { buildQuery };

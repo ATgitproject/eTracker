@@ -3,39 +3,28 @@ import dayjs from "dayjs";
 export const setCookie = (cname, cvalue, exdays) => {
   if (typeof document === "undefined") return;
 
-  var d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-
-  var expires = "expires=" + d.toUTCString();
-
-  let data = cname + "=" + cvalue + ";";
+  let cookie = `${cname}=${encodeURIComponent(cvalue)}; path=/; SameSite=Lax`;
 
   if (exdays) {
-    data += expires + ";path=/";
+    const date = new Date();
+    date.setTime(date.getTime() + exdays * 24 * 60 * 60 * 1000);
+    cookie += `; expires=${date.toUTCString()}`;
   }
 
-  document.cookie = data;
+  document.cookie = cookie;
 };
 
 export const getCookie = (cname) => {
   if (typeof document === "undefined") return "";
 
-  var name = cname + "=";
-  var ca = document.cookie.split(";");
+  const prefix = `${cname}=`;
+  const cookie = document.cookie
+    .split("; ")
+    .find((item) => item.startsWith(prefix));
 
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
+  if (!cookie) return "";
 
-    while (c.charAt(0) === " ") {
-      c = c.substring(1);
-    }
-
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-
-  return "";
+  return decodeURIComponent(cookie.substring(prefix.length));
 };
 
 export const deleteCookie = (name) => {

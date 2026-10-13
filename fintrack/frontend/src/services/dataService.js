@@ -1,3 +1,5 @@
+import { getCookie } from "@/utils/genericUtils";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const saveData = async ({ objName, fields, id }) => {
@@ -57,7 +59,11 @@ export const getData = async ({
   sortOrder,
   recordCount,
 }) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = getCookie("accessToken");
+
+  if (!accessToken) {
+    throw new Error("Access token not found. Please log in again.");
+  }
 
   const response = await fetch(`${API_URL}/api/get`, {
     method: "POST",

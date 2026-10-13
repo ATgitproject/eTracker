@@ -1,4 +1,4 @@
-import { verifyAccessToken } from "../utils/auth.js";
+const { verifyAccessToken } = require("../utils/auth");
 
 const authenticate = (req, res, next) => {
   try {
@@ -36,4 +36,4 @@ const authenticate = (req, res, next) => {
   }
 };
 
-export default authenticate;
+module.exports = { authenticate };

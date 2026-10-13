@@ -8,22 +8,21 @@ const getData = async ({
   sortOrder,
   recordCount,
 }) => {
+  const userId = req.user?.userId;
+
+  if (!userId) {
+    throw new Error("Unauthorized: authenticated user ID is missing");
+  }
+
   const { query, values } = buildQuery({
     table: objName,
     filterCondition,
     sortOrder,
     recordCount,
+    userId,
   });
 
-  console.log("GET QUERY:", query);
-  console.log("GET VALUES:", values);
-
-  return genericDataRepository.getData({
-    query,
-    values,
-  });
+  return genericDataRepository.getData({ query, values });
 };
 
-module.exports = {
-  getData,
-};
+module.exports = { getData };
