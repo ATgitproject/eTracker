@@ -59,11 +59,11 @@
       "width": 12,
       "label": "Next Billing Date",
       "required": true,
-      "setDefCurrrentDate": true,
       "condition": [
         {
           "dependentFieldId": "billing_cycle",
-          "conditionAction": "update"
+          "conditionAction": "updatechildfielddata",
+          "isByPeriod": true
         }
       ]
     },

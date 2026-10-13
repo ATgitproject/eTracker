@@ -4,8 +4,9 @@
 DROP VIEW IF EXISTS public.v_budget_list;
 
 CREATE OR REPLACE VIEW public.v_budget_list AS
- SELECT bc.id,
-    b.id AS budget_id,
+ SELECT 
+    b.id, 
+    bc.id AS budget_category_id,
     b.user_id,
     bc.category_id,
     c.name AS category_name,

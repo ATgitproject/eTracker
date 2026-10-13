@@ -1,5 +1,6 @@
 "use client";
 import { setUpdateFormData } from "@/redux/slices/formDataSlice";
+import { getMonthRange, PERIOD_TYPES } from "@/utils/genericUtils";
 import dayjs from "dayjs";
 import { useDispatch } from "react-redux";
 
@@ -26,14 +27,25 @@ export function ConditionValidator() {
     }
   };
 
-  const updateData = ({
+  const updateChildFieldData = ({
     useForm,
     entity_name,
     entity_field_name,
     newValue,
+    isPeriodBase,
+    isStartDate,
+    isEndDate,
   }) => {
-    const today = dayjs();
-    const currentValue = today?.add(1, newValue?.toLowerCase());
+    let currentValue = null;
+    if (isPeriodBase && newValue) {
+      const periodObj = PERIOD_TYPES(newValue?.toLowerCase());
+      const today = dayjs();
+      currentValue = today?.add(periodObj.count, periodObj.unit);
+    } else if (newValue) {
+      currentValue = getMonthRange(newValue);
+      currentValue = isStartDate ? currentValue?.start : currentValue?.end;
+    }
+
     const existingValue = useForm?.getValues()?.[entity_field_name];
 
     if (existingValue !== currentValue) {
@@ -100,12 +112,15 @@ export function ConditionValidator() {
                 entity_name,
                 entity_field_name: obj?.entity_field_name,
               });
-          case "update":
-            updateData({
+          case "updatechildfielddata":
+            updateChildFieldData({
               useForm,
               entity_name,
               entity_field_name: obj?.entity_field_name,
               newValue,
+              isPeriodBase: condition?.isByPeriod,
+              isEndDate: condition?.isEndDate,
+              isStartDate: condition?.isStartDate,
             });
           default:
             break;
