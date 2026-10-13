@@ -92,12 +92,17 @@ const TilesComponent = (props) => {
     <Box
       key={fieldid}
       sx={{
-        display: "flex",
+        display: "grid",
         gap: 2,
         width: "100%",
         minWidth: 0,
         boxSizing: "border-box",
         p: "6px",
+        gridTemplateColumns: {
+          xs: "1fr",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(auto-fit, minmax(240px, 1fr))",
+        },
       }}
     >
       {tiles?.map((tile) => {
@@ -110,7 +115,6 @@ const TilesComponent = (props) => {
           <Card
             key={tile?.key}
             sx={{
-              width: tile_width ? tile_width : "",
               height: "100%",
               minWidth: 0,
               borderRadius: 2,
