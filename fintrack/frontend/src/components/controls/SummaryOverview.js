@@ -112,7 +112,7 @@ const SummaryOverview = (props) => {
     <Box
       sx={{
         display: "flex",
-        height: "110px",
+        height: "125px",
         flexDirection: "column",
         justifyContent: "center",
         gap: 1.5,
