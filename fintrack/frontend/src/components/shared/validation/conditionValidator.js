@@ -1,6 +1,10 @@
 "use client";
 import { setUpdateFormData } from "@/redux/slices/formDataSlice";
-import { getMonthRange, PERIOD_TYPES } from "@/utils/genericUtils";
+import {
+  getMonthRange,
+  isEmptyValue,
+  PERIOD_TYPES,
+} from "@/utils/genericUtils";
 import dayjs from "dayjs";
 import { useDispatch } from "react-redux";
 
@@ -137,7 +141,8 @@ export function ConditionValidator() {
     entity_field_name,
     newValue,
   }) => {
-    if (!useForm?.getValues()?.[entity_field_name]) {
+    const currentValue = useForm?.getValues()?.[entity_field_name];
+    if (isEmptyValue()?.includes(currentValue)) {
       setDataInReduxUseForm({
         useForm,
         entity_name,

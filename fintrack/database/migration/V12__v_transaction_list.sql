@@ -13,7 +13,7 @@ CREATE OR REPLACE VIEW public.v_transaction_list AS
     t.description,
     t.payment_method,
     t.merchant,
-    t.transaction_date AS transaction_data,
+    t.transaction_date,
     c.name AS category_name,
     t.icon,
     t.color

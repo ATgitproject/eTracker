@@ -69,3 +69,7 @@ export const getMonthRange = (label) => {
     end: d.endOf("month").format("YYYY-MM-DD"),
   };
 };
+
+export const isEmptyValue = () => {
+  return [undefined, null, ""];
+};
