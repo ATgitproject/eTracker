@@ -102,6 +102,7 @@
           "entity_name": "v_monthly_budget_vs_actual",
           "width": 5,
           "tableTitle": "Monthly Budget",
+          "tableHeight": "440px",
           "columns": [
             {
               "col_id": "category",

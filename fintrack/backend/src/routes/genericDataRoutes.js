@@ -7,8 +7,8 @@ const { authenticate } = require("../middleware/authMiddleware");
 
 const genericDataRoutes = express.Router();
 genericDataRoutes.route("/get").post(authenticate, getGenericData);
-genericDataRoutes.route("/save").post(saveData);
-genericDataRoutes.route("/delete").post(deleteData);
-genericDataRoutes.route("/lstdata").post(getListData);
+genericDataRoutes.route("/save").post(authenticate, saveData);
+genericDataRoutes.route("/delete").post(authenticate, deleteData);
+genericDataRoutes.route("/lstdata").post(authenticate, getListData);
 
 module.exports = genericDataRoutes;

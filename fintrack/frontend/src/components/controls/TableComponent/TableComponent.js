@@ -55,6 +55,7 @@ const TableComponent = ({
   tableTitle,
   onRefetchReady,
   gridFilter = null,
+  tableHeight,
 }) => {
   const [conditions, setConditions] = useState([]);
   const [refreshList, setRefreshList] = useState(null);
@@ -488,7 +489,15 @@ const TableComponent = ({
         hideFooter
         disableRowSelectionOnClick
         disableColumnMenu
-        sx={tableStyles}
+        sx={{
+          ...tableStyles,
+          ...(tableHeight && {
+            "& .MuiDataGrid-main": {
+              ...tableStyles["& .MuiDataGrid-main"],
+              height: tableHeight,
+            },
+          }),
+        }}
       />
     </Box>
   );
