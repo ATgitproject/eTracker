@@ -15,6 +15,7 @@ CREATE OR REPLACE VIEW public.v_transaction_list AS
     t.merchant,
     t.transaction_date,
     c.name AS category_name,
+	t.category_id,
     t.icon,
     t.color
    

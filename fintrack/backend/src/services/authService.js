@@ -87,7 +87,7 @@ const signup = async (payload) => {
           user_id,
           name,
           amount,
-          period_type,
+          period_month,
           start_date,
           end_date,
           category_id
@@ -110,7 +110,7 @@ const signup = async (payload) => {
           user_id,
           name,
           amount,
-          period_type,
+          period_month,
           start_date,
           end_date,
           category_id

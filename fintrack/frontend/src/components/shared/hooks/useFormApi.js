@@ -44,7 +44,7 @@ const useFormApi = ({ entityName, action, recordId, formMethods }) => {
           filterCondition: [
             {
               field: "id",
-              operator: "equal",
+              operator: "eq",
               value: id,
             },
           ],

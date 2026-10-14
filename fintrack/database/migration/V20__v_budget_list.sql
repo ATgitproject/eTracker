@@ -14,7 +14,7 @@ CREATE OR REPLACE VIEW public.v_budget_list AS
     c.color AS category_color,
     b.start_date,
     b.end_date,
-    b.period_type,
+    b.period_month,
     bc.amount AS budget_amount,
     COALESCE(spent.total_spent, (0)::numeric) AS spent_amount,
     GREATEST((bc.amount - COALESCE(spent.total_spent, (0)::numeric)), (0)::numeric) AS remaining_amount,

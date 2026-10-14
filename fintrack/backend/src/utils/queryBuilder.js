@@ -41,7 +41,7 @@ const buildQuery = ({
 
       const sqlOperator = OPERATORS[operator];
 
-      if (operator === "in" || operator === "notin") {
+      if (operator === "in" || operator === "nin") {
         if (!Array.isArray(value) || value.length === 0) {
           throw new Error(`${operator} operator requires a non-empty array`);
         }

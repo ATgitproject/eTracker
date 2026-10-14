@@ -349,7 +349,7 @@ const TableComponent = ({
       setGridCondition([
         {
           field: entity_field,
-          operator: "equal",
+          operator: "eq",
           value: value,
         },
       ]);

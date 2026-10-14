@@ -49,7 +49,7 @@ const TilesComponent = (props) => {
         filterCondition: [
           {
             field: "user_id",
-            operator: "equal",
+            operator: "eq",
             value: session?.userData?.id || sessionCookie?.userData?.id,
           },
         ],

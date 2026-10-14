@@ -71,6 +71,13 @@
           "col_name": "Category Type",
           "order": 8,
           "hide": true
+        },
+        {
+          "col_id": "status_value",
+          "entity_field_name": "is_active",
+          "col_name": "Status Value",
+          "order": 9,
+          "hide": true
         }
       ],
       "toolbars": [
@@ -108,54 +115,20 @@
         "resetLabel": "Reset",
         "fields": [
           {
-            "field_id": "date_range",
+            "field_id": "status",
             "field_type": "dropdownComponent",
-            "label": "Date Range",
-            "entity_field_name": "date",
-            "listname": "categories",
-            "optCode": "id",
-            "optValue": "name"
-          },
-          {
-            "field_id": "category_id",
-            "field_type": "dropdownComponent",
-            "label": "Transaction Type",
-            "listname": "categories",
-            "optCode": "id",
-            "optValue": "name",
-            "entity_field_name": "type"
-          },
-          {
-            "field_id": "payment_method",
-            "field_type": "dropdownComponent",
-            "label": "Payment Method",
-            "listname": "categories",
-            "optCode": "id",
-            "optValue": "name",
-            "entity_field_name": "Payment_Method"
-          },
-          {
-            "field_id": "amount_min",
-            "field_type": "textfield",
-            "label": "Minimum Amount",
-            "placeholder": "Min amount",
-            "entity_field_name": "amount",
-            "filterOperator": "greaterthan"
-          },
-          {
-            "field_id": "amount_max",
-            "field_type": "textfield",
-            "label": "Maximum Amount",
-            "placeholder": "Max amount",
-            "entity_field_name": "amount",
-            "filterOperator": "lessthan"
-          },
-          {
-            "field_id": "merchant",
-            "field_type": "autocomplete",
-            "label": "Merchant",
-            "placeholder": "Search merchant...",
-            "entity_field_name": "Merchant"
+            "label": "Status",
+            "entity_field_name": "status",
+            "options": [
+              {
+                "label": "Active",
+                "value": 1
+              },
+              {
+                "label": "Inactive",
+                "value": 0
+              }
+            ]
           }
         ]
       },

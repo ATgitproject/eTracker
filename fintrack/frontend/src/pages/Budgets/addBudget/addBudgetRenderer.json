@@ -28,8 +28,8 @@
     },
     {
       "field_type": "dropdownComponent",
-      "field_id": "period_type",
-      "entity_field_name": "period_type",
+      "field_id": "period_month",
+      "entity_field_name": "period_month",
       "width": 12,
       "label": "Month",
       "placeholder": "Select Month",
@@ -44,7 +44,7 @@
       "hidden": true,
       "condition": [
         {
-          "dependentFieldId": "period_type",
+          "dependentFieldId": "period_month",
           "conditionAction": "updatechildfielddata",
           "isStartDate": true
         }
@@ -57,7 +57,7 @@
       "hidden": true,
       "condition": [
         {
-          "dependentFieldId": "period_type",
+          "dependentFieldId": "period_month",
           "conditionAction": "updatechildfielddata",
           "isEndDate": true
         }

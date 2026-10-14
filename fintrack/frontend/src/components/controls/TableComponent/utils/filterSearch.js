@@ -19,6 +19,8 @@ import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import TextField from "../../TextField";
 import DatePickerComponent from "../../DatePickerComponent";
 import DropdownComponent from "../../DropdownComponent";
+import DateRangeComponent from "../../dateRangeComponent";
+import dayjs from "dayjs";
 
 const FilterSearch = ({ config, onApply }) => {
   const fields = config?.fields || [];
@@ -28,6 +30,8 @@ const FilterSearch = ({ config, onApply }) => {
   const open = Boolean(anchorEl);
 
   const updateValue = useCallback((fieldId, value) => {
+    console.log(value);
+
     setValues((previous) => ({
       ...previous,
       [fieldId]: value,
@@ -47,63 +51,27 @@ const FilterSearch = ({ config, onApply }) => {
       if (!fieldId || value == null || value === "") return;
       if (Array.isArray(value) && value.length === 0) return;
 
-      if (
-        field.field_type === "buttonGroup" &&
-        String(value).toLowerCase() === "all"
-      ) {
-        return;
-      }
-
       if (field.field_id === "date_range") {
-        if (value === "all") return;
+        const toDateString = (date) => dayjs(date).format("YYYY-MM-DD");
 
-        const now = new Date();
-        let start;
-        let end;
+        conditions.push({
+          field: fieldId,
+          operator: "gte",
+          value: toDateString(values?.[field?.field_id]?.[0]),
+        });
 
-        if (value === "this_month") {
-          start = new Date(now.getFullYear(), now.getMonth(), 1);
-          end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-        } else if (value === "last_month") {
-          start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-          end = new Date(now.getFullYear(), now.getMonth(), 1);
-        } else if (value === "last_30_days") {
-          start = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate() - 29,
-          );
-          end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-        } else if (value === "this_year") {
-          start = new Date(now.getFullYear(), 0, 1);
-          end = new Date(now.getFullYear() + 1, 0, 1);
-        }
-
-        if (start && end) {
-          const toDateString = (date) =>
-            `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-
-          conditions.push({
-            field: fieldId,
-            operator: "gte",
-            value: toDateString(start),
-          });
-
-          conditions.push({
-            field: fieldId,
-            operator: "lt",
-            value: toDateString(end),
-          });
-        }
-
-        return;
+        conditions.push({
+          field: fieldId,
+          operator: "lt",
+          value: toDateString(values?.[field?.field_id]?.[1]),
+        });
+      } else {
+        conditions.push({
+          field: fieldId,
+          operator: field.filterOperator || "eq",
+          value: value,
+        });
       }
-
-      conditions.push({
-        field: fieldId,
-        operator: field.filterOperator || "eq",
-        value: value,
-      });
     });
 
     return conditions;
@@ -199,6 +167,7 @@ const FilterSearch = ({ config, onApply }) => {
           listname={field.listname}
           optCode={field.optCode}
           optValue={field.optValue}
+          options={field.options}
           placeholder={
             field.placeholder || `Select ${field.label.toLowerCase()}`
           }
@@ -230,11 +199,22 @@ const FilterSearch = ({ config, onApply }) => {
     if (field.field_type === "datePickerComponent") {
       return (
         <DatePickerComponent
+          {...commonProps}
           name={field.field_id}
           value={value}
           format="YYYY-MM-DD"
           placeholder={field.placeholder || ""}
-          onChange={(newValue) => updateValue(field.field_id, newValue)}
+        />
+      );
+    }
+
+    if (field.field_type === "dateRangeComponent") {
+      return (
+        <DateRangeComponent
+          {...commonProps}
+          name={field.field_id}
+          value={value && value?.length ? [value?.[0], value?.[1]] : []}
+          format="YYYY-MM-DD"
         />
       );
     }

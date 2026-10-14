@@ -1,10 +1,10 @@
 const OPERATORS = {
-  equal: "=",
-  greaterthan: ">",
-  lessthan: "<",
-  greaterthanequal: ">=",
+  eq: "=",
+  gt: ">",
+  lt: "<",
+  gte: ">=",
   in: "IN",
-  notin: "NOT IN",
+  nin: "NOT IN",
 };
 
 module.exports = OPERATORS;
